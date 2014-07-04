@@ -32,6 +32,7 @@
 
 	<div class="row">
 		<?php // echo $form->labelEx($model,'contact_email'); ?>
+                    <?php // echo $form->labelEx($model,'contact_email'); ?>
 		<?php echo $form->textFieldGroup($model,'contact_email',array('size'=>60,'maxlength'=>255 ,
                     'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                 )); ?>
