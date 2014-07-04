@@ -29,6 +29,8 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
+    <?php $this->widget('ext.hoauth.widgets.HOAuth'); ?>
+    
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<div class="row">

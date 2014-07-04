@@ -38,9 +38,20 @@
 		<?php echo $form->error($model,'contact_email'); ?>
 	</div>
 
+        <div class="row">
+		<?php //echo $form->labelEx($model,'contact_login_pass'); ?>
+		<?php echo $form->passwordFieldGroup($model,'contact_login_pass',array('size'=>60,'maxlength'=>255,
+                    'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
+                )); ?>
+		<?php echo $form->error($model,'contact_login_pass'); ?>
+	</div>
+        
+        
+        
+        
 	<div class="row">
 		<?php //echo $form->labelEx($model,'contact_name_ini'); ?>
-		<?php echo $form->textFieldGroup($model,'contact_name_ini',array('size'=>60,'maxlength'=>255,
+		<?php echo $form->passwordFieldGroup($model,'contact_name_ini',array('size'=>60,'maxlength'=>255,
                     'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                     )); ?>
 		<?php echo $form->error($model,'contact_name_ini'); ?>
@@ -220,13 +231,7 @@
 		<?php echo $form->error($model,'contact_status'); ?>
 	</div>
 
-	<div class="row">
-		<?php //echo $form->labelEx($model,'contact_login_pass'); ?>
-		<?php echo $form->textFieldGroup($model,'contact_login_pass',array('size'=>60,'maxlength'=>255,
-                    'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
-                )); ?>
-		<?php echo $form->error($model,'contact_login_pass'); ?>
-	</div>
+	
 
 	<div class="row buttons">
 	</div>
