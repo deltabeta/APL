@@ -23,7 +23,9 @@
 <div class="container" id="page">
 
 	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
+		<div id="logo">
+                    
+                    <?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
 
 	<div id="mainmenu">
@@ -31,7 +33,7 @@
     'booster.widgets.TbNavbar',
     array(
         'type' => '',
-       // 'brand' => '',
+       'brand' => '<img src="images/logo-africanpress.png" width="150" />',
         'brandUrl' => '#',
         'collapse' => true, // requires bootstrap-responsive.css
        // 'fixed' => false,
@@ -41,33 +43,21 @@
                 'class' => 'booster.widgets.TbMenu',
                 'type' => 'navbar',
                 'items' => array(
-                    array('label'=>'Home', 'url'=>array('/site/index')),
+                    array('label'=>'Home ', 'url'=>array('/site/index')),
                    
                     
                     array(
                         'label' => 'For who and how?',
                         'url' => '#',
                         'items' => array(
-                            array('label' => 'How to use', 'url' => '#'),
+                            array('label' => 'How to use', 'url' => 'forwhoandhow/WhytheAfricaPressList'),
                             array('label' => 'Tips to write', 'url' => '#'),
-                            array(
-                                'label' => 'Press',
-                                'url' => '#'
-                            ),
+                            array('label' => 'Press','url' => '#'),
                             
                             
                         )
                     ),
-                   array('label'=>'Costs of Use', 'url'=>'#'), 
-                ),
-            ),
-            '<form class="navbar-form navbar-left" action=""><div class="form-group"><input type="text" class="form-control" placeholder="Search"></div></form>',
-            array(
-                'class' => 'booster.widgets.TbMenu',
-                'type' => 'navbar',
-                'htmlOptions' => array('class' => 'pull-right'),
-                'items' => array(
-                    '--',
+                    
                     array(
                         'label' => 'About Us',
                         'url' => '#',
@@ -77,7 +67,7 @@
                             array('label' => 'Newsletter', 'url' => '#'),
                         )
                     ),
-                    
+                    array('label'=>'Costs of Use', 'url'=>'#'),
                       array('label'=>' Sign-Up', 'items' => array(
                             
                             array('label'=>'As Client', 'url'=>array('/site/contact')),
@@ -87,8 +77,21 @@
                           , 'visible'=>Yii::app()->user->isGuest),
                     
                     
-                      array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+                    array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                       array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                ),
+            ),
+            '<form class="navbar-form navbar-left" action=""><div class="form-group"><input type="text" class="form-control" placeholder="Search"></div></form>',
+            array(
+                'class' => 'booster.widgets.TbMenu',
+                'type' => 'navbar',
+                'htmlOptions' => array('class' => 'pull-right'),
+                'items' => array(
+                    '--',
+                    
+                    
+                    
+                      
 			
                 ),
             ),
@@ -128,11 +131,15 @@
                 
                 
 	<div class="clear"></div>
-
+        <h4 class="titrepartner">Partners</h4>
+        <div class="partners">
+        
+        <?php echo CHtml::image('images/partners.jpg', ''); ?>
+        </div>
+        <div class="clear"></div>
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by The SideWeb.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by The WebSide.<br/>
 		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
 	</div><!-- footer -->
 
 </div><!-- page -->
