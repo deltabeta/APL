@@ -14,7 +14,10 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-
+        
+        
+    
+        
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -48,10 +51,10 @@
                     
                     array(
                         'label' => 'For who and how?',
-                        'url' => '#',
+                        'url' => Yii::app()->request->baseUrl.'/site/howtouse',
                         'items' => array(
-                            array('label' => 'How to use', 'url' => Yii::app()->request->baseUrl.'/index.php/site/howtouse'),
-                            array('label' => 'Tips to write', 'url' => '#'),
+                            array('label' => 'How to use', 'url' => Yii::app()->request->baseUrl.'/site/howtouse'),
+                            array('label' => 'Tips to write', 'url' => Yii::app()->request->baseUrl.'/site/tipstowrite'),
                             array('label' => 'Press','url' => '#'),
                             
                             
