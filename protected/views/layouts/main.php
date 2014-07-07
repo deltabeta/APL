@@ -74,17 +74,9 @@
                         )
                     ),
                     
-                    array(
-                        'label' => 'About Us',
-                        'url' => '#',
-                        'items' => array(
-                            
-                            array('label'=>'Contact', 'url'=>array('/site/contact')),
-                            array('label' => 'Newsletter', 'url' => '#'),
-                        )
-                    ),
+                   
                     
-                    array('label'=>'Costs of Use', 'url'=>'#'),
+                    array('label'=>'Costs of Use', 'url'=>Yii::app()->request->baseUrl.'/site/costofuse'),
                       array('label'=>' Sign-Up', 'items' => array(
                             
                             array('label'=>'As Client', 'url'=>array('/site/contact')),
