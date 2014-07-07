@@ -22,7 +22,7 @@
 </head>
 	<!-- hi alter !! -->
 <body>
-
+<!-- Hello Ayman -->
 <div class="container" id="page">
 
 	<div id="header">
@@ -53,6 +53,7 @@
                         'label' => 'For who and how?',
                         'url' => Yii::app()->request->baseUrl.'/site/howtouse',
                         'items' => array(
+                            array('label' => 'For who and how', 'url' => Yii::app()->request->baseUrl.'/site/forwhoandhow'),
                             array('label' => 'How to use', 'url' => Yii::app()->request->baseUrl.'/site/howtouse'),
                             array('label' => 'Tips to write', 'url' => Yii::app()->request->baseUrl.'/site/tipstowrite'),
                             array('label' => 'Press','url' => '#'),
@@ -70,6 +71,7 @@
                             array('label' => 'Newsletter', 'url' => '#'),
                         )
                     ),
+                    
                     array('label'=>'Costs of Use', 'url'=>'#'),
                       array('label'=>' Sign-Up', 'items' => array(
                             
