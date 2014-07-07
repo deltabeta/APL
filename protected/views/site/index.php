@@ -24,11 +24,11 @@ The Africa Press List is a powerful and highly effective PR tool being fully int
 <p>Stay up to date with our newest development and services.
 <br />
 You can also follow us on social media.<br /><br />
-<?php echo CHtml::image('images/button-newslettersignup.jpg', ''); ?>
+<?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/button-newslettersignup.jpg', ''); ?>
    </p> 
    </div>
     </div>
-<div class="span-12" ><?php echo CHtml::image('images/map2.jpg', ''); ?><br />
+<div class="span-12" ><?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/map2.jpg', ''); ?><br />
 
     <h3>A worldwide selection of journalists</h3>
     <p>Working for the most prominent media reporting on Africa</p>

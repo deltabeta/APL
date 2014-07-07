@@ -33,7 +33,7 @@
     'booster.widgets.TbNavbar',
     array(
         'type' => '',
-       'brand' => '<img src="images/logo-africanpress.png" width="150" />',
+       'brand' => '<img src="'.Yii::app()->request->baseUrl.'/images/logo-africanpress.png" width="150" />',
         'brandUrl' => '#',
         'collapse' => true, // requires bootstrap-responsive.css
        // 'fixed' => false,
@@ -50,7 +50,7 @@
                         'label' => 'For who and how?',
                         'url' => '#',
                         'items' => array(
-                            array('label' => 'How to use', 'url' => 'forwhoandhow/WhytheAfricaPressList'),
+                            array('label' => 'How to use', 'url' => Yii::app()->request->baseUrl.'/index.php/site/howtouse'),
                             array('label' => 'Tips to write', 'url' => '#'),
                             array('label' => 'Press','url' => '#'),
                             
@@ -134,7 +134,7 @@
         <h4 class="titrepartner">Partners</h4>
         <div class="partners">
         
-        <?php echo CHtml::image('images/partners.jpg', ''); ?>
+        <?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/partners.jpg', ''); ?>
         </div>
         <div class="clear"></div>
 	<div id="footer">
