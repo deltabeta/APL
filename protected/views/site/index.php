@@ -2,6 +2,9 @@
 /* @var $this SiteController */
 
 $this->pageTitle=Yii::app()->name;
+
+//Yii::app()->language='fr';
+
 ?>
 
 <h1 class="title">The <?php echo CHtml::encode(Yii::app()->name); ?></h1>

@@ -31,9 +31,9 @@ return array(
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
-		
+	 
 	),
-
+        'sourceLanguage'=>'en',	
 	// application components
 	'components'=>array(
 		'user'=>array(
@@ -86,12 +86,13 @@ return array(
                 'booster' => array(
                 'class' => 'ext.yiibooster.components.Booster',
                 ),
+               
 	),
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'radhouane.walid.m2@gmail.com',
 	),
 );

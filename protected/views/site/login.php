@@ -13,8 +13,11 @@ $this->breadcrumbs=array(
 
 <p>Please fill out the following form with your login credentials:</p>
 
-<div class="form">
-
+<div class="form formlogin">
+    <div class="rows">
+        
+       
+        <div class="span-8">
 <?php $form = $this->beginWidget(
     'booster.widgets.TbActiveForm',
     array(
@@ -29,7 +32,7 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-    <?php $this->widget('ext.hoauth.widgets.HOAuth'); ?>
+ 
     
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
@@ -61,4 +64,13 @@ $this->breadcrumbs=array(
 	</div>
 
 <?php $this->endWidget(); ?>
+        </div>
+        
+         <div class="span-8">
+    <?php $this->widget('ext.hoauth.widgets.HOAuth'); ?>
+    
+    </div>
+        
+        </div>
+    </div>
 </div><!-- form -->
