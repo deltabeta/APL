@@ -84,7 +84,7 @@
 					'class' => 'col-sm-2',
 				),
 				'widgetOptions' => array(
-					'data' => array('M','F','U'),
+					'data' => array('M'=>'Male','F'=>'Female','U'=>'Unknown'),
 					'htmlOptions' => array(),
 				)
 			)
@@ -116,7 +116,7 @@
 	</div>
 
 	<div class="row">
-		<?php //echo $form->labelEx($model,'contact_iso_country'); ?>
+		<div class="col-sm-3 control-label"><?php echo $form->labelEx($model,'contact_iso_country'); ?></div>
             
 		 <?php echo $form->dropDownList($model,'contact_iso_country',CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
 		<?php // echo $form->textField($model,'departmentId'); ?>
