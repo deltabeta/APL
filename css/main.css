@@ -44,6 +44,7 @@ body, table, html, p, a
 .navbar-nav{ padding: 0 0 0 3% !important}
 #footer{ margin-top: 10px;}
 .titrepartner{ padding: 0; margin: 0 0 10px 0;}
+.formlogin .well{ width: 240px;}
 p { line-height: 24px; }
 
 p, ul, ol, blockquote, h1, h2, h3, h4, h5, form {margin: 0px;}
