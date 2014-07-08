@@ -87,7 +87,7 @@
                     array('label'=>'Costs of Use', 'url'=>'#'),
                       array('label'=>' Sign-Up', 'items' => array(
                             
-                            array('label'=>'As Client', 'url'=>array('/site/contact')),
+                            array('label'=>'As Client', 'url'=>array('/user/create')),
                             array('label' => 'As Journalist ', 'url'=>array('/site/contact')),
                         )
                           
