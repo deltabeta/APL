@@ -107,4 +107,6 @@ class IsoCountry extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+         
 }

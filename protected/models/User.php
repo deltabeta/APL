@@ -4,7 +4,7 @@
  * This is the model class for table "user".
  *
  * The followings are the available columns in table 'user':
- * @property integer $id
+ * @property integer $user_id
  * @property integer $user_package_id
  * @property string $user_pass
  * @property integer $user_credits
@@ -13,11 +13,11 @@
  * @property string $user_activity
  * @property string $user_deactivated
  * @property string $user_password_request
- * @property integer $user_email
- * @property integer $porfile_initials
- * @property integer $porfile_name_first
- * @property integer $porfile_name_last
- * @property integer $porfile_address
+ * @property string $user_email
+ * @property string $porfile_initials
+ * @property string $porfile_name_first
+ * @property string $porfile_name_last
+ * @property string $porfile_address
  * @property integer $porfile_address_nr
  * @property string $porfile_address_addon
  * @property string $porfile_city
@@ -37,58 +37,79 @@
  * @property string $usetting_replyto_name
  * @property string $usetting_replyto_email
  * @property string $usetting_bounce_email
- * @property string $username
+ *
+ * The followings are the available model relations:
+ * @property Contact[] $contacts
+ * @property CreditHistory[] $creditHistories
+ * @property List[] $lists
+ * @property Paypal transactions[] $paypal transactions
+ * @property Press[] $presses
+ * @property IsoCountry $porfileCampCountry
+ * @property User $userPackage
+ * @property User[] $users
  */
-class User extends APLActiveRecord {
-
+class User extends APLActiveRecord 
+{  
     public $user_pass_repeat;
+	/**
+	 * @return string the associated database table name
+	 */
+	public function tableName()
+	{
+		return 'user';
+	}
 
-    /**
-     * @return string the associated database table name
-     */
-    public function tableName() {
-        return 'user';
-    }
-
-    /**
+	/**
+	 * @return array validation rules for model attributes.
+	 */
+	/**
      * @return array validation rules for model attributes.
      */
     public function rules() {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('user_pass, user_email, porfile_initials, username,porfile_camp_name,user_pass_repeat', 'required'),
+            array(' user_email,user_pass,user_pass_repeat, porfile_initials,porfile_camp_name', 'required'),
             array('user_package_id, user_credits, porfile_address_nr, porfile_country, porfile_camp_country,porfile_camp_account,porfile_mobile,porfile_phone', 'numerical', 'integerOnly' => true),
-            array('user_pass, porfile_address_addon, porfile_city, porfile_phone, porfile_mobile, porfile_camp_name, porfile_camp_function, porfile_camp_account, porfile_camp_email, porfile_camp_website, porfile_coc, usetting_sender_name, usetting_sender_email, usetting_replyto_name, usetting_replyto_email, usetting_bounce_email, username', 'length', 'max' => 255),
+            array('user_pass, porfile_address_addon, porfile_city, porfile_phone, porfile_mobile, porfile_camp_name, porfile_camp_function, porfile_camp_account, porfile_camp_email, porfile_camp_website, porfile_coc, usetting_sender_name, usetting_sender_email, usetting_replyto_name, usetting_replyto_email, usetting_bounce_email', 'length', 'max' => 255),
             array('profile_remarks', 'safe'),
-            array('user_email, username', 'unique'),
+            array('user_email', 'unique'),
             array('user_email,porfile_camp_email,usetting_bounce_email,usetting_replyto_email,usetting_sender_email', 'email'),
-            array('user_pass', 'compare'),
             array('porfile_camp_website', 'url'),
             array('user_pass', 'length', 'min' => 6),
             array('user_pass', 'match', 'pattern' => '/\W/', 'message' => 'Password must contain at least one special character.'),
+            array('user_pass', 'compare'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array(' user_email, porfile_initials, porfile_name_first, porfile_name_last, porfile_address, porfile_address_nr, porfile_address_addon, porfile_city, porfile_country, porfile_phone, porfile_mobile, porfile_camp_name, porfile_camp_function, porfile_camp_country, porfile_camp_account, porfile_camp_email, porfile_camp_website, porfile_coc, profile_remarks, usetting_sender_name, usetting_sender_email, usetting_replyto_name, usetting_replyto_email, usetting_bounce_email, username', 'safe', 'on' => 'search'),
+            array(' user_email, porfile_initials, porfile_name_first, porfile_name_last, porfile_address, porfile_address_nr, porfile_address_addon, porfile_city, porfile_country, porfile_phone, porfile_mobile, porfile_camp_name, porfile_camp_function, porfile_camp_country, porfile_camp_account, porfile_camp_email, porfile_camp_website, porfile_coc, profile_remarks, usetting_sender_name, usetting_sender_email, usetting_replyto_name, usetting_replyto_email, usetting_bounce_email', 'safe', 'on' => 'search'),
         );
     }
 
-    /**
-     * @return array relational rules.
-     */
-    public function relations() {
-        // NOTE: you may need to adjust the relation name and the related
-        // class name for the relations automatically generated below.
-        return array(
-        );
-    }
+	/**
+	 * @return array relational rules.
+	 */
+	public function relations()
+	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
+		return array(
+			'contacts' => array(self::MANY_MANY, 'Contact', 'contact_client_blacklist(user_id, contact_id)'),
+			'creditHistories' => array(self::HAS_MANY, 'CreditHistory', 'ch_user'),
+			'lists' => array(self::HAS_MANY, 'List', 'list_user'),
+			'paypal transactions' => array(self::HAS_MANY, 'Paypal transactions', 'pp_user_id'),
+			'presses' => array(self::HAS_MANY, 'Press', 'press_user'),
+			'porfileCampCountry' => array(self::BELONGS_TO, 'IsoCountry', 'porfile_camp_country'),
+			'userPackage' => array(self::BELONGS_TO, 'User', 'user_package_id'),
+			'users' => array(self::HAS_MANY, 'User', 'user_package_id'),
+		);
+	}
 
-    /**
-     * @return array customized attribute labels (name=>label)
-     */
-    public function attributeLabels() {
+	/**
+	 * @return array customized attribute labels (name=>label)
+	 */
+	public function attributeLabels() {
         return array(
-            'id' => 'ID',
+            'user_id' => 'ID',
             'user_package_id' => 'User Package',
             'user_pass' => 'Password',
             'user_credits' => 'Credits',
@@ -121,78 +142,79 @@ class User extends APLActiveRecord {
             'usetting_replyto_name' => ' Replyto Name',
             'usetting_replyto_email' => ' Replyto Email',
             'usetting_bounce_email' => ' Bounce Email',
-            'username' => 'Username',
+      
         );
     }
 
-    /**
-     * Retrieves a list of models based on the current search/filter conditions.
-     *
-     * Typical usecase:
-     * - Initialize the model fields with values from filter form.
-     * - Execute this method to get CActiveDataProvider instance which will filter
-     * models according to data in model fields.
-     * - Pass data provider to CGridView, CListView or any similar widget.
-     *
-     * @return CActiveDataProvider the data provider that can return the models
-     * based on the search/filter conditions.
-     */
-    public function search() {
-        // @todo Please modify the following code to remove attributes that should not be searched.
+	/**
+	 * Retrieves a list of models based on the current search/filter conditions.
+	 *
+	 * Typical usecase:
+	 * - Initialize the model fields with values from filter form.
+	 * - Execute this method to get CActiveDataProvider instance which will filter
+	 * models according to data in model fields.
+	 * - Pass data provider to CGridView, CListView or any similar widget.
+	 *
+	 * @return CActiveDataProvider the data provider that can return the models
+	 * based on the search/filter conditions.
+	 */
+	public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
 
-        $criteria = new CDbCriteria;
+		$criteria=new CDbCriteria;
 
-        $criteria->compare('id', $this->id);
-        $criteria->compare('user_package_id', $this->user_package_id);
-        $criteria->compare('user_pass', $this->user_pass, true);
-        $criteria->compare('user_credits', $this->user_credits);
-        $criteria->compare('user_registered', $this->user_registered, true);
-        $criteria->compare('user_verified', $this->user_verified, true);
-        $criteria->compare('user_activity', $this->user_activity, true);
-        $criteria->compare('user_deactivated', $this->user_deactivated, true);
-        $criteria->compare('user_password_request', $this->user_password_request, true);
-        $criteria->compare('user_email', $this->user_email);
-        $criteria->compare('porfile_initials', $this->porfile_initials);
-        $criteria->compare('porfile_name_first', $this->porfile_name_first);
-        $criteria->compare('porfile_name_last', $this->porfile_name_last);
-        $criteria->compare('porfile_address', $this->porfile_address);
-        $criteria->compare('porfile_address_nr', $this->porfile_address_nr);
-        $criteria->compare('porfile_address_addon', $this->porfile_address_addon, true);
-        $criteria->compare('porfile_city', $this->porfile_city, true);
-        $criteria->compare('porfile_country', $this->porfile_country);
-        $criteria->compare('porfile_phone', $this->porfile_phone, true);
-        $criteria->compare('porfile_mobile', $this->porfile_mobile, true);
-        $criteria->compare('porfile_camp_name', $this->porfile_camp_name, true);
-        $criteria->compare('porfile_camp_function', $this->porfile_camp_function, true);
-        $criteria->compare('porfile_camp_country', $this->porfile_camp_country);
-        $criteria->compare('porfile_camp_account', $this->porfile_camp_account, true);
-        $criteria->compare('porfile_camp_email', $this->porfile_camp_email, true);
-        $criteria->compare('porfile_camp_website', $this->porfile_camp_website, true);
-        $criteria->compare('porfile_coc', $this->porfile_coc, true);
-        $criteria->compare('profile_remarks', $this->profile_remarks, true);
-        $criteria->compare('usetting_sender_name', $this->usetting_sender_name, true);
-        $criteria->compare('usetting_sender_email', $this->usetting_sender_email, true);
-        $criteria->compare('usetting_replyto_name', $this->usetting_replyto_name, true);
-        $criteria->compare('usetting_replyto_email', $this->usetting_replyto_email, true);
-        $criteria->compare('usetting_bounce_email', $this->usetting_bounce_email, true);
-        $criteria->compare('username', $this->username, true);
+		
+		//$criteria->compare('user_package_id',$this->user_package_id);
+		
+		$criteria->compare('user_credits',$this->user_credits);
+		$criteria->compare('user_registered',$this->user_registered,true);
+		$criteria->compare('user_verified',$this->user_verified,true);
+		$criteria->compare('user_activity',$this->user_activity,true);
+		$criteria->compare('user_deactivated',$this->user_deactivated,true);
+		$criteria->compare('user_password_request',$this->user_password_request,true);
+		$criteria->compare('user_email',$this->user_email,true);
+		$criteria->compare('porfile_initials',$this->porfile_initials,true);
+		$criteria->compare('porfile_name_first',$this->porfile_name_first,true);
+		$criteria->compare('porfile_name_last',$this->porfile_name_last,true);
+		$criteria->compare('porfile_address',$this->porfile_address,true);
+		$criteria->compare('porfile_address_nr',$this->porfile_address_nr);
+		$criteria->compare('porfile_address_addon',$this->porfile_address_addon,true);
+		$criteria->compare('porfile_city',$this->porfile_city,true);
+		$criteria->compare('porfile_country',$this->porfile_country);
+		$criteria->compare('porfile_phone',$this->porfile_phone,true);
+		$criteria->compare('porfile_mobile',$this->porfile_mobile,true);
+		$criteria->compare('porfile_camp_name',$this->porfile_camp_name,true);
+		$criteria->compare('porfile_camp_function',$this->porfile_camp_function,true);
+		$criteria->compare('porfile_camp_country',$this->porfile_camp_country);
+		$criteria->compare('porfile_camp_account',$this->porfile_camp_account,true);
+		$criteria->compare('porfile_camp_email',$this->porfile_camp_email,true);
+		$criteria->compare('porfile_camp_website',$this->porfile_camp_website,true);
+		$criteria->compare('porfile_coc',$this->porfile_coc,true);
+		$criteria->compare('profile_remarks',$this->profile_remarks,true);
+		$criteria->compare('usetting_sender_name',$this->usetting_sender_name,true);
+		$criteria->compare('usetting_sender_email',$this->usetting_sender_email,true);
+		$criteria->compare('usetting_replyto_name',$this->usetting_replyto_name,true);
+		$criteria->compare('usetting_replyto_email',$this->usetting_replyto_email,true);
+		$criteria->compare('usetting_bounce_email',$this->usetting_bounce_email,true);
 
-        return new CActiveDataProvider($this, array(
-            'criteria' => $criteria,
-        ));
-    }
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
 
-    /**
-     * Returns the static model of the specified AR class.
-     * Please note that you should have this exact method in all your CActiveRecord descendants!
-     * @param string $className active record class name.
-     * @return User the static model class
-     */
-    public static function model($className = __CLASS__) {
-        return parent::model($className);
-    }
-
-    /**     * apply a hash on the password before we store it in the database   */
+	/**
+	 * Returns the static model of the specified AR class.
+	 * Please note that you should have this exact method in all your CActiveRecord descendants!
+	 * @param string $className active record class name.
+	 * @return User the static model class
+	 */
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
+	}
+        
+         /**     * apply a hash on the password before we store it in the database   */
     protected function afterValidate() {
         parent::afterValidate();
         if (!$this->hasErrors())
@@ -210,8 +232,7 @@ class User extends APLActiveRecord {
      *    * @param string the password to be validated 
      *   * @return boolean whether the password is valid   */
     public function validatePassword($password)  {
-        return $this->hashPassword($password)===$this->user_pass;  }
-
-  
-
+        return $this->hashPassword($password)===$this->user_pass;  
+        
+    }
 }
