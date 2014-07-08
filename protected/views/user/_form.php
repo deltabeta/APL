@@ -17,18 +17,18 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-        
-        <div class="row">
-               <?php echo $form->labelEx($model, 'username'); ?>
-              <?php echo $form->textField($model, 'username', array('size' => 60, 'maxlength' => 255)); ?>
-               <?php echo $form->error($model, 'username'); ?>      
-        </div>
+       
 
 <!--	<div class="row">
 		<?php echo $form->labelEx($model,'user_package_id'); ?>
 		<?php echo $form->textField($model,'user_package_id'); ?>
 		<?php echo $form->error($model,'user_package_id'); ?>
 	</div>-->
+        <div class="row">
+		<?php echo $form->labelEx($model,'user_email'); ?>
+		<?php echo $form->textField($model,'user_email',array('size' => 60, 'maxlength' => 255)); ?>
+		<?php echo $form->error($model,'user_email'); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'user_pass'); ?>
@@ -75,11 +75,7 @@
 		<?php echo $form->error($model,'user_password_request'); ?>
 	</div>-->
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_email'); ?>
-		<?php echo $form->textField($model,'user_email',array('size' => 60, 'maxlength' => 255)); ?>
-		<?php echo $form->error($model,'user_email'); ?>
-	</div>
+	
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'porfile_initials'); ?>
@@ -123,11 +119,22 @@
 		<?php echo $form->error($model,'porfile_city'); ?>
 	</div>
 
-<!--	<div class="row">
+<div class="row">
+           
+            
 		<?php echo $form->labelEx($model,'porfile_country'); ?>
-		<?php echo $form->textField($model,'porfile_country'); ?>
-		<?php echo $form->error($model,'porfile_country'); ?>
-	</div>-->
+            <?php echo $form->dropDownList($model, 'porfile_country', CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
+            <?php // echo $form->textField($model,'departmentId'); ?>
+            <?php // echo $form->textField($model,'contact_iso_country'); ?>
+            <?php //echo $form->error($model, 'contact_iso_country'); ?>
+        
+
+
+
+
+		<?php //echo $form->dropDownList($model,'porfile_country', $model->countrys->getCountryOptions()); ?> 
+		<?php //echo $form->error($model,'porfile_country'); ?>
+	</div>	
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'porfile_phone'); ?>
@@ -152,12 +159,12 @@
 		<?php echo $form->textField($model,'porfile_camp_function',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'porfile_camp_function'); ?>
 	</div>
-
-<!--	<div class="row">
+	<div class="row">
 		<?php echo $form->labelEx($model,'porfile_camp_country'); ?>
-		<?php echo $form->textField($model,'porfile_camp_country'); ?>
-		<?php echo $form->error($model,'porfile_camp_country'); ?>
-	</div>-->
+  <?php echo $form->dropDownList($model, 'porfile_camp_country', CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
+
+	
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'porfile_camp_account'); ?>

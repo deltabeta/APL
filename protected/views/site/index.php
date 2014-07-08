@@ -5,6 +5,7 @@ $this->pageTitle=Yii::app()->name;
 ?>
 
 <h1 class="title">The <?php echo CHtml::encode(Yii::app()->name); ?></h1>
+ 
 
 <div class="row">
     <div class="span-16" >   
