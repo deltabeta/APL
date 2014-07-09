@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Contact</h1>
+<h1>Sign-up as Journalist</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
