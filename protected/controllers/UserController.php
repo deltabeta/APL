@@ -63,20 +63,29 @@ class UserController extends Controller
 	public function actionCreate()
 	{
 		$model=new User;
-
+                
 		// Uncomment the following line if AJAX validation is needed
 		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			if($model->save())
+			if($model->save())           
+                $email = Yii::app()->mandrillwrap; 
+                $email->html = htmlentities("Hiiiiiiiiiiiiiiii");
+                $email->subject = "test"; 
+                $email->fromName = "mohamedaymen"; 
+                $email->fromEmail = "mohamedaymen.mastouri@gmail.com";
+                $email->toName = "walid";
+                $email->toEmail = "test@test.com"; $email->sendEmail();
 				$this->redirect(array('view','id'=>$model->user_id));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
+                
+              
 	}
 
 	/**
