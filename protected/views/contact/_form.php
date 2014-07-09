@@ -47,7 +47,15 @@
 		<?php echo $form->error($model,'contact_login_pass'); ?>
 	</div>
         
+        <div class="row">
+		<?php //echo $form->labelEx($model,'contact_login_pass'); ?>
+		<?php echo $form->passwordFieldGroup($model,'verifyPassword',array('size'=>60,'maxlength'=>255,
+                    'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
+                )); ?>
+		<?php echo $form->error($model,'verifyPassword'); ?>
+	</div>
         
+     
         
         
 	<div class="row">
