@@ -32,7 +32,7 @@
  * @property IsoCountry $contactIsoCountry
  */
 class Contact extends CActiveRecord
-{
+{        public $verifyPassword;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -50,15 +50,72 @@ class Contact extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('contact_email, contact_name_first, contact_name_last, contact_login_pass', 'required'),
+                    
 			array('contact_address_nr, contact_iso_country', 'numerical', 'integerOnly'=>true),
-			array('contact_email, contact_name_ini, contact_name_first, contact_name_last, contact_adress, contact_address_addon, contact_city, contact_phone, contact_website, contact_tw, contact_fb, contact_go, contact_yt, contact_li, contact_imported_src, contact_login_pass', 'length', 'max'=>255),
-			array('contact_gender, contact_is_imported, contact_status', 'length', 'max'=>1),
+                    
+		
+                         array('contact_login_pass', 'length', 'max' => 32, 'min' => 6),
+                          array('contact_login_pass', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => ("Incorrect symbols (A-z0-9)")),  
+                         
+                    
+                        array('verifyPassword', 'compare', 'compareAttribute'=>'contact_login_pass', 'message' => ("Retype Password is incorrect.")),
+                    
+                    
+                            //    array('email', 'unique', 'message' => ("This user's email address already exists.")),
+
+                    
+                    array('contact_email, contact_name_ini, contact_name_first, contact_name_last, '
+                        . 'contact_adress, contact_address_addon, contact_city, contact_phone, '
+                        . 'contact_website, contact_tw, contact_fb, contact_go, contact_yt, contact_li, '
+                        . 'contact_imported_src', 'length', 'max'=>255),
+			
+                    array('contact_gender, contact_is_imported, contact_status', 'length', 'max'=>1),
+                    
+                    
 			array('contact_bio', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('contact_id, contact_email, contact_name_ini, contact_name_first, contact_name_last, contact_gender, contact_adress, contact_address_nr, contact_address_addon, contact_iso_country, contact_city, contact_phone, contact_website, contact_tw, contact_fb, contact_go, contact_yt, contact_li, contact_bio, contact_is_imported, contact_imported_src, contact_status, contact_login_pass', 'safe', 'on'=>'search'),
 		);
 	}
+        
+//    public $verifyPassword;
+//    public $verifyCode;
+//
+//
+//
+//    public function rules() {
+//        $rules = array(
+//            array('username, password, verifyPassword, email', 'required'), //
+//            
+//            array('username', 'length', 'max' => 20, 'min' => 3, 'message' => UserModule::t("Incorrect username (length between 3 and 20 characters).")),
+//        //    array('password', 'length', 'max' => 128, 'min' => 6, 'message' => UserModule::t("Incorrect password (minimal length 4 symbols).")),
+//                
+//           // array('password1', 'passwordStrength', 'strength'=>self::STRONG),
+//           
+//            array('email', 'email'),
+//            array('username', 'unique', 'message' => UserModule::t("This user's name already exists.")),
+//            array('email', 'unique', 'message' => UserModule::t("This user's email address already exists.")),
+//            //array('verifyPassword', 'compare', 'compareAttribute'=>'password', 'message' => UserModule::t("Retype Password is incorrect.")),
+//            array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => UserModule::t("Incorrect symbols (A-z0-9).")),
+//        );
+//        if (!(isset($_POST['ajax']) && $_POST['ajax'] === 'registration-form')) {
+//            array_push($rules, array('verifyCode', 'captcha', 'allowEmpty' => !UserModule::doCaptcha('registration')));
+//        }
+//
+//        array_push($rules, array('verifyPassword', 'compare', 'compareAttribute' => 'password', 'message' => UserModule::t("Retype Password is incorrect.")));
+//        return $rules;
+//    }
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
 	/**
 	 * @return array relational rules.
@@ -79,28 +136,29 @@ class Contact extends CActiveRecord
 	{
 		return array(
 			'contact_id' => 'Contact',
-			'contact_email' => 'Email',
-			'contact_name_ini' => 'Name Initital',
-			'contact_name_first' => 'First name',
-			'contact_name_last' => 'Last Name',
-			'contact_gender' => 'Gender',
-			'contact_adress' => 'Adress Line',
-			'contact_address_nr' => 'Adress Number',
-			'contact_address_addon' => 'Addon',
-			'contact_iso_country' => 'Iso Country',
-			'contact_city' => 'City',
-			'contact_phone' => 'Phone',
-			'contact_website' => 'Website',
-			'contact_tw' => 'Twitter page',
-			'contact_fb' => 'Facebook page',
-			'contact_go' => 'Google+ page',
-			'contact_yt' => 'Youtube channel',
-			'contact_li' => 'Linkidin page',
-			'contact_bio' => 'Curriculum vitae',
-			'contact_is_imported' => 'Contact Import',
-			'contact_imported_src' => 'Import Src',
+			'contact_email' => ' Email',
+			'contact_name_ini' => 'Contact Name Ini',
+			'contact_name_first' => 'Contact Name First',
+			'contact_name_last' => 'Contact Name Last',
+			'contact_gender' => 'Contact Gender',
+			'contact_adress' => 'Contact Adress',
+			'contact_address_nr' => 'Contact Address Nr',
+			'contact_address_addon' => 'Contact Address Addon',
+			'contact_iso_country' => 'Contact Iso Country',
+			'contact_city' => 'Contact City',
+			'contact_phone' => 'Contact Phone',
+			'contact_website' => 'Contact Website',
+			'contact_tw' => 'Contact Tw',
+			'contact_fb' => 'Contact Fb',
+			'contact_go' => 'Contact Go',
+			'contact_yt' => 'Contact Yt',
+			'contact_li' => 'Contact Li',
+			'contact_bio' => 'Contact Bio',
+			'contact_is_imported' => 'Contact Is Imported',
+			'contact_imported_src' => 'Contact Imported Src',
 			'contact_status' => 'Contact Status',
-			'contact_login_pass' => 'Password',
+			'contact_login_pass' => 'Contact Login Pass',
+                    	'verifyPassword' => 'verifyPassword',
 		);
 	}
 
@@ -161,4 +219,25 @@ class Contact extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        protected function afterValidate() {
+        parent::afterValidate();
+        if (!$this->hasErrors())
+            $this->contact_login_pass = $this->hashPassword($this->contact_login_pass);
+    }
+
+    /**     * Generates the password hash.  
+     *  * @param string password  
+     *    * @return string hash   */
+    public function hashPassword($password) {
+        return md5($password);
+    }
+    
+    /**   * Checks if the given password is correct.
+     *    * @param string the password to be validated 
+     *   * @return boolean whether the password is valid   */
+    public function validatePassword($password)  {
+        return $this->hashPassword($password)===$this->contact_login_pass;  
+        
+    }
 }
