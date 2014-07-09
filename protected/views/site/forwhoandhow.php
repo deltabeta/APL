@@ -39,7 +39,11 @@ You can also follow us on social media.
 
         </div>
     </div>
-
+    <div class="span-12" >
+        
+        <a href="<?php echo Yii::app()->request->baseUrl ?>/user/create"><?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/addpressrel.jpg', ''); ?></a><br /><br />
+        <a href="<?php echo Yii::app()->request->baseUrl ?>/contact/create"> <?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/registerjour.jpg', ''); ?></a>
+    </div>
 </div>
 
 

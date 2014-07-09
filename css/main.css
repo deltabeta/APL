@@ -27,7 +27,7 @@ body{
 	}
 body, table, html, p, a
 {
-	font-family: MyriadProRegular, Arial, Tahoma, Geneva, sans-serif;
+	font-family: MyriadProRegular, Arial, Tahoma, Geneva, sans-serif !important;
 	font-size: 14px;
 	color:#333;
 	line-height: 18px;
