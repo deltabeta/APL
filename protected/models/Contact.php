@@ -49,13 +49,13 @@ class Contact extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('contact_email, contact_name_first, contact_name_last, contact_login_pass ,verifyPassword', 'required'),
+			array('contact_email, contact_name_first, contact_name_last, contact_login_pass', 'required'),
                     
 			array('contact_address_nr, contact_iso_country', 'numerical', 'integerOnly'=>true),
                     
 		
                          array('contact_login_pass', 'length', 'max' => 32, 'min' => 6),
-                          array('contact_login_pass', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/w ','message' => ("Incorrect symbols (A-z0-9)")),  
+                          array('contact_login_pass', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => ("Incorrect symbols (A-z0-9)")),  
                          
                     
                         array('verifyPassword', 'compare', 'compareAttribute'=>'contact_login_pass', 'message' => ("Retype Password is incorrect.")),
@@ -158,7 +158,7 @@ class Contact extends CActiveRecord
 			'contact_imported_src' => 'Contact Imported Src',
 			'contact_status' => 'Contact Status',
 			'contact_login_pass' => 'Contact Login Pass',
-                    	'verifyPassword' => 'Verify Password',
+                    	'verifyPassword' => 'verifyPassword',
 		);
 	}
 

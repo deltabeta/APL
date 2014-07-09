@@ -13,6 +13,6 @@ $this->breadcrumbs=array(
 //);
 ?>
 
-<h1>Signup now and create an Account</h1>
+<h1>Sign-up as Client</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
