@@ -29,8 +29,8 @@
 
     <div class="row">
         <?php //echo $form->labelEx($model,'user_package_id'); ?>
-        <?php echo $form->textFieldGroup($model, 'user_package_id'); ?>
-        <?php echo $form->error($model, 'user_package_id'); ?>
+        <?php //echo $form->textFieldGroup($model, 'user_package_id'); ?>
+        <?php //echo $form->error($model, 'user_package_id'); ?>
     </div>
     <div class="row">
         <?php //echo $form->labelEx($model,'user_email'); ?>

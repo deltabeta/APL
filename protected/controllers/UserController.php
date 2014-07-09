@@ -71,13 +71,13 @@ class UserController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			if($model->save())           
-                $email = Yii::app()->mandrillwrap; 
-                $email->html = htmlentities("Hiiiiiiiiiiiiiiii");
-                $email->subject = "test"; 
-                $email->fromName = "mohamedaymen"; 
-                $email->fromEmail = "mohamedaymen.mastouri@gmail.com";
-                $email->toName = "walid";
-                $email->toEmail = "test@test.com"; $email->sendEmail();
+//                $email = Yii::app()->mandrillwrap; 
+//                $email->html = htmlentities("Hiiiiiiiiiiiiiiii");
+//                $email->subject = "test"; 
+//                $email->fromName = "mohamedaymen"; 
+//                $email->fromEmail = "mohamedaymen.mastouri@gmail.com";
+//                $email->toName = "walid";
+//                $email->toEmail = "test@test.com"; $email->sendEmail();
 				$this->redirect(array('view','id'=>$model->user_id));
 		}
 
