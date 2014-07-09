@@ -235,4 +235,5 @@ class User extends APLActiveRecord
         return $this->hashPassword($password)===$this->user_pass;  
         
     }
+    
 }

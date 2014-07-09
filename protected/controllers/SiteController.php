@@ -169,11 +169,44 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
+                                            // $this->redirect('index.php?r=user/dashboard');
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
+        public function actionContactLogin()
+    {
+        $model=new LoginForm;
+ 
+        // if it is ajax validation request
+        if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+ 
+        // collect user input data
+        if(isset($_POST['LoginForm']))
+        {
+            $model->attributes=$_POST['LoginForm'];
+            // validate user input and redirect to the previous page if valid
+            if($model->validate() && $model->login1())
+                $this->redirect(Yii::app()->user->returnUrl);
+//                if(Yii::app()->user->profile==1)
+//                {
+//                     $this->redirect('index.php?r=admin/dashboard');
+//                }
+//                else{
+//                     $this->redirect('index.php?r=user/dashboard');
+//                }
+        }
+        // display the login form
+        $this->render('login',array('model'=>$model));
+    
+    }
+        
+        
 
 	/**
 	 * Logs out the current user and redirect to homepage.

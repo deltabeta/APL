@@ -79,7 +79,7 @@ class Contact extends CActiveRecord
 	{
 		return array(
 			'contact_id' => 'Contact',
-			'contact_email' => 'Contact Email',
+			'contact_email' => ' Email',
 			'contact_name_ini' => 'Contact Name Ini',
 			'contact_name_first' => 'Contact Name First',
 			'contact_name_last' => 'Contact Name Last',
@@ -161,4 +161,25 @@ class Contact extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        protected function afterValidate() {
+        parent::afterValidate();
+        if (!$this->hasErrors())
+            $this->contact_login_pass = $this->hashPassword($this->contact_login_pass);
+    }
+
+    /**     * Generates the password hash.  
+     *  * @param string password  
+     *    * @return string hash   */
+    public function hashPassword($password) {
+        return md5($password);
+    }
+    
+    /**   * Checks if the given password is correct.
+     *    * @param string the password to be validated 
+     *   * @return boolean whether the password is valid   */
+    public function validatePassword($password)  {
+        return $this->hashPassword($password)===$this->contact_login_pass;  
+        
+    }
 }
