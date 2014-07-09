@@ -55,7 +55,7 @@ class Contact extends CActiveRecord
                     
 		
                          array('contact_login_pass', 'length', 'max' => 32, 'min' => 6),
-                          array('contact_login_pass', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => ("Incorrect symbols (A-z0-9)")),  
+                            array('contact_login_pass', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => ("Incorrect symbols (A-z0-9)")),  
                          
                     
                         array('verifyPassword', 'compare', 'compareAttribute'=>'contact_login_pass', 'message' => ("Retype Password is incorrect.")),

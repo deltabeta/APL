@@ -45,7 +45,7 @@
     <div class="row">
         <?php //echo $form->labelEx($model,'user_pass'); ?>
         <?php
-        echo $form->textFieldGroup($model, 'user_pass', array('size' => 60, 'maxlength' => 255,
+        echo $form->passwordFieldGroup($model, 'user_pass', array('size' => 60, 'maxlength' => 255,
             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
         ));
         ?>
@@ -54,7 +54,7 @@
     <div class="row">   
         <?php //echo $form->labelEx($model, 'repeat_password'); ?> 
         <?php
-        echo $form->textFieldGroup($model, 'user_pass_repeat', array('size' => 60, 'maxlength' => 255,
+        echo $form->passwordFieldGroup($model, 'user_pass_repeat', array('size' => 60, 'maxlength' => 255,
             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
         ));
         ?>

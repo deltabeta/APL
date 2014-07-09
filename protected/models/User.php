@@ -78,7 +78,10 @@ class User extends APLActiveRecord
             array('porfile_camp_website', 'url'),
             array('user_pass', 'length', 'min' => 6),
             array('user_pass', 'match', 'pattern' => '/\W/', 'message' => 'Password must contain at least one special character.'),
-            array('user_pass', 'compare'),
+            //array('user_pass', 'compare'),
+            array('user_pass_repeat', 'compare', 'compareAttribute'=>'user_pass', 'message' => ("Retype Password is incorrect.")),
+                    
+                    
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array(' user_email, porfile_initials, porfile_name_first, porfile_name_last, porfile_address, porfile_address_nr, porfile_address_addon, porfile_city, porfile_country, porfile_phone, porfile_mobile, porfile_camp_name, porfile_camp_function, porfile_camp_country, porfile_camp_account, porfile_camp_email, porfile_camp_website, porfile_coc, profile_remarks, usetting_sender_name, usetting_sender_email, usetting_replyto_name, usetting_replyto_email, usetting_bounce_email', 'safe', 'on' => 'search'),
