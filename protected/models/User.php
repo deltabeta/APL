@@ -78,7 +78,10 @@ class User extends APLActiveRecord
             array('porfile_camp_website', 'url'),
             array('user_pass', 'length', 'min' => 6),
             array('user_pass', 'match', 'pattern' => '/\W/', 'message' => 'Password must contain at least one special character.'),
-            array('user_pass', 'compare'),
+            //array('user_pass', 'compare'),
+            array('user_pass_repeat', 'compare', 'compareAttribute'=>'user_pass', 'message' => ("Retype Password is incorrect.")),
+                    
+                    
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array(' user_email, porfile_initials, porfile_name_first, porfile_name_last, porfile_address, porfile_address_nr, porfile_address_addon, porfile_city, porfile_country, porfile_phone, porfile_mobile, porfile_camp_name, porfile_camp_function, porfile_camp_country, porfile_camp_account, porfile_camp_email, porfile_camp_website, porfile_coc, profile_remarks, usetting_sender_name, usetting_sender_email, usetting_replyto_name, usetting_replyto_email, usetting_bounce_email', 'safe', 'on' => 'search'),
@@ -113,11 +116,6 @@ class User extends APLActiveRecord
             'user_package_id' => 'User Package',
             'user_pass' => 'Password',
             'user_credits' => 'Credits',
-            'user_registered' => 'User Registered',
-            'user_verified' => 'User Verified',
-            'user_activity' => 'User Activity',
-            'user_deactivated' => 'User Deactivated',
-            'user_password_request' => 'User Password Request',
             'user_email' => 'Email',
             'porfile_initials' => 'Initials',
             'porfile_name_first' => 'First Name',
@@ -168,11 +166,12 @@ class User extends APLActiveRecord
 		//$criteria->compare('user_package_id',$this->user_package_id);
 		
 		$criteria->compare('user_credits',$this->user_credits);
-		$criteria->compare('user_registered',$this->user_registered,true);
-		$criteria->compare('user_verified',$this->user_verified,true);
-		$criteria->compare('user_activity',$this->user_activity,true);
-		$criteria->compare('user_deactivated',$this->user_deactivated,true);
-		$criteria->compare('user_password_request',$this->user_password_request,true);
+		
+               ///$criteria->compare('user_registered',$this->user_registered,true);
+		//$criteria->compare('user_verified',$this->user_verified,true);
+		//$criteria->compare('user_activity',$this->user_activity,true);
+		//$criteria->compare('user_deactivated',$this->user_deactivated,true);
+		//$criteria->compare('user_password_request',$this->user_password_request,true);
 		$criteria->compare('user_email',$this->user_email,true);
 		$criteria->compare('porfile_initials',$this->porfile_initials,true);
 		$criteria->compare('porfile_name_first',$this->porfile_name_first,true);

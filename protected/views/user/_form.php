@@ -65,38 +65,6 @@
         <?php echo $form->error($model, 'user_credits'); ?>
     </div>
 
-    	<div class="row">
-    <?php //echo $form->labelEx($model, 'user_registered'); ?>
-    <?php echo $form->textFieldGroup($model, 'user_registered'); ?>
-    <?php echo $form->error($model, 'user_registered'); ?>
-            </div>
-    
-            <div class="row">
-    <?php //echo $form->labelEx($model, 'user_verified'); ?>
-    <?php echo $form->textFieldGroup($model, 'user_verified'); ?>
-    <?php echo $form->error($model, 'user_verified'); ?>
-            </div>
-    
-            <div class="row">
-    <?php //echo $form->labelEx($model, 'user_activity'); ?>
-    <?php echo $form->textFieldGroup($model, 'user_activity'); ?>
-    <?php echo $form->error($model, 'user_activity'); ?>
-            </div>
-    
-            <div class="row">
-    <?php //echo $form->labelEx($model, 'user_deactivated'); ?>
-    <?php echo $form->textFieldGroup($model, 'user_deactivated'); ?>
-    <?php echo $form->error($model, 'user_deactivated'); ?>
-            </div>
-    
-            <div class="row">
-    <?php //echo $form->labelEx($model, 'user_password_request'); ?>
-    <?php echo $form->textFieldGroup($model, 'user_password_request'); ?>
-    <?php echo $form->error($model, 'user_password_request'); ?>
-            </div>
-
-
-
     <div class="row">
         <?php //echo $form->labelEx($model, 'porfile_initials'); ?>
         <?php
@@ -172,11 +140,7 @@ echo $form->textFieldGroup($model, 'porfile_city', array('size' => 60, 'maxlengt
     </div>
     <?php // echo $form->textFieldGroup($model,'departmentId');   ?>
         <?php // echo $form->textFieldGroup($model,'contact_iso_country');   ?>
-        <?php //echo $form->error($model, 'contact_iso_country'); ?>
-
-
-
-
+        <?php //echo $form->error($model, 'contact_iso_country'); ?>    
 
         <?php //echo $form->dropDownList($model,'porfile_country', $model->countrys->getCountryOptions()); ?> 
         <?php //echo $form->error($model,'porfile_country'); ?>
@@ -249,7 +213,7 @@ echo $form->textFieldGroup($model, 'porfile_camp_function', array('size' => 60, 
     </div>
 
     <div class="row">
-        <?php echo $form->labelEx($model, 'porfile_camp_website'); ?>
+        <?php //echo $form->labelEx($model, 'porfile_camp_website'); ?>
         <?php
         echo $form->textFieldGroup($model, 'porfile_camp_website', array('size' => 60, 'maxlength' => 255,
             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
