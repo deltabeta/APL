@@ -51,12 +51,13 @@ class Contact extends CActiveRecord
 		return array(
 			array('contact_email, contact_name_first, contact_name_last, contact_login_pass', 'required'),
                     
-			array('contact_address_nr, contact_iso_country', 'numerical', 'integerOnly'=>true),
+			array('contact_address_nr, contact_iso_country', 'numerical' , 'contact_phone', 'integerOnly'=>true),
                     
 		
                          array('contact_login_pass', 'length', 'max' => 32, 'min' => 6),
-                            array('contact_login_pass', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => ("Incorrect symbols (A-z0-9)")),  
-                         
+                            // array('contact_login_pass', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/','message' => ("Incorrect symbols (A-z0-9)")),  
+                            
+                            array('contact_login_pass', 'match', 'pattern' => '/\W/', 'message' => 'Password must contain at least one special character.'), 
                     
                         array('verifyPassword', 'compare', 'compareAttribute'=>'contact_login_pass', 'message' => ("Retype Password is incorrect.")),
                     
@@ -70,6 +71,9 @@ class Contact extends CActiveRecord
                         . 'contact_imported_src', 'length', 'max'=>255),
 			
                     array('contact_gender, contact_is_imported, contact_status', 'length', 'max'=>1),
+                    
+                    array('contact_website,contact_tw,contact_fb,contact_go,contact_yt,contact_li', 'url'),
+
                     
                     
 			array('contact_bio', 'safe'),
@@ -144,7 +148,7 @@ class Contact extends CActiveRecord
 			'contact_adress' => 'Adress',
 			'contact_address_nr' => 'Address Number',
 			'contact_address_addon' => 'Address Addon',
-			'contact_iso_country' => 'Iso Country',
+			'contact_iso_country' => 'Country',
 			'contact_city' => 'City',
 			'contact_phone' => 'Phone',
 			'contact_website' => 'Website',

@@ -116,11 +116,6 @@ class User extends APLActiveRecord
             'user_package_id' => 'User Package',
             'user_pass' => 'Password',
             'user_credits' => 'Credits',
-            'user_registered' => 'User Registered',
-            'user_verified' => 'User Verified',
-            'user_activity' => 'User Activity',
-            'user_deactivated' => 'User Deactivated',
-            'user_password_request' => 'User Password Request',
             'user_email' => 'Email',
             'porfile_initials' => 'Initials',
             'porfile_name_first' => 'First Name',
@@ -171,11 +166,12 @@ class User extends APLActiveRecord
 		//$criteria->compare('user_package_id',$this->user_package_id);
 		
 		$criteria->compare('user_credits',$this->user_credits);
-		$criteria->compare('user_registered',$this->user_registered,true);
-		$criteria->compare('user_verified',$this->user_verified,true);
-		$criteria->compare('user_activity',$this->user_activity,true);
-		$criteria->compare('user_deactivated',$this->user_deactivated,true);
-		$criteria->compare('user_password_request',$this->user_password_request,true);
+		
+               ///$criteria->compare('user_registered',$this->user_registered,true);
+		//$criteria->compare('user_verified',$this->user_verified,true);
+		//$criteria->compare('user_activity',$this->user_activity,true);
+		//$criteria->compare('user_deactivated',$this->user_deactivated,true);
+		//$criteria->compare('user_password_request',$this->user_password_request,true);
 		$criteria->compare('user_email',$this->user_email,true);
 		$criteria->compare('porfile_initials',$this->porfile_initials,true);
 		$criteria->compare('porfile_name_first',$this->porfile_name_first,true);

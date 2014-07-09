@@ -60,7 +60,7 @@
         
 	<div class="row">
 		<?php //echo $form->labelEx($model,'contact_name_ini'); ?>
-		<?php echo $form->passwordFieldGroup($model,'contact_name_ini',array('size'=>60,'maxlength'=>255,
+		<?php echo $form->textFieldGroup($model,'contact_name_ini',array('size'=>60,'maxlength'=>255,
                     'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                     )); ?>
 		<?php echo $form->error($model,'contact_name_ini'); ?>
