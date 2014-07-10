@@ -8,6 +8,47 @@ $this->pageTitle = Yii::app()->name;
     $('.collapse').collapse()
 </script>
 
+<h1>Yii Accordion Icon </h1>
+
+<?php
+
+$this->widget('zii.widgets.jui.CJuiAccordion',array(
+
+    'panels'=>array(
+
+        'panel 1'=>'content for panel 1',
+
+        'panel 2'=>'content for panel 2',
+
+        // panel 3 contains the content rendered by a partial view
+
+
+    ),
+
+    // additional javascript options for the accordion plugin
+
+    'options'=>array(
+
+        'animated'=>'bounceslide',       
+
+        'icons'=>array(
+
+            "header"=>"ui-icon-plus",//ui-icon-circle-arrow-e
+
+             "headerSelected"=>"ui-icon-circle-arrow-s",//ui-icon-circle-arrow-s, ui-icon-minus
+
+        ),
+
+    ),
+
+));
+
+?>
+
+<br />
+
+
+
 <h1 class="title">Tips to write a press-release</h1>
 
 <div class="row">

@@ -51,7 +51,7 @@ class Contact extends CActiveRecord
 		return array(
 			array('contact_email, contact_name_first, contact_name_last, contact_login_pass', 'required'),
                     
-			array('contact_address_nr, contact_iso_country', 'numerical' , 'contact_phone', 'integerOnly'=>true),
+			array('contact_address_nr, contact_iso_country', 'numerical' , 'integerOnly'=>true),
                     
 		
                          array('contact_login_pass', 'length', 'max' => 32, 'min' => 6),

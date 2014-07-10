@@ -97,7 +97,7 @@ class User extends APLActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'contacts' => array(self::MANY_MANY, 'Contact', 'contact_client_blacklist(user_id, contact_id)'),
-			'creditHistories' => array(self::HAS_MANY, 'CreditHistory', 'ch_user'),
+                                    'creditHistories' => array(self::HAS_MANY, 'CreditHistory', 'ch_user'),
 			'lists' => array(self::HAS_MANY, 'List', 'list_user'),
 			'paypal transactions' => array(self::HAS_MANY, 'Paypal transactions', 'pp_user_id'),
 			'presses' => array(self::HAS_MANY, 'Press', 'press_user'),
@@ -115,7 +115,7 @@ class User extends APLActiveRecord
             'user_id' => 'ID',
             'user_package_id' => 'User Package',
             'user_pass' => 'Password',
-            'user_credits' => 'Credits',
+           // 'user_credits' => 'Credits',
             'user_email' => 'Email',
             'porfile_initials' => 'Initials',
             'porfile_name_first' => 'First Name',
@@ -165,7 +165,7 @@ class User extends APLActiveRecord
 		
 		//$criteria->compare('user_package_id',$this->user_package_id);
 		
-		$criteria->compare('user_credits',$this->user_credits);
+		//$criteria->compare('user_credits',$this->user_credits);
 		
                ///$criteria->compare('user_registered',$this->user_registered,true);
 		//$criteria->compare('user_verified',$this->user_verified,true);

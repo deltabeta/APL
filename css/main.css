@@ -45,6 +45,11 @@ body, table, html, p, a
 #footer{ margin-top: 10px;}
 .titrepartner{ padding: 0; margin: 0 0 10px 0;}
 .formlogin .well{ width: 240px;}
+
+.label{ width: 230px; float: right; text-align: left !important; margin-top: 4px; line-height: 14px !important; font-size: 10px !important;}
+
+
+
 p { line-height: 24px; }
 
 p, ul, ol, blockquote, h1, h2, h3, h4, h5, form {margin: 0px;}
