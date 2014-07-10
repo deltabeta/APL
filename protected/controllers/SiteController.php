@@ -156,13 +156,13 @@ public function actionLogin()
 $model = new LoginForm;
 
 // if it is ajax validation request
-if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+if(isset($_POST['ajax']) && $_POST['ajax']==='login-form'&&isset($_POST['yt1']))
 {
 echo CActiveForm::validate($model);
 Yii::app()->end();
 }
 
-if(isset($_POST['ajax']) && $_POST['ajax']==='login1-form')
+if(isset($_POST['ajax']) && $_POST['ajax']==='login1-form'&&isset($_POST['yt0']))
 {
 echo CActiveForm::validate($model);
 Yii::app()->end();
