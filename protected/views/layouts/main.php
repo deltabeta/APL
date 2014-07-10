@@ -16,7 +16,6 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
 
-
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     </head>
     <!-- hi alter !! -->
@@ -48,7 +47,7 @@
                         'booster.widgets.TbNavbar', array(
                     'type' => '',
                     'brand' => '<img src="' . Yii::app()->request->baseUrl . '/images/logo-africanpress.png" width="150" />',
-                    'brandUrl' => '#',
+                    'brandUrl' => array('/site/index'),
                     'collapse' => true, // requires bootstrap-responsive.css
                     // 'fixed' => false,
                     'fluid' => true,
