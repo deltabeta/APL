@@ -15,17 +15,6 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
-        <script>
-            
-            i18n.init(function(t) {
-  // translate nav
-  $(".nav").i18n();
-
-  // programatical access
-  var appName = t("app.name");
-});
-            
-            </script>
 
 
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
@@ -143,10 +132,33 @@
 
             <div class="clear"></div>
             <h4 class="titrepartner">Partners</h4>
-            <div class="partners">
-
-            <?php echo CHtml::image(Yii::app()->request->baseUrl . '/images/partners.jpg', ''); ?>
+           <div class="partners">
+                <div class="row" >
+                    
+                    <div class="span-6">
+                        <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
+                        
+                    </div>
+                    
+                    <div class="span-6">
+                        <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
+                        
+                    </div>
+                    
+                    <div class="span-6">
+                        <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
+                        
+                    </div>
+                    
+                    <div class="span-6">
+                        <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
+                        
+                    </div>
+                    
+                </div> 
+            
             </div>
+            
             <div class="clear"></div>
             <div id="footer">
                 Copyright &copy; <?php echo date('Y'); ?> by The WebSide.<br/>

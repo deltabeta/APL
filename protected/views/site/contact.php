@@ -37,7 +37,7 @@ $this->breadcrumbs=array(
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-        <h3>Personel Information</h3>    
+        <h3>Personal Information</h3>    
 	<div class="row">
             <div class="form-group">
 		<?php echo $form->textFieldGroup($model,'name',array('size'=>60,'maxlength'=>255 ,

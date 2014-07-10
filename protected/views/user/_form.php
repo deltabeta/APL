@@ -39,7 +39,7 @@
             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
         ));
         ?>
-        <?php echo $form->error($model, 'user_email'); ?>
+        <?php //echo $form->error($model, 'user_email'); ?>
     </div>
  <span class="label label-info"    
                                 >Minimum is 6 characters <br>Must contain at least one special character</span>
