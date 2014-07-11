@@ -15,18 +15,6 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
-        <script>
-            
-            i18n.init(function(t) {
-  // translate nav
-  $(".nav").i18n();
-
-  // programatical access
-  var appName = t("app.name");
-});
-            
-            </script>
-
 
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     </head>
@@ -59,7 +47,7 @@
                         'booster.widgets.TbNavbar', array(
                     'type' => '',
                     'brand' => '<img src="' . Yii::app()->request->baseUrl . '/images/logo-africanpress.png" width="150" />',
-                    'brandUrl' => '#',
+                    'brandUrl' => array('/site/index'),
                     'collapse' => true, // requires bootstrap-responsive.css
                     // 'fixed' => false,
                     'fluid' => true,
@@ -73,13 +61,13 @@
                                     'label' => 'For who and how?',
                                     'url' => Yii::app()->request->baseUrl . '/site/howtouse',
                                     'items' => array(
-                                        array('label' => 'For who and how', 'url' => Yii::app()->request->baseUrl . '/site/forwhoandhow','data-i18n'=>'nav.home'),
-                                        array('label' => 'How to use', 'url' => Yii::app()->request->baseUrl . '/site/howtouse'),
-                                        array('label' => 'Tips to write', 'url' => Yii::app()->request->baseUrl . '/site/tipstowrite'),
+                                        array('label' => 'For who and how', 'url' => array('/site/forwhoandhow')),
+                                        array('label' => 'How to use', 'url' => array('/site/howtouse')),
+                                        array('label' => 'Tips to write', 'url' => array('/site/tipstowrite')),
                                         array('label' => 'Press', 'url' => '#'),
                                     )
                                 ),
-                                array('label' => 'Costs of Use', 'url' => Yii::app()->request->baseUrl . '/site/costofuse'),
+                                array('label' => 'Costs of Use', 'url' => array('/site/costofuse')),
                                 array(
                         'label' => 'About Us',
                         'url' => '#',
@@ -143,10 +131,33 @@
 
             <div class="clear"></div>
             <h4 class="titrepartner">Partners</h4>
-            <div class="partners">
-
-            <?php echo CHtml::image(Yii::app()->request->baseUrl . '/images/partners.jpg', ''); ?>
+           <div class="partners">
+                <div class="row" >
+                    
+                    <div class="span-6">
+                        <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
+                        
+                    </div>
+                    
+                    <div class="span-6">
+                        <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
+                        
+                    </div>
+                    
+                    <div class="span-6">
+                        <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
+                        
+                    </div>
+                    
+                    <div class="span-6">
+                        <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
+                        
+                    </div>
+                    
+                </div> 
+            
             </div>
+            
             <div class="clear"></div>
             <div id="footer">
                 Copyright &copy; <?php echo date('Y'); ?> by The WebSide.<br/>

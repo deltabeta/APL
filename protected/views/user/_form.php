@@ -39,7 +39,7 @@
             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
         ));
         ?>
-        <?php echo $form->error($model, 'user_email'); ?>
+        <?php //echo $form->error($model, 'user_email'); ?>
     </div>
  <span class="label label-info"    
                                 >Minimum is 6 characters <br>Must contain at least one special character</span>
@@ -130,19 +130,41 @@ echo $form->textFieldGroup($model, 'porfile_city', array('size' => 60, 'maxlengt
         <?php echo $form->error($model, 'porfile_city'); ?>
     </div>
 
-    <div class="row">
-
-        <div class="col-sm-3 control-label">
-<?php echo $form->labelEx($model, 'porfile_country');  ?></div>
-<?php echo $form->dropDownList($model, 'porfile_country', CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
- <?php echo $form->error($model,'porfile_country'); ?>       
-    </div>
-    <?php // echo $form->textFieldGroup($model,'departmentId');   ?>
-        <?php // echo $form->textFieldGroup($model,'contact_iso_country');   ?>
-        <?php //echo $form->error($model, 'contact_iso_country'); ?>    
-
-        <?php //echo $form->dropDownList($model,'porfile_country', $model->countrys->getCountryOptions()); ?> 
-        <?php //echo $form->error($model,'porfile_country'); ?>
+     
+      <div class="row">
+            <div class="col-sm-3 control-label" >
+                <?php echo $form->labelEx($model, 'porfile_country'); ?></div>
+            
+            
+            <?php
+            $form->widget('booster.widgets.TbSelect2', array(
+                'name' => 'porfile_country',
+                'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'),
+                //'data' => array('1','2'), 'country_iso', 'country_name'),
+                'options' => array(
+                    'placeholder' => 'Choose Your country ',
+                    'width' => '39.6%',
+                      'class' => 'col-sm-5'  
+                ),
+                    )
+            );
+            ?><br><br>
+            <?php // echo $form->dropDownList($model, 'contact_iso_country', CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
+            <?php // echo $form->textField($model,'departmentId'); ?>
+            <?php // echo $form->textField($model,'contact_iso_country'); ?>
+<?php echo $form->error($model, 'porfile_camp_country'); ?>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     	
 
     <div class="row">
@@ -183,13 +205,32 @@ echo $form->textFieldGroup($model, 'porfile_camp_function', array('size' => 60, 
 ?>
         <?php echo $form->error($model, 'porfile_camp_function'); ?>
     </div>
+    
+    
+    
+    
     <div class="row">
-        <div class="col-sm-3 control-label">
-        <?php echo $form->labelEx($model, 'porfile_camp_country');  ?>     </div> 
-    <?php echo $form->dropDownList($model, 'porfile_camp_country', CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
-        <?php echo $form->error($model,'porfile_camp_country'); ?>
-
-    </div>
+            <div class="col-sm-3 control-label" >
+                <?php echo $form->labelEx($model, 'porfile_camp_country'); ?></div>
+            
+            
+            <?php
+            $form->widget('booster.widgets.TbSelect2', array(
+                'name' => 'porfile_camp_country',
+                'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'),
+                'options' => array(
+                    'placeholder' => 'Choose Your country ',
+                    'width' => '39.6%',
+                      'class' => 'col-sm-5'  
+                ),
+                    )
+            );
+            ?><br><br>
+            <?php // echo $form->dropDownList($model, 'contact_iso_country', CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
+            <?php // echo $form->textField($model,'departmentId'); ?>
+            <?php // echo $form->textField($model,'contact_iso_country'); ?>
+<?php echo $form->error($model, 'porfile_camp_country'); ?>
+        </div>
 
     <div class="row">
         <?php //echo $form->labelEx($model, 'porfile_camp_account'); ?>
@@ -231,13 +272,41 @@ echo $form->textFieldGroup($model, 'porfile_camp_function', array('size' => 60, 
         <?php echo $form->error($model, 'porfile_coc'); ?>
     </div>
 
-    <div class="row">
-        <div class="col-sm-3 control-label">
-        <?php echo $form->labelEx($model, 'profile_remarks');  ?></div>
-        <?php echo $form->textArea($model, 'profile_remarks', array('rows' => 6, 'cols' => 50)); ?>
+   
+   
+    <div class="row"> 
+        <?php echo $form->labelEx($model, 'profile_remarks');  ?>
+         <?php $form->widget(
+    'booster.widgets.TbCKEditor',
+    array(
+        'name' => 'profile_remarks',
+        'editorOptions' => array(
+            // From basic `build-config.js` minus 'undo', 'clipboard' and 'about'
+            'plugins' => 'basicstyles,toolbar,enterkey,entities,floatingspace,wysiwygarea,indentlist,link,list,dialog,dialogui,button,indent,fakeobjects'
+          
+            )
+    )
+);
+    ?> 
+        
+        
+        
+                            <?php //echo $form-> textAreaGroup($model, 'profile_remarks', array(
+//                                                    'wrapperHtmlOptions' => array(
+//                                                            'class' => 'col-sm-5',
+//                                                    ),
+//                                                    'widgetOptions' => array(
+//                                                            'htmlOptions' => array('rows' => 5),
+//                                                    )
+//                                            )); ?>
         <?php echo $form->error($model, 'profile_remarks'); ?>
     </div>
 
+    
+    
+    
+    
+    
     <div class="row">
         <?php //echo $form->labelEx($model, 'usetting_sender_name'); ?>
 <?php

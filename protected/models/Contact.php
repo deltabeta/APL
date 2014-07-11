@@ -31,58 +31,45 @@
  * The followings are the available model relations:
  * @property IsoCountry $contactIsoCountry
  */
-class Contact extends CActiveRecord
-{        public $verifyPassword;
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'contact';
-	}
+class Contact extends CActiveRecord {
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('contact_email, contact_name_first, contact_name_last, contact_login_pass', 'required'),
-                    
-			array('contact_address_nr, contact_iso_country', 'numerical' , 'integerOnly'=>true),
-                    
-		
-                         array('contact_login_pass', 'length', 'max' => 32, 'min' => 6),
-                            // array('contact_login_pass', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/','message' => ("Incorrect symbols (A-z0-9)")),  
-                            
-                            array('contact_login_pass', 'match', 'pattern' => '/\W/', 'message' => 'Password must contain at least one special character.'), 
-                    
-                        array('verifyPassword', 'compare', 'compareAttribute'=>'contact_login_pass', 'message' => ("Retype Password is incorrect.")),
-                    
-                    
-                            //    array('email', 'unique', 'message' => ("This user's email address already exists.")),
+    public $verifyPassword;
 
-                    
-                    array('contact_email, contact_name_ini, contact_name_first, contact_name_last, '
-                        . 'contact_adress, contact_address_addon, contact_city, contact_phone, '
-                        . 'contact_website, contact_tw, contact_fb, contact_go, contact_yt, contact_li, '
-                        . 'contact_imported_src', 'length', 'max'=>255),
-			
-                    array('contact_gender, contact_is_imported, contact_status', 'length', 'max'=>1),
-                    
-                    array('contact_website,contact_tw,contact_fb,contact_go,contact_yt,contact_li', 'url'),
+    /**
+     * @return string the associated database table name
+     */
+    public function tableName() {
+        return 'contact';
+    }
 
-                    
-                    
-			array('contact_bio', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('contact_id, contact_email, contact_name_ini, contact_name_first, contact_name_last, contact_gender, contact_adress, contact_address_nr, contact_address_addon, contact_iso_country, contact_city, contact_phone, contact_website, contact_tw, contact_fb, contact_go, contact_yt, contact_li, contact_bio, contact_is_imported, contact_imported_src, contact_status, contact_login_pass', 'safe', 'on'=>'search'),
-		);
-	}
-        
+    /**
+     * @return array validation rules for model attributes.
+     */
+    public function rules() {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('contact_email, contact_name_first, contact_name_last, contact_login_pass', 'required'),
+            array('contact_address_nr, contact_iso_country', 'numerical', 'integerOnly' => true),
+            array('contact_login_pass', 'length', 'max' => 32, 'min' => 6),
+            // array('contact_login_pass', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/','message' => ("Incorrect symbols (A-z0-9)")),  
+            array('contact_login_pass', 'match', 'pattern' => '/\W/', 'message' => 'Password must contain at least one special character.'),
+            array('verifyPassword', 'compare', 'compareAttribute' => 'contact_login_pass', 'message' => ("Retype Password is incorrect.")),
+            //    array('email', 'unique', 'message' => ("This user's email address already exists.")),
+            array('contact_email', 'email'),
+            array('contact_email, contact_name_ini, contact_name_first, contact_name_last, '
+                . 'contact_adress, contact_address_addon, contact_city, contact_phone, '
+                . 'contact_website, contact_tw, contact_fb, contact_go, contact_yt, contact_li, '
+                . 'contact_imported_src', 'length', 'max' => 255),
+            array('contact_gender, contact_is_imported, contact_status', 'length', 'max' => 1),
+            array('contact_website,contact_tw,contact_fb,contact_go,contact_yt,contact_li', 'url'),
+            array('contact_bio', 'safe'),
+            // The following rule is used by search().
+            // @todo Please remove those attributes that should not be searched.
+            array('contact_id, contact_email, contact_name_ini, contact_name_first, contact_name_last, contact_gender, contact_adress, contact_address_nr, contact_address_addon, contact_iso_country, contact_city, contact_phone, contact_website, contact_tw, contact_fb, contact_go, contact_yt, contact_li, contact_bio, contact_is_imported, contact_imported_src, contact_status, contact_login_pass', 'safe', 'on' => 'search'),
+        );
+    }
+
 //    public $verifyPassword;
 //    public $verifyCode;
 //
@@ -111,120 +98,106 @@ class Contact extends CActiveRecord
 //        return $rules;
 //    }
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    /**
+     * @return array relational rules.
+     */
+    public function relations() {
+        // NOTE: you may need to adjust the relation name and the related
+        // class name for the relations automatically generated below.
+        return array(
+            'contactIsoCountry' => array(self::BELONGS_TO, 'IsoCountry', 'contact_iso_country'),
+        );
+    }
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'contactIsoCountry' => array(self::BELONGS_TO, 'IsoCountry', 'contact_iso_country'),
-		);
-	}
+    /**
+     * @return array customized attribute labels (name=>label)
+     */
+    public function attributeLabels() {
+        return array(
+            'contact_id' => 'Contact',
+            'contact_email' => ' Email',
+            'contact_name_ini' => 'Name initials',
+            'contact_name_first' => 'First Name',
+            'contact_name_last' => 'Last Name',
+            'contact_gender' => 'Gender',
+            'contact_adress' => 'Adress',
+            'contact_address_nr' => 'Address Number',
+            'contact_address_addon' => 'Address Addon',
+            'contact_iso_country' => 'Country',
+            'contact_city' => 'City',
+            'contact_phone' => 'Phone',
+            'contact_website' => 'Website',
+            'contact_tw' => 'Twitter Page',
+            'contact_fb' => 'Facebook Page',
+            'contact_go' => 'Google + Page',
+            'contact_yt' => 'Youtube Channel',
+            'contact_li' => 'Linkidin Page',
+            'contact_bio' => 'Curriculum Vitae',
+            'contact_is_imported' => 'Is Imported',
+            'contact_imported_src' => 'Imported Source',
+            'contact_status' => 'Status',
+            'contact_login_pass' => 'Password',
+            'verifyPassword' => 'Verify Password',
+        );
+    }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'contact_id' => 'Contact',
-			'contact_email' => ' Email',
-			'contact_name_ini' => 'Name initials',
-			'contact_name_first' => 'First Name',
-			'contact_name_last' => 'Last Name',
-			'contact_gender' => 'Gender',
-			'contact_adress' => 'Adress',
-			'contact_address_nr' => 'Address Number',
-			'contact_address_addon' => 'Address Addon',
-			'contact_iso_country' => 'Country',
-			'contact_city' => 'City',
-			'contact_phone' => 'Phone',
-			'contact_website' => 'Website',
-			'contact_tw' => 'Twitter Page',
-			'contact_fb' => 'Facebook Page',
-			'contact_go' => 'Google + Page',
-			'contact_yt' => 'Youtube Channel',
-			'contact_li' => 'Linkidin Page',
-			'contact_bio' => 'Curriculum Vitae',
-			'contact_is_imported' => 'Is Imported',
-			'contact_imported_src' => 'Imported Source',
-			'contact_status' => 'Status',
-			'contact_login_pass' => 'Password',
-                    	'verifyPassword' => 'Verify Password',
-		);
-	}
+    /**
+     * Retrieves a list of models based on the current search/filter conditions.
+     *
+     * Typical usecase:
+     * - Initialize the model fields with values from filter form.
+     * - Execute this method to get CActiveDataProvider instance which will filter
+     * models according to data in model fields.
+     * - Pass data provider to CGridView, CListView or any similar widget.
+     *
+     * @return CActiveDataProvider the data provider that can return the models
+     * based on the search/filter conditions.
+     */
+    public function search() {
+        // @todo Please modify the following code to remove attributes that should not be searched.
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 *
-	 * Typical usecase:
-	 * - Initialize the model fields with values from filter form.
-	 * - Execute this method to get CActiveDataProvider instance which will filter
-	 * models according to data in model fields.
-	 * - Pass data provider to CGridView, CListView or any similar widget.
-	 *
-	 * @return CActiveDataProvider the data provider that can return the models
-	 * based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
+        $criteria = new CDbCriteria;
 
-		$criteria=new CDbCriteria;
+        $criteria->compare('contact_id', $this->contact_id);
+        $criteria->compare('contact_email', $this->contact_email, true);
+        $criteria->compare('contact_name_ini', $this->contact_name_ini, true);
+        $criteria->compare('contact_name_first', $this->contact_name_first, true);
+        $criteria->compare('contact_name_last', $this->contact_name_last, true);
+        $criteria->compare('contact_gender', $this->contact_gender, true);
+        $criteria->compare('contact_adress', $this->contact_adress, true);
+        $criteria->compare('contact_address_nr', $this->contact_address_nr);
+        $criteria->compare('contact_address_addon', $this->contact_address_addon, true);
+        $criteria->compare('contact_iso_country', $this->contact_iso_country);
+        $criteria->compare('contact_city', $this->contact_city, true);
+        $criteria->compare('contact_phone', $this->contact_phone, true);
+        $criteria->compare('contact_website', $this->contact_website, true);
+        $criteria->compare('contact_tw', $this->contact_tw, true);
+        $criteria->compare('contact_fb', $this->contact_fb, true);
+        $criteria->compare('contact_go', $this->contact_go, true);
+        $criteria->compare('contact_yt', $this->contact_yt, true);
+        $criteria->compare('contact_li', $this->contact_li, true);
+        $criteria->compare('contact_bio', $this->contact_bio, true);
+        $criteria->compare('contact_is_imported', $this->contact_is_imported, true);
+        $criteria->compare('contact_imported_src', $this->contact_imported_src, true);
+        $criteria->compare('contact_status', $this->contact_status, true);
+        $criteria->compare('contact_login_pass', $this->contact_login_pass, true);
 
-		$criteria->compare('contact_id',$this->contact_id);
-		$criteria->compare('contact_email',$this->contact_email,true);
-		$criteria->compare('contact_name_ini',$this->contact_name_ini,true);
-		$criteria->compare('contact_name_first',$this->contact_name_first,true);
-		$criteria->compare('contact_name_last',$this->contact_name_last,true);
-		$criteria->compare('contact_gender',$this->contact_gender,true);
-		$criteria->compare('contact_adress',$this->contact_adress,true);
-		$criteria->compare('contact_address_nr',$this->contact_address_nr);
-		$criteria->compare('contact_address_addon',$this->contact_address_addon,true);
-		$criteria->compare('contact_iso_country',$this->contact_iso_country);
-		$criteria->compare('contact_city',$this->contact_city,true);
-		$criteria->compare('contact_phone',$this->contact_phone,true);
-		$criteria->compare('contact_website',$this->contact_website,true);
-		$criteria->compare('contact_tw',$this->contact_tw,true);
-		$criteria->compare('contact_fb',$this->contact_fb,true);
-		$criteria->compare('contact_go',$this->contact_go,true);
-		$criteria->compare('contact_yt',$this->contact_yt,true);
-		$criteria->compare('contact_li',$this->contact_li,true);
-		$criteria->compare('contact_bio',$this->contact_bio,true);
-		$criteria->compare('contact_is_imported',$this->contact_is_imported,true);
-		$criteria->compare('contact_imported_src',$this->contact_imported_src,true);
-		$criteria->compare('contact_status',$this->contact_status,true);
-		$criteria->compare('contact_login_pass',$this->contact_login_pass,true);
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+        ));
+    }
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
+    /**
+     * Returns the static model of the specified AR class.
+     * Please note that you should have this exact method in all your CActiveRecord descendants!
+     * @param string $className active record class name.
+     * @return Contact the static model class
+     */
+    public static function model($className = __CLASS__) {
+        return parent::model($className);
+    }
 
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return Contact the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
-        
-        protected function afterValidate() {
+    protected function afterValidate() {
         parent::afterValidate();
         if (!$this->hasErrors())
             $this->contact_login_pass = $this->hashPassword($this->contact_login_pass);
@@ -236,12 +209,12 @@ class Contact extends CActiveRecord
     public function hashPassword($password) {
         return md5($password);
     }
-    
-    /**   * Checks if the given password is correct.
+
+    /**     * Checks if the given password is correct.
      *    * @param string the password to be validated 
      *   * @return boolean whether the password is valid   */
-    public function validatePassword($password)  {
-        return $this->hashPassword($password)===$this->contact_login_pass;  
-        
+    public function validatePassword($password) {
+        return $this->hashPassword($password) === $this->contact_login_pass;
     }
+
 }
