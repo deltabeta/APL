@@ -12,8 +12,11 @@ $this->pageTitle = Yii::app()->name;
 
 
 
-<h1 class="title">Tips to write a press-release</h1><div class="span-16" >   
-        <div class="homeparagraph">
+<h1 class="title">Tips to write a press-release</h1>
+
+<div class="row">
+<div class="span-16" >   
+       
 
             <div class="panel-group" id="accordion">
 
@@ -131,7 +134,7 @@ $this->widget('zii.widgets.jui.CJuiAccordion', array(
                                 <br>
                                 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Web site Address</em><br>
                             &nbsp;</div>
-                    </div>',
+                    ',
         
         
     ),
@@ -163,10 +166,10 @@ $this->widget('zii.widgets.jui.CJuiAccordion', array(
     </div> 
 
 
-</div>
+
 </div>
 
-<div class="row"><div class="span-10" >   
+<div class="span-10" >   
 
     <?php echo CHtml::image(Yii::app()->request->baseUrl . '/images/country-picture(1).jpg', ''); ?>
 </div>

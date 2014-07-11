@@ -61,13 +61,13 @@
                                     'label' => 'For who and how?',
                                     'url' => Yii::app()->request->baseUrl . '/site/howtouse',
                                     'items' => array(
-                                        array('label' => 'For who and how', 'url' => Yii::app()->request->baseUrl . '/site/forwhoandhow','data-i18n'=>'nav.home'),
-                                        array('label' => 'How to use', 'url' => Yii::app()->request->baseUrl . '/site/howtouse'),
-                                        array('label' => 'Tips to write', 'url' => Yii::app()->request->baseUrl . '/site/tipstowrite'),
+                                        array('label' => 'For who and how', 'url' => array('/site/forwhoandhow')),
+                                        array('label' => 'How to use', 'url' => array('/site/howtouse')),
+                                        array('label' => 'Tips to write', 'url' => array('/site/tipstowrite')),
                                         array('label' => 'Press', 'url' => '#'),
                                     )
                                 ),
-                                array('label' => 'Costs of Use', 'url' => Yii::app()->request->baseUrl . '/site/costofuse'),
+                                array('label' => 'Costs of Use', 'url' => array('/site/costofuse')),
                                 array(
                         'label' => 'About Us',
                         'url' => '#',

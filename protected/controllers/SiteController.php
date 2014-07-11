@@ -107,7 +107,12 @@ public function actionAbout()
 // using the default layout 'protected/views/layouts/main.php'
 $this->render('about');
 }
-
+public function adminmailing()
+{
+// renders the view file 'protected/views/site/index.php'
+// using the default layout 'protected/views/layouts/main.php'
+$this->render('adminmailing');
+}
 /**
  * This is the action to handle external exceptions.
  */
@@ -231,11 +236,13 @@ $this->redirect(Yii::app()->homeUrl);
 }
 
 public function filters(){
-return [
-'accessControl',
- 'postOnly + delete',
- ['booster.filters.BoosterFilter - delete'],
-];
+    
+    
+    
+    $tab = array('accessControl',
+    'postOnly + delete',
+    array('booster.filters.BoosterFilter - delete'),);
+return $tab;
 }
 }
 

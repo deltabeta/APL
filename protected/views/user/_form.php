@@ -139,7 +139,8 @@ echo $form->textFieldGroup($model, 'porfile_city', array('size' => 60, 'maxlengt
             <?php
             $form->widget('booster.widgets.TbSelect2', array(
                 'name' => 'porfile_country',
-                'data' => CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name'),
+                'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'),
+                //'data' => array('1','2'), 'country_iso', 'country_name'),
                 'options' => array(
                     'placeholder' => 'Choose Your country ',
                     'width' => '39.6%',
@@ -216,7 +217,7 @@ echo $form->textFieldGroup($model, 'porfile_camp_function', array('size' => 60, 
             <?php
             $form->widget('booster.widgets.TbSelect2', array(
                 'name' => 'porfile_camp_country',
-                'data' => CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name'),
+                'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'),
                 'options' => array(
                     'placeholder' => 'Choose Your country ',
                     'width' => '39.6%',

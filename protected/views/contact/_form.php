@@ -159,7 +159,7 @@
             <?php
             $form->widget('booster.widgets.TbSelect2', array(
                 'name' => 'contact_iso_country',
-                'data' => CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name'),
+                'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'),
                 'options' => array(
                     'placeholder' => 'Choose Your country ',
                     'width' => '39.6%',
