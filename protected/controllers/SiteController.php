@@ -178,7 +178,7 @@ if(isset($_POST['LoginForm'])&&isset($_POST['yt1']))
 {
 $model->attributes = $_POST['LoginForm'];
 // validate user input and redirect to the previous page if valid
-if($model->validate() && $model->login())
+if($model->validate() && $model->login1())
 // $this->redirect('index.php?r=user/dashboard');
 $this->redirect(Yii::app()->user->returnUrl);
 }
@@ -187,7 +187,7 @@ if(isset($_POST['LoginForm'])&& isset($_POST['yt0']))
 {
 $model->attributes = $_POST['LoginForm'];
 // validate user input and redirect to the previous page if valid
-if($model->validate() && $model->login1())
+if($model->validate() && $model->login())
 $this->redirect(Yii::app()->user->returnUrl);
 // display the login form
 }

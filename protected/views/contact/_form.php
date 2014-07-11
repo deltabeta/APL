@@ -157,20 +157,20 @@
             
             
             <?php
-            $form->widget('booster.widgets.TbSelect2', array(
-                'name' => 'contact_iso_country',
-                'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'),
+            $this->widget('booster.widgets.TbSelect2', array(
+                'asDropDownList' => true,
+                'model' => $model   ,
+                'attribute' => 'contact_iso_country',
                 'options' => array(
-                    'placeholder' => 'Choose Your country ',
-                    'width' => '39.6%',
-                      'class' => 'col-sm-5'  
-                       
+                    'placeholder' => $model->getAttributeLabel('contact_iso_country'),
+                     'width' => '39.6%',
+                    'class' => 'col-sm-5',
+                    'allowClear' => true,
+                ),
+                'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'
                 ),
                
-					
-                
-                    )
-            );
+            ));
             ?></div>
             <?php // echo $form->dropDownList($model, 'contact_iso_country', CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
             <?php // echo $form->textField($model,'departmentId'); ?>

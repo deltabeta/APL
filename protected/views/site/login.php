@@ -28,7 +28,7 @@ $this->breadcrumbs=array(
     	'type' => 'horizontal',
         'htmlOptions' => array('class' => 'well'), // for inset effect
 
-	'id'=>'login-form',
+	'id'=>'login1-form',
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
 	'validateOnSubmit'=>true,
@@ -78,7 +78,7 @@ $this->breadcrumbs=array(
     	'type' => 'horizontal',
         'htmlOptions' => array('class' => 'well'), // for inset effect
 
-	'id'=>'login1-form',
+	'id'=>'login-form',
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
 	'validateOnSubmit'=>true,

@@ -137,17 +137,24 @@ echo $form->textFieldGroup($model, 'porfile_city', array('size' => 60, 'maxlengt
             
             
             <?php
-            $form->widget('booster.widgets.TbSelect2', array(
-                'name' => 'porfile_country',
-                'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'),
-                //'data' => array('1','2'), 'country_iso', 'country_name'),
+          
+            
+         
+            $this->widget('booster.widgets.TbSelect2', array(
+                'asDropDownList' => true,
+                'model' => $model   ,
+                'attribute' => 'porfile_country',
                 'options' => array(
-                    'placeholder' => 'Choose Your country ',
-                    'width' => '39.6%',
-                      'class' => 'col-sm-5'  
+                    'placeholder' => $model->getAttributeLabel('porfile_country'),
+                     'width' => '39.6%',
+                    'class' => 'col-sm-5',
+                    'allowClear' => true,
                 ),
-                    )
-            );
+                'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'
+                ),
+               
+            ));
+            
             ?><br><br>
             <?php // echo $form->dropDownList($model, 'contact_iso_country', CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
             <?php // echo $form->textField($model,'departmentId'); ?>
@@ -215,16 +222,25 @@ echo $form->textFieldGroup($model, 'porfile_camp_function', array('size' => 60, 
             
             
             <?php
-            $form->widget('booster.widgets.TbSelect2', array(
-                'name' => 'porfile_camp_country',
-                'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'),
+            
+            
+           
+            $this->widget('booster.widgets.TbSelect2', array(
+                'asDropDownList' => true,
+                'model' => $model   ,
+                'attribute' => 'porfile_camp_country',
                 'options' => array(
-                    'placeholder' => 'Choose Your country ',
-                    'width' => '39.6%',
-                      'class' => 'col-sm-5'  
+                    'placeholder' => $model->getAttributeLabel('porfile_camp_country'),
+                     'width' => '39.6%',
+                    'class' => 'col-sm-5',
+                    'allowClear' => true,
                 ),
-                    )
-            );
+                'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'
+                ),
+               
+            ));
+            
+            
             ?><br><br>
             <?php // echo $form->dropDownList($model, 'contact_iso_country', CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
             <?php // echo $form->textField($model,'departmentId'); ?>
