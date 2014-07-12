@@ -140,6 +140,7 @@ $this->widget('zii.widgets.jui.CJuiAccordion', array(
     ),
     'options'=>array(
         'autoHeight'=>false,
+          'active'=>false,
        // 'autowidth'=>true,
 
         // 'animated'=>'bounceslide',     
@@ -154,7 +155,9 @@ $this->widget('zii.widgets.jui.CJuiAccordion', array(
             ),
      ),
     'htmlOptions'=>array(
-        'style'=>'width:600px   ;'  
+        'style'=>'width:600px   ;',
+      
+
     ),
 
 ));

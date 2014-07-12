@@ -16,14 +16,14 @@ $this->menu=array(
 );
 ?>
 
-<h1>View User #<?php echo $model->user_id; ?></h1>
+<h1><?php echo $model->user_email; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
+<?php $this->widget('booster.widgets.TbDetailView', array(
+                'data'=>$model,
 	'attributes'=>array(
 		'user_id',
 		'user_package_id',
-		'user_pass',
+		//'user_pass',
 		'user_credits',
 		'user_registered',
 		'user_verified',
@@ -38,7 +38,10 @@ $this->menu=array(
 		'porfile_address_nr',
 		'porfile_address_addon',
 		'porfile_city',
+            
+            
 		'porfile_country',
+            
 		'porfile_phone',
 		'porfile_mobile',
 		'porfile_camp_name',
