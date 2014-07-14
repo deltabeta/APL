@@ -20,48 +20,11 @@ return array(
 		'application.models.*',
 		'application.components.*',
                 'application.extensions.*',
-                'application.modules.user.models.*',
-                'application.modules.user.components.*',
-                ),
+	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-                 'user'=>array(
-                     'tableUsers' => 'users',
-                    'tableProfiles' => 'Contact',
-                    'tableProfileFields' => 'profiles_fields',
-            # encrypting method (php hash function)
-            'hash' => 'md5',
- 
-            # send activation email
-            'sendActivationMail' => true,
- 
-            # allow access for non-activated users
-            'loginNotActiv' => false,
- 
-            # activate user on registration (only sendActivationMail = false)
-            'activeAfterRegister' => TRUE,
- 
-            # automatically login from registration
-            'autoLogin' => true,
- 
-            # registration path
-            'registrationUrl' => array('/user/registration'),
- 
-            # recovery password path
-            'recoveryUrl' => array('/user/recovery'),
- 
-            # login form path
-            'loginUrl' => array('/user/login'),
- 
-            # page after login
-            'returnUrl' => array('/user/profile'),
- 
-            # page after logout
-            'returnLogoutUrl' => array('/user/login'),
-        ),
-            
-            
+		
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'0000',
@@ -76,22 +39,9 @@ return array(
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
-                        'loginUrl' => array('/user/login'),
 		),
 		// uncomment the following to enable URLs in path-format
 	
-                'mail' => array(
-                        'class' => 'ext.yii-mail.YiiMail',
-                        'transportType'=>'smtp',
-                         'transportOptions'=>array(
-                           'host'=>'smtp.gmail.com',
-                           'username'=>'tounsi.gourmand@gmail.com',
-                           'password'=>'O2tounsi',
-                           'port'=>'465',
-                           'encryption'=>'ssl',
-                             ),),
-            
-            
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
