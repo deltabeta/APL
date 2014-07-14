@@ -2,17 +2,17 @@
 /* @var $this ContactController */
 /* @var $model Contact */
 
-$this->breadcrumbs=array(
-	'Contacts'=>array('index'),
-	'Create',
+$this->breadcrumbs = array(
+    'Contacts' => array('index'),
+    'Create',
 );
 
-$this->menu=array(
-	array('label'=>'List Contact', 'url'=>array('index')),
-	array('label'=>'Manage Contact', 'url'=>array('admin')),
+$this->menu = array(
+    array('label' => 'List Contact', 'url' => array('index')),
+    array('label' => 'Manage Contact', 'url' => array('admin')),
 );
 ?>
 
-<h1>Sign-up as Journalist</h1>
+<h1> </h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model' => $model)); ?>

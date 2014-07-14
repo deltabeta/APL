@@ -51,6 +51,7 @@ class IsoCountry extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'contacts' => array(self::HAS_MANY, 'Contact', 'contact_iso_country'),
+                    	'porfileCampCountry' => array(self::HAS_MANY, 'Contact', 'contact_iso_country'),
 			'continentCode' => array(self::BELONGS_TO, 'Continents', 'continent_code'),
 			'geoRegion' => array(self::BELONGS_TO, 'GeoRegion', 'geo_region_id'),
 		);
@@ -108,5 +109,12 @@ class IsoCountry extends CActiveRecord
 		return parent::model($className);
 	}
         
+    
+    
+    public function GetCountryName($pk)
+    {
+            $CountryName = IsoCountry::model()->findByPk($pk); 
+            return $CountryName->country_name;
+    }
          
 }

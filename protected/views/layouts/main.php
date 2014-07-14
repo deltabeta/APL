@@ -90,9 +90,13 @@
                                         array('label' => 'As Journalist ', 'url' => array('/contact/create')),
                                     )
                                     , 'visible' => Yii::app()->user->isGuest),
-                                array('label' => 'My Space', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
-                                array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)    
-                            ),
+                            array('label' => 'My Space', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
+                            array('label' => 'Settings ', 'visible' => !Yii::app()->user->isGuest, 'items' => array(
+                                array('label' => 'My Profile',), 
+                                   //'url' => array('update', 'id' => $model->contact_id) //'visible' => !Yii::app()->user->isGuest), 
+                                   //or 'url' => array('/contact/view/id'),
+                                array('label' => 'Logout', 'url' => array('/site/logout'),)// 'visible' => !Yii::app()->user->isGuest)    
+                            ),),),
                         ),
                     ),
                         )
@@ -104,8 +108,8 @@
             </div>
             <div id="mainmenu">
                 <?php /* $this->widget('zii.widgets.CMenu',array(
-                  'items'=>array(
                   array('label'=>'Home', 'url'=>array('/site/index')),
+                  'items'=>array(
                   array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
                   array('label'=>'Contact', 'url'=>array('/site/contact')),
                   array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
