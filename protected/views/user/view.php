@@ -16,14 +16,14 @@ $this->menu=array(
 );
 ?>
 
-<h1>View User #<?php echo $model->user_id; ?></h1>
+<h1><?php echo $model->user_email; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php $this->widget('booster.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'user_id',
 		'user_package_id',
-		'user_pass',
+		//'user_pass',
 		'user_credits',
 		'user_registered',
 		'user_verified',

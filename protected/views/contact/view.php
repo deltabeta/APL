@@ -16,9 +16,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Contact #<?php echo $model->contact_id; ?></h1>
+<h1><?php echo $model->contact_email; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php $this->widget('booster.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'contact_id',
@@ -43,6 +43,6 @@ $this->menu=array(
 		'contact_is_imported',
 		'contact_imported_src',
 		'contact_status',
-		'contact_login_pass',
+		//'contact_login_pass',
 	),
 )); ?>
