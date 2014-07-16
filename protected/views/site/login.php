@@ -66,7 +66,7 @@ $this->breadcrumbs=array(
 <?php $this->endWidget(); ?>
         </div>
         
-     
+        <div class="span-5" ><p style="visibility: hidden">as journaists</p></div>
         
         <div class="span-6 journalist">
             

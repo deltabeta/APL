@@ -80,6 +80,52 @@ echo $form->ckEditorGroup(
     )
 ); ?>
 	</div>
+        
+        
+        <div class="row">
+           
+		<?php $this->widget(
+    'booster.widgets.TbDatePicker',
+    array(
+        
+        'name' => 'enddate',
+        'htmlOptions' => array('class'=>'col-md-4'),
+    )
+); ?>
+	</div>
+        
+        
+        <?php
+        
+        
+        $userFormConfig = array(
+          'elements'=>array(
+            'firstname'=>array(
+                'type'=>'text',
+                'maxlength'=>40,
+            ),
+            'lastname'=>array(
+                'type'=>'text',
+                'maxlength'=>40,
+            ),
+            'usersince'=>array(
+                'type'=>'dropdownlist',
+                //it is important to add an empty item because of new records
+                'items'=>array(''=>'-',2009=>2009,2010=>2010,2011=>2011,),
+            ),
+        ));
+ 
+    $this->widget('ext.multimodelform.MultiModelForm',array(
+            'id' => 'user_id', //the unique widget id
+            'formConfig' => $userFormConfig, //the form configuration array
+            'model' => $user, //instance of the form model
+ 
+            //array of user instances loaded from db
+            'data' => $user->findAll('groupid=:groupId', array(':groupId'=>$model->id)),
+        ));
+        
+        
+        ?>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

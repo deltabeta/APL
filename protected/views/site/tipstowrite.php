@@ -142,7 +142,7 @@ $this->widget('zii.widgets.jui.CJuiAccordion', array(
         'autoHeight'=>false,
           'active'=>false,
        // 'autowidth'=>true,
-
+            'active' => false,
         // 'animated'=>'bounceslide',     
          'collapsible'=>true,
          'actwive'=>FALSE,
