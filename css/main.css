@@ -65,6 +65,12 @@ body, table, html, p, a
     margin: 0 15px 0 0;
     width: 1px;
 }
+
+
+
+
+
+
 div.journalist .well{ width: 440px; margin-left: 20px; padding-left: 10px;}
 
 .label{ width: 230px; float: right; text-align: left !important; margin-top: 4px; line-height: 14px !important; font-size: 10px !important;}
