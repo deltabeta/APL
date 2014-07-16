@@ -65,11 +65,9 @@ class ContactController extends Controller {
         ));
     }
     
-    public function  actionContactdashbord($id){
+    public function  actioncontactdashbord(){
         
-        $this->render('contactdashbord',array(
-            'model' => $this->loadModel($id),
-        ));
+        $this->render('contactdashbord');
         
     }
 
@@ -79,7 +77,6 @@ class ContactController extends Controller {
      */
     public function actionCreate() {
         $model = new Contact;
-
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 

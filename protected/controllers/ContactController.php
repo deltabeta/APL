@@ -38,7 +38,7 @@ class ContactController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'create'),
+                'actions' => array('dashbord','index', 'create'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -84,6 +84,13 @@ class ContactController extends Controller {
         $this->render('create', array(
             'model' => $model,
         ));
+    }
+    
+    public function  actionDashbord($id){       
+         $this->render('dashbord', array(
+            'model' => $this->loadModel($id),
+        ));
+ 
     }
 
     /**
@@ -155,7 +162,7 @@ class ContactController extends Controller {
      * @throws CHttpException
      */
     public function loadModel($id) {
-        $model = Contact::model()->findByPk($id);
+        $model = User::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;
