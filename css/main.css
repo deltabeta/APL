@@ -46,6 +46,25 @@ body, table, html, p, a
 .titrepartner{ padding: 0; margin: 0 0 10px 0;}
 .formlogin .well{ width: 240px;}
 
+.udetail-box {
+    background-image: -moz-linear-gradient(center top , #ffffff, #f8f8f8);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    display: block;
+    float: left;
+    height: 365px;
+    padding: 0 0 14px 7px;
+    width: 292px;
+}
+
+
+.udetail-sep {
+    float: left;
+    height: 50px;
+    margin: 0 15px 0 0;
+    width: 1px;
+}
 div.journalist .well{ width: 440px; margin-left: 20px; padding-left: 10px;}
 
 .label{ width: 230px; float: right; text-align: left !important; margin-top: 4px; line-height: 14px !important; font-size: 10px !important;}
