@@ -3,134 +3,136 @@
 /* @var $model Mailing */
 /* @var $form CActiveForm */
 ?>
-
+ <!-- CK Editor -->
+        <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/js/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <style type="text/css">
+           .form-group{ width: 50%; margin: 0 !important;}
+        </style>
 <div class="form">
-
- <?php
-    $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
-        'id' => 'mailing-form',
-        'htmlOptions' => array('class' => 'well'),
-        'type' => 'horizontal',
-        'enableClientValidation' => true,
-        'clientOptions' => array(
-            'validateOnSubmit' => true,
-        ),
-        // Please note: When you enable ajax validation, make sure the corresponding
-        // controller action is handling ajax validation correctly.
-        // There is a call to performAjaxValidation() commented in generated controller code.
-        // See class documentation of CActiveForm for details on this.
-        'enableAjaxValidation' => false,
-    ));
-    ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php  ?>
 
 	<div class="row">
-		<?php
-            echo $form->textFieldGroup($model, 'subject', array('size' => 60, 'maxlength' => 255,
-                'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
-            ));
-            ?>
-            <?php echo $form->error($model, 'contact_email'); ?>
+		<div class="form-group">
+                                            <label>Subject</label>
+                                            <input type="text" class="form-control" placeholder="Enter ..." name="subject"/>
+                                        </div>
 	</div>
-
-	<div class="row">
-		<?php
-echo $form->ckEditorGroup(
-        $model, 'body', array(
-    'widgetOptions' => array(
-        'editorOptions' => array(
-            // 'fullpage' => 'js:true',
-            'class' => 'span10',
-            'rows' => 5,
-            'options' => array('plugins' => array('clips', 'fontfamily'), 'lang' => 'ang')
-        )
-    )
-        )
-);
-?>
-	</div>
-
-	<div class="row">
         
-		<?php 
-                $this->widget(
-    'booster.widgets.TbDatePicker',
-    array(
+         <div class="row">
+        <div class="form-group span-12 pull-left">
+                                        <label>Date range:</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" class="form-control pull-right" id="reservation" />
+                                        </div><!-- /.input group -->
+                                    </div><!-- /.form group -->
+        </div> 
         
-        'name' => 'startdate',
-        'htmlOptions' => array('class'=>'col-md-4'),
-    )
-);
-                ?>
+	<div class="row">
+            <div class='form-group'>
+            <div class='box-body pad'>
+                                    <form>
+                                         <label>Body</label>
+                                        <textarea id="editor1" name="editor1" rows="10" cols="50">
+                                            This is my textarea to be replaced with CKEditor.
+                                        </textarea>
+                                    </form>
+                                </div>
             
-            
-	</div>
+        </div>
+            </div>
 
-	<div class="row">
-           
-		<?php $this->widget(
-    'booster.widgets.TbDatePicker',
-    array(
-        
-        'name' => 'enddate',
-        'htmlOptions' => array('class'=>'col-md-4'),
-    )
-); ?>
-	</div>
         
         
         <div class="row">
-           
-		<?php $this->widget(
-    'booster.widgets.TbDatePicker',
-    array(
-        
-        'name' => 'enddate',
-        'htmlOptions' => array('class'=>'col-md-4'),
-    )
-); ?>
+           <div class="form-group" style="float:left; width: 45%">
+               <fieldset>
+                   <legend>Client</legend>
+		<?php
+                    foreach ($user as $key => $value){
+                        
+                        ?>
+                            <!-- checkbox -->
+                                        
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="user[]" value="<?php echo $key ?>"/>
+                                                    <?php echo $value; ?>
+                                                </label>
+                                            </div>
+                                       
+                        <?php
+                    }
+
+                    ?>
+                                        </fieldset>
+
+                             </div>
+            
+            
+            <div class="form-group" style="float:right; width: 45%">
+               <fieldset>
+                   <legend>Journalist</legend>
+		<?php
+                    foreach ($contact as $key => $value){
+                        
+                        ?>
+                            <!-- checkbox -->
+                                        
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="contact[]" value="<?php echo $key ?>"/>
+                                                    <?php echo $value; ?>
+                                                </label>
+                                            </div>
+                                       
+                        <?php
+                    }
+
+                    ?>
+                                        </fieldset>
+
+                             </div>
+            
+ 
 	</div>
+             
+        
+ <?php
         
         
-        <?php
-        
-        
-        $userFormConfig = array(
-          'elements'=>array(
-            'firstname'=>array(
-                'type'=>'text',
-                'maxlength'=>40,
-            ),
-            'lastname'=>array(
-                'type'=>'text',
-                'maxlength'=>40,
-            ),
-            'usersince'=>array(
-                'type'=>'dropdownlist',
-                //it is important to add an empty item because of new records
-                'items'=>array(''=>'-',2009=>2009,2010=>2010,2011=>2011,),
-            ),
-        ));
- 
-    $this->widget('ext.multimodelform.MultiModelForm',array(
-            'id' => 'user_id', //the unique widget id
-            'formConfig' => $userFormConfig, //the form configuration array
-            'model' => $user, //instance of the form model
- 
-            //array of user instances loaded from db
-            'data' => $user->findAll('groupid=:groupId', array(':groupId'=>$model->id)),
-        ));
+//        echo $form->checkBoxList(
+//    $model,
+//    'som',
+//    CHtml::listData(Number::model()->findAll(), 'id', 'number'));
         
         
         ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<input type="submit" name="save" value="create" />
 	</div>
 
-<?php $this->endWidget(); ?>
+
 
 </div><!-- form -->
+
+<script type="text/javascript">
+            $(function() {
+                
+
+                //Date range picker
+                $('#reservation').daterangepicker();
+                //Date range picker with time picker
+                  CKEDITOR.replace('editor1');
+                //bootstrap WYSIHTML5 - text editor
+                $(".textarea").wysihtml5();
+                
+            });
+        </script>

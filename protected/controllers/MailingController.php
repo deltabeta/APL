@@ -62,6 +62,7 @@ class MailingController extends Controller
 	 */
 	public function actionCreate()
 	{
+            $this->layout = 'layoutadmin';
 		$model=new Mailing;
 
 		// Uncomment the following line if AJAX validation is needed
@@ -78,13 +79,13 @@ class MailingController extends Controller
  
                 // format models resulting using listData     
                 $list = CHtml::listData($modelc, 
-                           'contact_id', 'contact_name');
+                           'contact_id', 'contact_email');
 
                 $modelu = user::model()->findAll();
 
                 // format models resulting using listData     
                 $listu = CHtml::listData($modelu, 
-                           'user_id', 'user_name');
+                           'user_id', 'user_email');
                 
 		$this->render('create',array(
 			'model'=>$model,
@@ -136,6 +137,7 @@ class MailingController extends Controller
 	 */
 	public function actionIndex()
 	{
+                $this->layout = 'layoutadmin';
 		$dataProvider=new CActiveDataProvider('Mailing');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
