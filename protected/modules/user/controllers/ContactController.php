@@ -64,6 +64,14 @@ class ContactController extends Controller {
             'model' => $this->loadModel($id),
         ));
     }
+    
+    public function  actionContactdashbord($id){
+        
+        $this->render('contactdashbord',array(
+            'model' => $this->loadModel($id),
+        ));
+        
+    }
 
     /**
      * Creates a new model.
@@ -155,7 +163,7 @@ class ContactController extends Controller {
      * @throws CHttpException
      */
     public function loadModel($id) {
-        $model = Contact::model()->findByPk($id);
+        $model = User::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;
