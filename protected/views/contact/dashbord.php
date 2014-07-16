@@ -1,3 +1,4 @@
+
 <h1>Account Overview</h1>
 <div class="udetail">
 
@@ -5,9 +6,9 @@
 <h2 class="udash-header">Personal Information</h2>
 <img width="92" height="83" src="<?php echo Yii::app()->request->baseUrl; ?>/images/dash-info.png">
 <table cellspacing="0" cellpadding="2" style="margin-top: 15px;">
-<tbody><tr><td>Full name:</td>
+<tbody><tr><td>Full name:<?php echo $model->username; ?></td>
 <td></td></tr><tr>
-</tr><tr><td>Email:</td>
+</tr><tr><td>Email:<?php echo $model->email; ?></td>
 <td><a href="mailto:gabe@webspacedesign.nl">gabe@webspacedesign.nl</a></td></tr><tr>
 </tr><tr><td>Phone:</td>
 <td>0204890066</td></tr><tr>

@@ -48,9 +48,9 @@ class RegistrationController extends Controller {
                     $model->superuser = 0;
                     $model->status = ((Yii::app()->controller->module->activeAfterRegister) ? User::STATUS_ACTIVE : User::STATUS_NOACTIVE);
 
-                    if ($model->save()) {
+                    if ($model->save(false)) {
                         $contact->contact_id = $model->id;
-                        $contact->save();
+                        $contact->save(false);
 
 
 
