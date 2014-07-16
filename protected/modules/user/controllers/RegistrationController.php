@@ -22,21 +22,22 @@ class RegistrationController extends Controller {
     public function actionRegistration() {
         Profile::$regMode = true;
         $model = new RegistrationForm;
-       // $contact = new Profile;
+        //$profile = new Profile;
         $contact = new Contact;
 
+        
         // ajax validator
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'registration-form') {
-            echo UActiveForm::validate(array($model, $contact));
+           // echo UActiveForm::validate(array($model, $profile));
             Yii::app()->end();
         }
 
         if (Yii::app()->user->id) {
             $this->redirect(Yii::app()->controller->module->profileUrl);
         } else {
-            if (isset($_POST['RegistrationForm'])) {
+            if (isset($_POST['RegistrationForm'],$_POST['Contact'] )) {
                 $model->attributes = $_POST['RegistrationForm'];
-                $contact->attributes = ((isset($_POST['Profile']) ? $_POST['Profile'] : array()));
+                $contact->attributes = $_POST['Contact'];
                
                 
                 if ($model->validate() && $contact->validate()) {
@@ -48,7 +49,7 @@ class RegistrationController extends Controller {
                     $model->status = ((Yii::app()->controller->module->activeAfterRegister) ? User::STATUS_ACTIVE : User::STATUS_NOACTIVE);
 
                     if ($model->save()) {
-                        $contact->user_id = $model->id;
+                        $contact->contact_id = $model->id;
                         $contact->save();
 
 
@@ -101,7 +102,7 @@ class RegistrationController extends Controller {
                 } else
                     $contact->validate();
             }
-            $this->render('/user/registration', array('model' => $model, 'profile' => $contact));
+            $this->render('/user/registration', array('model' => $model, 'contact' => $contact));
         }
     }
 
