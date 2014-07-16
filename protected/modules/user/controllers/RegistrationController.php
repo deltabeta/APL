@@ -105,5 +105,9 @@ class RegistrationController extends Controller {
             $this->render('/user/registration', array('model' => $model, 'contact' => $contact));
         }
     }
+    
+    
+    
+    
 
 }
