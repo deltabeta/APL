@@ -95,8 +95,10 @@ class User extends CActiveRecord
 	public function relations()
 	{
         $relations = Yii::app()->getModule('user')->relations;
-        if (!isset($relations['profile']))
+        if (!isset($relations['Contact']))
             $relations['profile'] = array(self::HAS_ONE, 'Profile', 'user_id');
+            $relations['Contact'] = array(self::HAS_ONE, 'Contact', 'contact_id');
+      
         return $relations;
 	}
 
@@ -215,8 +217,8 @@ class User extends CActiveRecord
     }
 
     public function afterSave() {
-        if (get_class(Yii::app())=='CWebApplication'&&Profile::$regMode==false) {
-            Yii::app()->user->updateSession();
+        if (get_class(Yii::app())=='CWebApplication') {
+           // Yii::app()->user->updateSession();///////////////////////////////
         }
         return parent::afterSave();
     }

@@ -6,26 +6,25 @@
 
 
 
-<span class=span-10">
+<!--<span class=span-10">
         <?php
-        $this->widget(
-                'booster.widgets.TbPanel', array(
-            'title' => 'Add Yourself As A Journalist',
-            'context' => 'primary',
-            'headerIcon' => 'user',
-            'content' => 'You, being a journalist, freelancer, '
-            . 'blogger or employed by a publisher, '
-            . 'can register yourself with the Africa Press List.'
-            . ' We will check your data and add you to the list.'
-            . ' If you are included in our list, '
-            . 'you will receive automatically targeted press releases from companies and organizations with a special interest in Africa.'
-            . ' Furthermore, we will add you to the database through which interested companies can search for your services.'
-            . ' It is nice if we can do some promotion for you in return.'
-                )
-        )
-                ?>  </span>
+//        $this->widget(
+//                'booster.widgets.TbPanel', array(
+//            'title' => 'Add Yourself As A Journalist',
+//            'context' => 'primary',
+//            'headerIcon' => 'user',
+//            'content' => 'You, being a journalist, freelancer, '
+//            . 'blogger or employed by a publisher, '
+//            . 'can register yourself with the Africa Press List.'
+//            . ' We will check your data and add you to the list.'
+//            . ' If you are included in our list, '
+//            . 'you will receive automatically targeted press releases from companies and organizations with a special interest in Africa.'
+//            . ' Furthermore, we will add you to the database through which interested companies can search for your services.'
+//            . ' It is nice if we can do some promotion for you in return.'
+//                )
+//        )
+                ?>  </span>-->
 
-<div class="form col-sm-10">
 
 
 
@@ -66,12 +65,14 @@
     ?>
 
     
-    <?php echo $form->errorSummary($model); ?>
+    <?php  echo $form->errorSummary($model); ?>
     <p class="note">Fields with <span class="required">*</span> are required.</p>
+    
+    
     <div id="monaccordeon">
         <div class="accordion-group">
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item1">Personal Information</div>
-            <div id="item1" class="collapse accordion-group in">
+            <div id="item1" class="collapse accordion-group ">
                 <div class="accordion-inner">
 
 
@@ -377,9 +378,9 @@
             </div>
             <div class="buttons pull-right">
                 <?php
-                $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'size' => 'large', 'context' => 'success', 'label' => 'Register')
-                );
-                ?>
+//                $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'size' => 'large', 'context' => 'success', 'label' => 'Register')
+//                );
+//                ?>
 
                 <?php // echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');     ?>
 
@@ -396,4 +397,4 @@
 
     <?php $this->endWidget(); ?>
 
-</div><!-- form -->
+<!-- form -->

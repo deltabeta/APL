@@ -217,13 +217,13 @@ class Contact extends CActiveRecord {
         return parent::model($className);
     }
 
-    public function afterSave() {
-        if (get_class(Yii::app())=='CWebApplication'&&  Contact::$regMode==false) {
-            Yii::app()->user->updateSession();
-        }
-        return parent::afterSave();
-    }
-    
+//    public function afterSave() {
+//        if (get_class(Yii::app())=='CWebApplication'&&  Contact::$regMode==false) {
+//            Yii::app()->user->updateSession();
+//        }
+//        return parent::afterSave();
+//    }
+//    
     
     protected function afterValidate() {
         parent::afterValidate();
