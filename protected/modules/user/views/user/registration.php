@@ -125,7 +125,8 @@ $this->breadcrumbs = array(
         ?>
                 <fieldset>
 <?php $this->renderPartial('/../../../views/contact/_form', array('model' => $contact, 'form' => $form));?>
-<!--//('/../../../views/contact/_form'-->
+<!--('/../../..
+/views/contact/_form'-->
                 <fieldset>
                 
                 
