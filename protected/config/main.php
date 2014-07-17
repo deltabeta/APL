@@ -27,7 +27,7 @@ return array(
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
                  'user'=>array(
-                     'tableUsers' => 'users',
+                        'tableUsers' => 'users',
                     'tableProfiles' => 'profiles',
                     'tableProfileFields' => 'profiles_fields',
             # encrypting method (php hash function)
@@ -47,6 +47,8 @@ return array(
  
             # registration path
             'registrationUrl' => array('/user/registration'),
+//            # registration path
+//            'registrationCUrl' => array('/userC/registration'),
  
             # recovery password path
             'recoveryUrl' => array('/user/recovery'),

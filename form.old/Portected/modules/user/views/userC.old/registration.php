@@ -16,18 +16,11 @@ $this->breadcrumbs = array(
         <?php
         $this->widget(
                 'booster.widgets.TbPanel', array(
-            'title' => 'Add Yourself As A Journalist',
+            'title' => 'Add Yourself As A Clint',
             'context' => 'primary',
             'headerIcon' => 'user',
-            'content' => 'You, being a journalist, freelancer, '
-            . 'blogger or employed by a publisher, '
-            . 'can register yourself with the Africa Press List.'
-            . ' We will check your data and add you to the list.'
-            . ' If you are included in our list, '
-            . 'you will receive automatically targeted press releases from companies and organizations with a special interest in Africa.'
-            . ' Furthermore, we will add you to the database through which interested companies can search for your services.'
-            . ' It is nice if we can do some promotion for you in return.'
-                )
+            'content' => 'You, being a Client, '
+           )
         )
                 ?>  </span>
     <div class="form col-sm-10">
@@ -49,7 +42,7 @@ $this->breadcrumbs = array(
             <?php // echo $form->errorSummary(array($model, $contact)); ?>
 <div id="monaccordeon">
         <div class="accordion-group">
-            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item0">login Information</div>
+            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item0">Personal Information</div>
             <div id="item0" class="collapse accordion-group in">
                 <div class="accordion-inner">
 
@@ -92,12 +85,12 @@ $this->breadcrumbs = array(
                         ));
                         ?>
         <?php echo $form->error($model, 'email'); ?>
+                  </div>
+                </div>
+            </div>     
         </div>
-                    </div>
-                </div>     
-            </div>
-
-            <br>
+    
+    <br>
 
         <?php
 //        $profileFields = Profile::getFields();
@@ -124,7 +117,7 @@ $this->breadcrumbs = array(
 //        }
         ?>
                 <fieldset>
-<?php $this->renderPartial('/../../../views/contact/_form', array('model' => $contact, 'form' => $form));?>
+<?php $this->renderPartial('/../../../views/user/_form', array('model' => $user, 'form' => $form));?>
 <!--//('/../../../views/contact/_form'-->
                 <fieldset>
                 
