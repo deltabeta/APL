@@ -108,7 +108,7 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=africapresslistdb',
+			'connectionString' => 'mysql:host=localhost;dbname=africapresslistbd',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => 'root',
