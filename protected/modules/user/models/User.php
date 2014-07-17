@@ -94,11 +94,11 @@ class User extends CActiveRecord {
 
         if (!isset($relations['Contact'])) {
             $relations['profile'] = array(self::HAS_ONE, 'Profile', 'user_id');
-            $relations['Contact'] = array(self::HAS_ONE, 'Contact', 'contact_id');
+            $relations['contact'] = array(self::HAS_ONE, 'Contact', 'contact_id');
             return $relations;
-        } elseif (!isset($relations['UserC'])) {
+        } elseif (!isset($relations['Client'])) {
             $relations['profile'] = array(self::HAS_ONE, 'Profile', 'user_id');            
-            $relations['Client'] = array(self::HAS_ONE, 'Client', 'user_id');
+            $relations['client'] = array(self::HAS_ONE, 'Client', 'user_id');
             return $relations;
         }
     }

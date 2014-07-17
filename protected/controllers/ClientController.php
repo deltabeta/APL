@@ -28,7 +28,7 @@ class ClientController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','create'),
+				'actions'=>array('index','dashbord','create'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -87,6 +87,12 @@ class ClientController extends Controller
                 
               
 	}
+          public function  actionDashbord($id){       
+         $this->render('dashbord', array(
+            'model' => $this->loadModel($id),
+        ));
+ 
+    }
 
 	/**
 	 * Updates a particular model.
