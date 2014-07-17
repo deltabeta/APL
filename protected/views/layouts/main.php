@@ -100,7 +100,7 @@
                             
                                 array('label' => 'Settings ', 'visible' => !Yii::app()->user->isGuest, 'items' => array(
                                
-                               // array('label' => 'My Profile', 'url' => array('/user/create')), 
+                               //    array('label' => 'My Profile', 'url' => array('/user/create')), 
                                 array('label' => 'My Profile', 'url' => array('/contact/dashbord/40')), 
                                   // 'url' => array('contact/dashbord' //'visible' => !Yii::app()->user->isGuest), 
                                    //or 'url' => array('/contact/view/id'),
