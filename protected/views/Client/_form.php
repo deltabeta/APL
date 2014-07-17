@@ -8,7 +8,7 @@
     <?php
     $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'id' => 'contact-form',
-        'htmlOptions' => array('class' => 'well'),
+        'htmlOptions' => array('class' => 'well','class' => 'col-sm-6'),
         'type' => 'horizontal',
         'enableClientValidation' => true,
         'clientOptions' => array(
@@ -18,13 +18,13 @@
         // controller action is handling ajax validation correctly.
         // There is a call to performAjaxValidation() commented in generated controller code.
         // See class documentation of CActiveForm for details on this.
-        'enableAjaxValidation' => false,
+        
     ));
     ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <!--<p class="note">Fields with <span class="required">*</span> are required.</p>-->
 
-    <?php echo $form->errorSummary($model); ?>
+    <?php  // echo $form->errorSummary($model); ?>
 
 
     <div class="row">
@@ -35,42 +35,47 @@
     <div class="row">
         <?php //echo $form->labelEx($model,'user_email'); ?>
         <?php
-        echo $form->textFieldGroup($model, 'user_email', array('size' => 60, 'maxlength' => 255,
-            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
-        ));
-        ?>
+//        echo $form->textFieldGroup($model, 'user_email', array('size' => 60, 'maxlength' => 255,
+//            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
+//        ));
+//        ?>
         <?php //echo $form->error($model, 'user_email'); ?>
     </div>
- <span class="label label-info"    
-                                >Minimum is 6 characters <br>Must contain at least one special character</span>
+<!-- <span class="label label-info"    
+                                >Minimum is 6 characters <br>Must contain at least one special character</span>-->
     <div class="row">
         <?php //echo $form->labelEx($model,'user_pass'); ?>
         <?php
-        echo $form->passwordFieldGroup($model, 'user_pass', array('size' => 60, 'maxlength' => 255,
-            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
-        ));
-        ?>
-        <?php echo $form->error($model, 'user_pass'); ?>
+//        echo $form->passwordFieldGroup($model, 'user_pass', array('size' => 60, 'maxlength' => 255,
+//            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
+//        ));
+//        ?>
+        <?php // echo $form->error($model, 'user_pass'); ?>
     </div>
     <div class="row">   
         <?php //echo $form->labelEx($model, 'repeat_password'); ?> 
         <?php
-        echo $form->passwordFieldGroup($model, 'user_pass_repeat', array('size' => 60, 'maxlength' => 255,
-            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
-        ));
-        ?>
-        <?php echo $form->error($model, 'user_pass_repeat'); ?>  </div>
+//        echo $form->passwordFieldGroup($model, 'user_pass_repeat', array('size' => 60, 'maxlength' => 255,
+//            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
+//        ));
+//        ?>
+        <?php // echo $form->error($model, 'user_pass_repeat'); ?>  </div>
     
     <div class="row">
         <?php //echo $form->labelEx($model, 'porfile_initials'); ?>
         <?php
-        echo $form->textFieldGroup($model, 'porfile_initials', array('size' => 60, 'maxlength' => 255,
-            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
-        ));
+//        echo $form->textFieldGroup($model, 'porfile_initials', array('size' => 60, 'maxlength' => 255,
+//            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
+//        ));
         ?>
-<?php echo $form->error($model, 'porfile_initials'); ?>
+<?php // echo $form->error($model, 'porfile_initials'); ?>
     </div>
 
+    <div id="monaccordeon">
+        <div class="accordion-group">
+            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item1">Personal Information</div>
+            <div id="item1" class="collapse accordion-group ">
+                <div class="accordion-inner">
     <div class="row">
         <?php //echo $form->labelEx($model, 'porfile_name_first'); ?>
         <?php
@@ -78,7 +83,7 @@
             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
         ));
         ?>
-<?php echo $form->error($model, 'porfile_name_first'); ?>
+<?php // echo $form->error($model, 'porfile_name_first'); ?>
     </div>
 
     <div class="row">
@@ -88,8 +93,20 @@
             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
         ));
         ?>
-        <?php echo $form->error($model, 'porfile_name_last'); ?>
+        <?php //echo $form->error($model, 'porfile_name_last'); ?>
+     </div>
+                </div>
+            </div>     
+        </div>
     </div>
+    <br>
+
+
+    <div id="monaccordeon">
+        <div class="accordion-group">
+            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item2">Address </div>
+            <div id="item2" class="collapse accordion-group ">
+                <div class="accordion-inner">
 
     <div class="row">
         <?php //echo $form->labelEx($model, 'porfile_address'); ?>
@@ -160,13 +177,20 @@ echo $form->textFieldGroup($model, 'porfile_city', array('size' => 60, 'maxlengt
             <?php // echo $form->textField($model,'departmentId'); ?>
             <?php // echo $form->textField($model,'contact_iso_country'); ?>
 <?php echo $form->error($model, 'porfile_camp_country'); ?>
-        </div>
-    
-    
-    
-    
-    
-    
+       
+                    </div>
+                </div>
+            </div>
+        </div>     
+    </div>
+    <br>
+
+
+    <div id="monaccordeon">
+        <div class="accordion-group">
+            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item3">Othres </div>
+            <div id="item3" class="collapse accordion-group">
+                <div class="accordion-inner">
     
     
     
@@ -374,13 +398,20 @@ echo $form->textFieldGroup($model, 'usetting_bounce_email', array('size' => 60, 
     </div>
     
     
-    <div class="row buttons" class="col-sm-3 control-label">
-        <?php $this->widget(    'booster.widgets.TbButton',
-                        array('buttonType' => 'submit', 'label' => 'Save')
-                        
-                ); ?>
-            
-		  
+<!--    <div class="row buttons" class="col-sm-3 control-label">
+        <?php
+//        $this->widget(    'booster.widgets.TbButton',
+//                        array('buttonType' => 'submit', 'label' => 'Save')
+//                        
+//                ); ?>
+           
+    </div>	  -->      
+        </div
+    </div>
+
+</div></div>
+
+    <br>
 
 <?php $this->endWidget(); ?>
-</div><!-- form -->
+<!-- form -->

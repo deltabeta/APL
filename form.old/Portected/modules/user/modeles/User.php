@@ -63,8 +63,7 @@ class User extends CActiveRecord {
         // will receive user inputs.CConsoleApplication
         return ((get_class(Yii::app()) == 'CConsoleApplication' || (get_class(Yii::app()) != 'CConsoleApplication' && Yii::app()->getModule('user')->isAdmin())) ? array(
                     array('username', 'length', 'max' => 20, 'min' => 3, 'message' => UserModule::t("Incorrect username (length between 3 and 20 characters).")),
-                    array('password', 'length', 'max' => 128, 'min' => 6, 'message' => UserModule::t("Incorrect password (minimal length 6 symbols).")),
-                    array('password', 'match', 'pattern' => '/\W/', 'message' => 'Password must contain at least one special character.'),    
+                    array('password', 'length', 'max' => 128, 'min' => 4, 'message' => UserModule::t("Incorrect password (minimal length 4 symbols).")),
                     array('email', 'email'),
                     array('username', 'unique', 'message' => UserModule::t("This user's name already exists.")),
                     array('email', 'unique', 'message' => UserModule::t("This user's email address already exists.")),
@@ -78,7 +77,7 @@ class User extends CActiveRecord {
                     array('id, username, password, email, activkey, create_at, lastvisit_at, superuser, status', 'safe', 'on' => 'search'),
                         ) : ((Yii::app()->user->id == $this->id) ? array(
                             array('username, email', 'required'),
-                            array('username', 'length', 'max' => 20, 'min' => 5, 'message' => UserModule::t("Incorrect username (length between 5 and 20 characters).")),
+                            array('username', 'length', 'max' => 20, 'min' => 3, 'message' => UserModule::t("Incorrect username (length between 3 and 20 characters).")),
                             array('email', 'email'),
                             array('username', 'unique', 'message' => UserModule::t("This user's name already exists.")),
                             array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => UserModule::t("Incorrect symbols (A-z0-9).")),
@@ -97,7 +96,9 @@ class User extends CActiveRecord {
             $relations['Contact'] = array(self::HAS_ONE, 'Contact', 'contact_id');
             return $relations;
         } elseif (!isset($relations['UserC'])) {
-            $relations['profile'] = array(self::HAS_ONE, 'Profile', 'user_id');            
+            $relations['profile'] = array(self::HAS_ONE, 'Profile', 'user_id');
+            //$relations['UserC'] = array(self::HAS_ONE, 'UserC', 'user_id');
+            
             $relations['Client'] = array(self::HAS_ONE, 'Client', 'user_id');
             return $relations;
         }

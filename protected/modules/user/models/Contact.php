@@ -51,15 +51,15 @@ class Contact extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('contact_email, contact_name_first, contact_name_last, contact_login_pass', 'required'),
+            array('contact_name_first, contact_name_last,', 'required'),
             array('contact_address_nr, contact_iso_country', 'numerical', 'integerOnly' => true),
-            array('contact_login_pass', 'length', 'max' => 32, 'min' => 6),
+            //array('contact_login_pass', 'length', 'max' => 32, 'min' => 6),
             // array('contact_login_pass', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/','message' => ("Incorrect symbols (A-z0-9)")),  
-            array('contact_login_pass', 'match', 'pattern' => '/\W/', 'message' => 'Password must contain at least one special character.'),
-            array('verifyPassword', 'compare', 'compareAttribute' => 'contact_login_pass', 'message' => ("Retype Password is incorrect.")),
+           // array('contact_login_pass', 'match', 'pattern' => '/\W/', 'message' => 'Password must contain at least one special character.'),
+          //  array('verifyPassword', 'compare', 'compareAttribute' => 'contact_login_pass', 'message' => ("Retype Password is incorrect.")),
             //    array('email', 'unique', 'message' => ("This user's email address already exists.")),
-            array('contact_email', 'email'),
-            array('contact_email, contact_name_ini, contact_name_first, contact_name_last, '
+          //  array('contact_email', 'email'),
+            array('contact_name_ini, contact_name_first, contact_name_last, '
                 . 'contact_adress, contact_address_addon, contact_city, contact_phone, '
                 . 'contact_website, contact_tw, contact_fb, contact_go, contact_yt, contact_li, '
                 . 'contact_imported_src', 'length', 'max' => 255),

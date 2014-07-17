@@ -1,6 +1,6 @@
 <?php
 
-class RegistrationController extends Controller {
+class RegistrationCController extends Controller {
 
     public $defaultAction = 'registration';
 
@@ -23,7 +23,7 @@ class RegistrationController extends Controller {
         Profile::$regMode = true;
         $model = new RegistrationForm;
         //$profile = new Profile;
-        $contact = new Contact;
+        $user =  new UserC;
 
         
         // ajax validator
@@ -35,12 +35,12 @@ class RegistrationController extends Controller {
         if (Yii::app()->user->id) {
             $this->redirect(Yii::app()->controller->module->profileUrl);
         } else {
-            if (isset($_POST['RegistrationForm'],$_POST['Contact'] )) {
+            if (isset($_POST['RegistrationForm'],$_POST['UserC'] )) {
                 $model->attributes = $_POST['RegistrationForm'];
-                $contact->attributes = $_POST['Contact'];
+                $user->attributes = $_POST['UserC'];
                
                 
-                if ($model->validate() && $contact->validate()) {
+                if ($model->validate() && $user->validate()) {
                     $soucePassword = $model->password;
                     $model->activkey = UserModule::encrypting(microtime() . $model->password);
                     $model->password = UserModule::encrypting($model->password);
@@ -49,10 +49,8 @@ class RegistrationController extends Controller {
                     $model->status = ((Yii::app()->controller->module->activeAfterRegister) ? User::STATUS_ACTIVE : User::STATUS_NOACTIVE);
 
                     if ($model->save(false)) {
-                        $contact->contact_id = $model->id;
-                         $contact->contact_adress= $model->email;
-                         $contact->contact_login_pass= $model->password = UserModule::encrypting($model->password);
-                        $contact->save(false);
+                        $user->user_id = $model->id;
+                        $user->save(false);
 
 
 
@@ -102,9 +100,9 @@ class RegistrationController extends Controller {
                         }
                     }
                 } else
-                    $contact->validate();
+                    $user->validate();
             }
-            $this->render('/user/registration', array('model' => $model, 'contact' => $contact));
+            $this->render('/userC/registration', array('model' => $model, 'user' => $user));
         }
     }
     

@@ -1,6 +1,6 @@
 <?php
 
-class RegistrationController extends Controller {
+class RegistrationClientController extends Controller {
 
     public $defaultAction = 'registration';
 
@@ -23,7 +23,7 @@ class RegistrationController extends Controller {
         Profile::$regMode = true;
         $model = new RegistrationForm;
         //$profile = new Profile;
-        $contact = new Contact;
+        $Client =  new Client;
 
         
         // ajax validator
@@ -35,12 +35,12 @@ class RegistrationController extends Controller {
         if (Yii::app()->user->id) {
             $this->redirect(Yii::app()->controller->module->profileUrl);
         } else {
-            if (isset($_POST['RegistrationForm'],$_POST['Contact'] )) {
+            if (isset($_POST['RegistrationForm'],$_POST['Client'] )) {
                 $model->attributes = $_POST['RegistrationForm'];
-                $contact->attributes = $_POST['Contact'];
+                $Client->attributes = $_POST['Client'];
                
                 
-                if ($model->validate() && $contact->validate()) {
+                if ($model->validate() && $Client->validate()) {
                     $soucePassword = $model->password;
                     $model->activkey = UserModule::encrypting(microtime() . $model->password);
                     $model->password = UserModule::encrypting($model->password);
@@ -49,10 +49,10 @@ class RegistrationController extends Controller {
                     $model->status = ((Yii::app()->controller->module->activeAfterRegister) ? User::STATUS_ACTIVE : User::STATUS_NOACTIVE);
 
                     if ($model->save(false)) {
-                        $contact->contact_id = $model->id;
-                         $contact->contact_adress= $model->email;
-                         $contact->contact_login_pass= $model->password = UserModule::encrypting($model->password);
-                        $contact->save(false);
+                        $Client->user_id = $model->id;
+                        $Client->user_email= $model->email;
+                        $Client->user_pass= $model->password = UserModule::encrypting($model->password);
+                        $Client->save(false);
 
 
 
@@ -102,11 +102,24 @@ class RegistrationController extends Controller {
                         }
                     }
                 } else
-                    $contact->validate();
+                    $Client->validate();
             }
-            $this->render('/user/registration', array('model' => $model, 'contact' => $contact));
+            $this->render('/client/registration', array('model' => $model, 'client' => $Client));
         }
     }
+    
+    
+    /**
+	 * Performs the AJAX validation.
+	 * @param User $model the model to be validated
+	 */
+	protected function performAjaxValidation($model)
+	{
+		if(isset($_POST['ajax']) && $_POST['ajax']==='Client-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+        }}
     
     
     

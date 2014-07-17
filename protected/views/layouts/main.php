@@ -92,7 +92,7 @@
                             'items' => array(
                                 '--',
                             array('label' => ' Sign-Up', 'items' => array(
-                                        array('label' => 'As Client', 'url' => array('/user/create')),
+                                        array('label' => 'As Client', 'url' => array('/user/registrationclient')),
                                         array('label' => 'As Journalist ', 'url' => array('/user/registration')),
                                     )
                                     , 'visible' => Yii::app()->user->isGuest),
