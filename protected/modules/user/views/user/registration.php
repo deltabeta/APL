@@ -132,6 +132,7 @@ $this->breadcrumbs = array(
                 
             <?php if (UserModule::doCaptcha('registration')): ?>
             <div class="row">
+                
                 <?php echo $form->labelEx($model, 'verifyCode'); ?>
 
         <?php $this->widget('CCaptcha'); ?>
