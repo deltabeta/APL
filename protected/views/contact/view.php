@@ -7,15 +7,15 @@ $this->breadcrumbs = array(
     $model->contact_id,
 );
 
-$this->menu = array(
-    // array('label' => 'List Contact', 'url' => array('index')),
-    //array('label' => 'Create Contact', 'url' => array('create')),
-    array('label' => 'Update Contact', 'url' => array('update', 'id' => $model->contact_id)),
-    array('label' => 'Delete Contact', 'url' => '#',
-        'linkOptions' => array('submit' => array('delete', 'id' => $model->contact_id),
-            'confirm' => 'Are you sure you want to delete this item?')),
-    array('label' => 'Manage Contact', 'url' => array('admin')),
-);
+//$this->menu = array(
+//    // array('label' => 'List Contact', 'url' => array('index')),
+//    //array('label' => 'Create Contact', 'url' => array('create')),
+//    array('label' => 'Update Contact', 'url' => array('update', 'id' => $model->contact_id)),
+//    array('label' => 'Delete Contact', 'url' => '#',
+//        'linkOptions' => array('submit' => array('delete', 'id' => $model->contact_id),
+//            'confirm' => 'Are you sure you want to delete this item?')),
+//    array('label' => 'Manage Contact', 'url' => array('admin')),
+//);
 ?>
 
 
