@@ -50,7 +50,7 @@ class RegistrationController extends Controller {
 
                     if ($model->save(false)) {
                         $contact->contact_id = $model->id;
-                         $contact->contact_adress= $model->email;
+                         $contact->contact_email= $model->email;
                          $contact->contact_login_pass= $model->password = UserModule::encrypting($model->password);
                         $contact->save(false);
 
