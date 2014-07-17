@@ -66,7 +66,7 @@
 
     
     <?php  echo $form->errorSummary($model); ?>
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <!--<p class="note">Fields with <span class="required">*</span> are required.</p>-->
     
     
     <div id="monaccordeon">
@@ -76,37 +76,37 @@
                 <div class="accordion-inner">
 
 
-                    <div class="row">
+<!--                    <div class="row">
                         <?php // echo $form->labelEx($model,'contact_email');  ?>
                         <?php // echo $form->labelEx($model,'contact_email'); ?>
                         <?php
-                        echo $form->textFieldGroup($model, 'contact_email', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
-                        ));
-                        ?>
-                        <?php echo $form->error($model, 'contact_email'); ?> <span class="label label-info"    
+//                        echo $form->textFieldGroup($model, 'contact_email', array('size' => 60, 'maxlength' => 255,
+//                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
+//                        ));
+//                        ?>
+                        <?php // echo $form->error($model, 'contact_email'); ?> <span class="label label-info"    
                               >Minimum is 6 characters <br>Must contain at least one special character</span>
-                    </div>     
+                    </div>     -->
 
                     <div class="row"> 
                         <?php //echo $form->labelEx($model,'contact_login_pass');  ?>
                         <?php
-                        echo $form->passwordFieldGroup($model, 'contact_login_pass', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
-                        ));
-                        ?>
-                        <?php echo $form->error($model, 'contact_login_pass'); ?>
+//                        echo $form->passwordFieldGroup($model, 'contact_login_pass', array('size' => 60, 'maxlength' => 255,
+//                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
+//                        ));
+//                        ?>
+                        <?php // echo $form->error($model, 'contact_login_pass'); ?>
 
                     </div>
 
                     <div class="row">
                         <?php //echo $form->labelEx($model,'contact_login_pass');  ?>
                         <?php
-                        echo $form->passwordFieldGroup($model, 'verifyPassword', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
-                        ));
-                        ?>
-                        <?php echo $form->error($model, 'verifyPassword'); ?>
+//                        echo $form->passwordFieldGroup($model, 'verifyPassword', array('size' => 60, 'maxlength' => 255,
+//                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
+//                        ));
+//                        ?>
+                        <?php // echo $form->error($model, 'verifyPassword'); ?>
                     </div>
 
 
@@ -388,7 +388,7 @@
         </div
     </div>
 
-
+</div>
 
     <br>
 

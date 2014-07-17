@@ -38,11 +38,11 @@ class ContactController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('dashbord','index', 'create'),
+                'actions' => array('dashbord', 'index', 'create','update'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view', 'update'),
+                'actions' => array('view'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -85,12 +85,11 @@ class ContactController extends Controller {
             'model' => $model,
         ));
     }
-    
-    public function  actionDashbord($id){       
-         $this->render('dashbord', array(
+
+    public function actionDashbord($id) {
+        $this->render('dashbord', array(
             'model' => $this->loadModel($id),
         ));
- 
     }
 
     /**
@@ -99,24 +98,29 @@ class ContactController extends Controller {
      * @param integer $id the ID of the model to be updated
      */
     public function actionUpdate($id) {
-        $model = $this->loadModel($id);
+        
+        $user = User::model()->findByPk(Yii::app()->user->id);
+        $user = User::model()->findByPk(Yii::app()->user->id);;
+        if (isset($_POST['User'], $_POST['Contact'])) {
+            $model->attributes = $_POST['User'];
+            $contact->attributes = $_POST['Contact'];
 
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-
-        if (isset($_POST['Contact'])) {
-            $model->attributes = $_POST['Contact'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->contact_id));
+            if ($user->validate() && $contact->validate()) {
+               if ($user->save(false)) {
+                         $contact->contact_adress= $model->email;
+                         $contact->contact_login_pass= $model->password = UserModule::encrypting($model->password);
+               $contact->save(false);}
+                Yii::app()->user->setFlash('profileMessage', UserModule::t("Changes is saved."));                               
+                  $this->redirect(array('/contact/dashbord/'.Yii::app()->user->id),array(
+			'model'=>$contact));;
+            }
         }
-
         $this->render('update', array(
-            'model' => $model,
+            'model' => $user,
+            'contact' => $contact,
         ));
     }
 
-    
-    
     /**
      * Deletes a particular model.
      * If deletion is successful, the browser will be redirected to the 'admin' page.

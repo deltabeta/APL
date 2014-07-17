@@ -92,7 +92,7 @@
                             'items' => array(
                                 '--',
                             array('label' => ' Sign-Up', 'items' => array(
-                                        array('label' => 'As Client', 'url' => array('/user/create')),
+                                        array('label' => 'As Client', 'url' => array('/user/registrationclient')),
                                         array('label' => 'As Journalist ', 'url' => array('/user/registration')),
                                     )
                                     , 'visible' => Yii::app()->user->isGuest),
@@ -100,8 +100,8 @@
                             
                                 array('label' => 'Settings ', 'visible' => !Yii::app()->user->isGuest, 'items' => array(
                                
-                               // array('label' => 'My Profile', 'url' => array('/user/create')), 
-                                array('label' => 'My Profile', 'url' => array('/contact/dashbord/40')), 
+                               //    array('label' => 'My Profile', 'url' => array('/user/create')), 
+                                array('label' => 'My Profile', 'url' => array('/contact/dashbord/42')), 
                                   // 'url' => array('contact/dashbord' //'visible' => !Yii::app()->user->isGuest), 
                                    //or 'url' => array('/contact/view/id'),
                                 array('label' => 'Logout', 'url' => array('/user/logout'),)// 'visible' => !Yii::app()->user->isGuest)    
