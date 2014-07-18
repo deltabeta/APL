@@ -4,11 +4,10 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
     <?php
     $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'id' => 'contact-form',
-        'htmlOptions' => array('class' => 'well','class' => 'col-sm-6'),
+        'htmlOptions' => array('class' => 'well','class' => 'col-sm-5'),
         'type' => 'horizontal',
         'enableClientValidation' => true,
         'clientOptions' => array(
@@ -27,12 +26,12 @@
     <?php  // echo $form->errorSummary($model); ?>
 
 
-    <div class="row">
+<!--    <div class="row">
         <?php //echo $form->labelEx($model,'user_package_id'); ?>
         <?php //echo $form->textFieldGroup($model, 'user_package_id'); ?>
         <?php //echo $form->error($model, 'user_package_id'); ?>
-    </div>
-    <div class="row">
+    </div>-->
+<!--    <div class="row">
         <?php //echo $form->labelEx($model,'user_email'); ?>
         <?php
 //        echo $form->textFieldGroup($model, 'user_email', array('size' => 60, 'maxlength' => 255,
@@ -40,10 +39,10 @@
 //        ));
 //        ?>
         <?php //echo $form->error($model, 'user_email'); ?>
-    </div>
+    </div>-->
 <!-- <span class="label label-info"    
                                 >Minimum is 6 characters <br>Must contain at least one special character</span>-->
-    <div class="row">
+<!--    <div class="row">
         <?php //echo $form->labelEx($model,'user_pass'); ?>
         <?php
 //        echo $form->passwordFieldGroup($model, 'user_pass', array('size' => 60, 'maxlength' => 255,
@@ -51,8 +50,8 @@
 //        ));
 //        ?>
         <?php // echo $form->error($model, 'user_pass'); ?>
-    </div>
-    <div class="row">   
+    </div>-->
+<!--    <div class="row">   
         <?php //echo $form->labelEx($model, 'repeat_password'); ?> 
         <?php
 //        echo $form->passwordFieldGroup($model, 'user_pass_repeat', array('size' => 60, 'maxlength' => 255,
@@ -61,7 +60,7 @@
 //        ?>
         <?php // echo $form->error($model, 'user_pass_repeat'); ?>  </div>
     
-    <div class="row">
+    <div class="row">-->
         <?php //echo $form->labelEx($model, 'porfile_initials'); ?>
         <?php
 //        echo $form->textFieldGroup($model, 'porfile_initials', array('size' => 60, 'maxlength' => 255,
@@ -69,7 +68,7 @@
 //        ));
         ?>
 <?php // echo $form->error($model, 'porfile_initials'); ?>
-    </div>
+    <!--</div>-->
 
     <div id="monaccordeon">
         <div class="accordion-group">
