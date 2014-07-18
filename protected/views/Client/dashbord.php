@@ -17,7 +17,7 @@
                     </tr><tr><td>Address:</td>
                         <td><?php echo $model->porfile_address; ?></td></tr><tr>
 
-                        <td><?php echo $model->profile_phone; ?></td></tr><tr>
+                        <td><?php echo $model->porfile_phone; ?></td></tr><tr>
                     </tr><tr><td>Address:</td>
                         <td><?php echo $model->porfile_address ; ?></td></tr><tr>
 

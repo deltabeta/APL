@@ -97,7 +97,7 @@ class ClientController extends Controller
         
         
 
-        $model = User::model()->findByPk($id);
+        $model = Client::model()->findByPk($id);
 
         $this->render('dashbord', array(
             'model' => $model,
