@@ -8,18 +8,18 @@
             <img width="92" height="83" src="<?php echo Yii::app()->request->baseUrl; ?>/images/dash-info.png">
             <table cellspacing="0" cellpadding="2" style="margin-top: 15px;">
                 <tbody><tr><td>Full name:</td>
-                        <td><?php //echo $model->profile_name_first.' '.$model->profile_name_last; ?></td></tr><tr>
+                        <td><?php echo $model->porfile_name_first.' '.$model->porfile_name_last; ?></td></tr><tr>
                     </tr><tr><td>Email:</td>
-                        <td><a href="mailto:<?php //echo $model->user_email; ?>"><?php echo $model->user_email; ?></a></td></tr><tr>
+                        <td><a href="mailto:<?php echo $model->user_email; ?>"><?php echo $model->user_email; ?></a></td></tr><tr>
                     </tr><tr><td>Phone:</td>
-                        <td><?php //echo $model->profile_phone; ?></td></tr><tr>
+                        <td><?php echo $model->porfile_phone; ?></td></tr><tr>
                     </tr><tr><td>Address:</td>
-                        <td><?php echo $model->profile_address; ?></td></tr><tr>
+                        <td><?php echo $model->porfile_address; ?></td></tr><tr>
                     </tr><tr><td style="color:red;" colspan="2"></td></tr>
                 </tbody></table>
 
             <a title="Modify your account details" href="">
-                <div style="margin-top: 45px;" class="us-button-edit-profile"></div>
+                <div style="margin-top: 45px;" class="us-button-edit-porfile"></div>
             </a>
 
         </div>
@@ -67,7 +67,7 @@
 
             <div>
 
-                <!-- <a href="/en/profile/add-credits.html" title="Buy more credits">
+                <!-- <a href="/en/porfile/add-credits.html" title="Buy more credits">
                 <div class="us-button-buy" style="margin-bottom: 6px; margin-top: 2px;"></div>
                 </a> -->
 

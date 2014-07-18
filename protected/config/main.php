@@ -109,21 +109,21 @@ return array(
 		),
 		// uncomment the following to use a MySQL database
 		
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=africapresslistdb',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'root',
-			'charset' => 'utf8',
-		),
-            
-//                'db'=>array(
-//			'connectionString' => 'mysql:host=localhost;dbname=webside_apl',
+//		'db'=>array(
+//			'connectionString' => 'mysql:host=localhost;dbname=africapresslistdb',
 //			'emulatePrepare' => true,
-//			'username' => 'webside_apl',
-//			'password' => 'F}-LT[Z3Vns2',
+//			'username' => 'root',
+//			'password' => 'root',
 //			'charset' => 'utf8',
 //		),
+            
+                'db'=>array(
+			'connectionString' => 'mysql:host=localhost;dbname=webside_apl',
+			'emulatePrepare' => true,
+			'username' => 'webside_apl',
+			'password' => 'F}-LT[Z3Vns2',
+			'charset' => 'utf8',
+		),
 		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
