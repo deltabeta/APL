@@ -100,7 +100,7 @@ class Client extends APLActiveRecord
 		return array(
 			'contacts' => array(self::MANY_MANY, 'Contact', 'contact_client_blacklist(user_id, contact_id)'),
                                     'creditHistories' => array(self::HAS_MANY, 'CreditHistory', 'ch_user'),
-			'lists' => array(self::HAS_MANY, 'List', 'list_user'),
+			'lists' => array(self::HAS_MANY, 'ListUser', 'list_user'),
 			'paypal transactions' => array(self::HAS_MANY, 'Paypal transactions', 'pp_user_id'),
 			'presses' => array(self::HAS_MANY, 'Press', 'press_user'),
 			'porfileCampCountry' => array(self::BELONGS_TO, 'IsoCountry', 'porfile_camp_country'),
