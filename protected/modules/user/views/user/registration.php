@@ -49,7 +49,11 @@ $this->breadcrumbs = array(
             <?php // echo $form->errorSummary(array($model, $contact)); ?>
 <div id="monaccordeon">
         <div class="accordion-group">
+
+            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item0">Login Information</div>
+
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item0">login Information</div>
+
             <div id="item0" class="collapse accordion-group in">
                 <div class="accordion-inner">
 

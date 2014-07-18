@@ -6,7 +6,7 @@ class ContactController extends Controller {
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
-    public $layout = '//layouts/column2';
+    //public $layout = '//layouts/column2';
 
     /**
      * Declares class-based actions.
@@ -38,11 +38,11 @@ class ContactController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('dashbord','index', 'create'),
+                'actions' => array('dashbord', 'index', 'create','update'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view', 'update'),
+                'actions' => array('view'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -85,12 +85,11 @@ class ContactController extends Controller {
             'model' => $model,
         ));
     }
-    
-    public function  actionDashbord($id){       
-         $this->render('dashbord', array(
+
+    public function actionDashbord($id) {
+        $this->render('dashbord', array(
             'model' => $this->loadModel($id),
         ));
- 
     }
 
     /**
@@ -99,24 +98,24 @@ class ContactController extends Controller {
      * @param integer $id the ID of the model to be updated
      */
     public function actionUpdate($id) {
-        $model = $this->loadModel($id);
+        
 
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
+$model = Contact::model()->findByPk($id);
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
 
-        if (isset($_POST['Contact'])) {
-            $model->attributes = $_POST['Contact'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->contact_id));
-        }
+		if(isset($_POST['Contact']))
+		{
+			$model->attributes=$_POST['Contact'];
+			if($model->save())
+				$this->redirect(array('dashbord','id'=>$model->contact_id));
+		}
 
-        $this->render('update', array(
+		 $this->render('update', array(
             'model' => $model,
         ));
     }
 
-    
-    
     /**
      * Deletes a particular model.
      * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -162,7 +161,7 @@ class ContactController extends Controller {
      * @throws CHttpException
      */
     public function loadModel($id) {
-        $model = User::model()->findByPk($id);
+        $model = Contact::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;

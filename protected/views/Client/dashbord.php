@@ -8,13 +8,13 @@
             <img width="92" height="83" src="<?php echo Yii::app()->request->baseUrl; ?>/images/dash-info.png">
             <table cellspacing="0" cellpadding="2" style="margin-top: 15px;">
                 <tbody><tr><td>Full name:</td>
-                        <td><?php echo $model->contact_name_first.' '.$model->contact_name_last; ?></td></tr><tr>
+                        <td><?php //echo $model->profile_name_first.' '.$model->profile_name_last; ?></td></tr><tr>
                     </tr><tr><td>Email:</td>
-                        <td><a href="mailto:<?php echo $model->contact_email; ?>"><?php echo $model->contact_email; ?></a></td></tr><tr>
+                        <td><a href="mailto:<?php //echo $model->user_email; ?>"><?php echo $model->user_email; ?></a></td></tr><tr>
                     </tr><tr><td>Phone:</td>
-                        <td><?php echo $model->contact_phone; ?></td></tr><tr>
+                        <td><?php //echo $model->profile_phone; ?></td></tr><tr>
                     </tr><tr><td>Address:</td>
-                        <td><?php echo $model->contact_adress; ?></td></tr><tr>
+                        <td><?php echo $model->profile_address; ?></td></tr><tr>
                     </tr><tr><td style="color:red;" colspan="2"></td></tr>
                 </tbody></table>
 
@@ -26,18 +26,23 @@
        </div>
 <div class="span-9">
         <div class="udetail-box">
-            <h3 class="udash-header">Country</h3>
+            <h3 class="udash-header">Company</h3>
             <img width="92" height="83" src="<?php echo Yii::app()->request->baseUrl; ?>/images/dash-company.png">
             <table cellspacing="0" cellpadding="2" style="margin-top: 15px;">
                 <tbody>
+                    <tr><td>Company:</td>
+                        <td><?php echo $model->porfile_camp_name; ?></td></tr>
+                    <tr><td>Function:</td>
+                        <td><?php echo $model->porfile_camp_function; ?></td></tr>
                     <tr><td>Country:</td>
-                        <td><?php echo $model->contact_iso_country; ?></td></tr>
-                    <tr><td>City:</td>
-                        <td><?php echo $model->contact_city; ?></td></tr>
-                    <tr><td>Adress:</td>
-                        <td><?php echo $model->contact_adress; ?></td></tr>
-                    <tr><td>Addon:</td>
-                        <td><?php echo $model->contact_address_addon; ?></td></tr>
+                        <td><?php echo $model->porfile_camp_country; ?></td></tr>
+                    <tr><td>Email:</td>
+                        <td><?php echo $model->porfile_camp_email; ?></td></tr>
+                    <tr><td>Website:</td>
+                        <td><?php echo $model->porfile_camp_website; ?></td></tr>
+                    <tr><td>COC:</td>
+                        <td><?php echo $model->porfile_coc; ?></td></tr>
+                    
                     </tbody></table>
 
 
@@ -47,18 +52,17 @@
     <div class="span-9">
 
         <div class="udetail-box">
-            <h3 class="udash-header">Social Network</h3>
+            <h3 class="udash-header">Account Statistics</h3>
             <img width="92" height="83" src="<?php echo Yii::app()->request->baseUrl; ?>/images/dash-stats.png">
             <table cellspacing="0" cellpadding="2" style="margin-top: 15px;">
                 <tbody>
-                    <tr><td>Website:</td>
-                        <td><?php echo $model->contact_website; ?></td></tr>
-                    <tr><td>Facebook:</td>
-                        <td><?php echo $model->contact_fb; ?></td></tr>
-                    <tr><td>Twitter:</td>
-                        <td><?php echo $model->contact_tw; ?></td></tr>
-                    <tr><td>Google +:</td>
-                        <td><?php echo $model->contact_go; ?></td></tr>
+                    <tr><td>Type of Account:</td>
+                        <td></td></tr>
+                    <tr><td>Days left:</td>
+                        <td></td></tr>
+                    <tr><td>Press Releases Sent:</td>
+                        <td></td></tr>
+                    
                     </tbody></table>
 
             <div>
