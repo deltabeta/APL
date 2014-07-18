@@ -99,25 +99,20 @@ class ContactController extends Controller {
      */
     public function actionUpdate($id) {
         
-        $user = User::model()->findByPk(Yii::app()->user->id);
-        $user = User::model()->findByPk(Yii::app()->user->id);;
-        if (isset($_POST['User'], $_POST['Contact'])) {
-            $model->attributes = $_POST['User'];
-            $contact->attributes = $_POST['Contact'];
 
-            if ($user->validate() && $contact->validate()) {
-               if ($user->save(false)) {
-                         $contact->contact_adress= $model->email;
-                         $contact->contact_login_pass= $model->password = UserModule::encrypting($model->password);
-               $contact->save(false);}
-                Yii::app()->user->setFlash('profileMessage', UserModule::t("Changes is saved."));                               
-                  $this->redirect(array('/contact/dashbord/'.Yii::app()->user->id),array(
-			'model'=>$contact));;
-            }
-        }
-        $this->render('update', array(
-            'model' => $user,
-            'contact' => $contact,
+$model = Contact::model()->findByPk($id);
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Contact']))
+		{
+			$model->attributes=$_POST['Contact'];
+			if($model->save())
+				$this->redirect(array('dashbord','id'=>$model->contact_id));
+		}
+
+		 $this->render('update', array(
+            'model' => $model,
         ));
     }
 
