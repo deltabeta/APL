@@ -16,7 +16,7 @@ $this->breadcrumbs = array(
         <?php
         $this->widget(
                 'booster.widgets.TbPanel', array(
-            'title' => 'Add Yourself As A Clint',
+            'title' => 'Add Yourself As A Client',
             'context' => 'primary',
             'headerIcon' => 'user',
             'content' => 'You, being a Client, '
@@ -59,6 +59,7 @@ $this->breadcrumbs = array(
 
                             <span class="label label-info"    
                                   >Minimum is 6 characters <br>Must contain at least one special character</span></div>
+                      
                         <div class="row">
                             <?php //echo $form->labelEx($model, 'password'); ?>
                             <?php
@@ -91,9 +92,9 @@ $this->breadcrumbs = array(
                             ?>
                             <?php // echo $form->error($model, 'email'); ?>
                         </div>
-                    </div>
+                   
                 </div>     
-            </div>
+            </div> </div>
 
             <br>
 

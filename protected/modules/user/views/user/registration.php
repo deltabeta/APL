@@ -51,10 +51,7 @@ $this->breadcrumbs = array(
         <div class="accordion-group">
 
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item0">Login Information</div>
-
-            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item0">login Information</div>
-
-            <div id="item0" class="collapse accordion-group in">
+          <div id="item0" class="collapse accordion-group in">
                 <div class="accordion-inner">
 
 
@@ -62,28 +59,30 @@ $this->breadcrumbs = array(
         <div class="row">
     <?php // echo $form->labelEx($model, 'username'); ?>
     <?php echo $form->textFieldGroup($model, 'username', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
+                            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
-            <?php echo $form->error($model, 'username'); ?>
+            <?php echo $form->error($model, 'username'); ?>  <span class="label label-info"    
+                                  >Minimum is 6 characters <br>Must contain at least one special character</span></div>
+                       
         </div>
 
         <div class="row">
                 <?php //echo $form->labelEx($model, 'password'); ?>
                 <?php echo $form->passwordFieldgROUP($model, 'password', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
+                            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
     <?php echo $form->error($model, 'password'); ?>
-            <p class="hint">
-    <?php echo UserModule::t("Minimal password length 4 symbols."); ?>
-            </p>
+<!--            <p class="hint">
+    <?php // echo UserModule::t("Minimal password length 4 symbols."); ?>
+            </p>-->
         </div>
 
         <div class="row">
     <?php //echo $form->labelEx($model, 'verifyPassword'); ?>
     <?php echo $form->passwordFieldGroup($model, 'verifyPassword', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
+                            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
             <?php echo $form->error($model, 'verifyPassword'); ?>
@@ -92,7 +91,7 @@ $this->breadcrumbs = array(
         <div class="row">
     <?php //echo $form->labelEx($model, 'email'); ?>
         <?php echo $form->textFieldGroup($model, 'email', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
+                            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
         <?php echo $form->error($model, 'email'); ?>
@@ -101,7 +100,7 @@ $this->breadcrumbs = array(
                 </div>     
             </div>
 
-            <br>
+            
 
         <?php
 //        $profileFields = Profile::getFields();

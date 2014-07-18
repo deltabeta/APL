@@ -65,6 +65,7 @@ class ClientController extends Controller
  {
   $model=new Client;
                 
+
   // Uncomment the following line if AJAX validation is needed
    $this->performAjaxValidation($model);
 
@@ -72,6 +73,15 @@ class ClientController extends Controller
   {
    $model->attributes=$_POST['Client'];
    if($model->save())           
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
+
+		if(isset($_POST['Client']))
+		{
+			$model->attributes=$_POST['Client'];
+			if($model->save())           
+
 
 
                 $this->redirect(array('view', 'id' => $model->user_id));
@@ -81,12 +91,16 @@ class ClientController extends Controller
             'model' => $model,
         ));
     }
-
+ }
     public function actionDashbord($id) {
+
         
         
+
+        $model = User::model()->findByPk($id);
+
         $this->render('dashbord', array(
-            'model' => $this->loadModel($id),
+            'model' => $model,
 
         ));
     }

@@ -5,7 +5,7 @@ $this->breadcrumbs = array(
 );
 $this->menu = array(
     ((UserModule::isAdmin()) ? array('label' => UserModule::t('Manage Users'), 'url' => array('/user/admin')) : array()),
-    array('label' => UserModule::t('List User'), 'url' => array('/user')),
+   // array('label' => UserModule::t('List User'), 'url' => array('/user')),
     array('label' => UserModule::t('Edit'), 'url' => array('edit')),
     array('label' => UserModule::t('Change password'), 'url' => array('changepassword')),
     array('label' => UserModule::t('Logout'), 'url' => array('/user/logout')),
@@ -17,11 +17,36 @@ $this->menu = array(
         <?php echo Yii::app()->user->getFlash('profileMessage'); ?>
     </div>
 <?php endif; ?>
-<table class="dataGrid">
-    <tr>
-        <th class="label"><?php echo CHtml::encode($model->getAttributeLabel('username')); ?></th>
-        <td><?php echo CHtml::encode($model->username); ?></td>
-    </tr>
+<?php
+$this->widget(
+    'booster.widgets.TbDetailView',
+    array(
+        'data' => array(
+            'id' => 1,
+            'firstName' => $model->username,
+            'email' => $model->email,
+            'create_at' => $model->create_at,
+            'lastvisit_at' => $model->lastvisit_at,
+            'status'=> User::itemAlias("UserStatus", $model->status),
+        
+        ),
+        'attributes' => array(
+            array('name' => 'firstName', 'label' => 'Username : '),
+            array('name' => 'email', 'label' => 'email : '),
+            array('name' => 'create_at', 'label' => 'Create at : '),
+            array('name' => 'lastvisit_at', 'label' => 'Last Visit : '),
+            array('name' => 'status', 'label' => 'Status : '),
+
+
+        ),
+    )
+);
+ ?>
+<!--<table class="grid-view" >
+   <tr>
+        <th class="label  size-large label-info"><?php // echo CHtml::encode($model->getAttributeLabel('username')); ?></th>-->
+        <td><?php // echo CHtml::encode($model->username); ?></td>
+    <!--</tr></h3>--> 
     <?php
 //    $profileFields = ProfileField::model()->forOwner()->sort()->findAll();
 //    if ($profileFields) {
@@ -36,20 +61,21 @@ $this->menu = array(
 //        }$profile->getAttribute($field->varname)
 //    }
     ?>
-    <tr>
-        <th class="label"><?php echo CHtml::encode($model->getAttributeLabel('email')); ?></th>
-        <td><?php echo CHtml::encode($model->email); ?></td>
+<!--    <tr>
+        <th class="label label-info"><?php // echo CHtml::encode($model->getAttributeLabel('email')); ?></th>
+        <td><?php // echo CHtml::encode($model->email); ?></td>
     </tr>
     <tr>
-        <th class="label"><?php echo CHtml::encode($model->getAttributeLabel('create_at')); ?></th>
-        <td><?php echo $model->create_at; ?></td>
+        <th class="label label-info"><?php // echo CHtml::encode($model->getAttributeLabel('create_at')); ?></th>
+        <td><?php // echo $model->create_at; ?></td>
     </tr>
     <tr>
-        <th class="label"><?php echo CHtml::encode($model->getAttributeLabel('lastvisit_at')); ?></th>
-        <td><?php echo $model->lastvisit_at; ?></td>
+        <th class="label label-info"><?php // echo CHtml::encode($model->getAttributeLabel('lastvisit_at')); ?></th>
+        <td><?php // echo $model->lastvisit_at; ?></td>
     </tr>
     <tr>
-        <th class="label"><?php echo CHtml::encode($model->getAttributeLabel('status')); ?></th>
-        <td><?php echo CHtml::encode(User::itemAlias("UserStatus", $model->status)); ?></td>
+        <th class="label label-info"><?php//  echo CHtml::encode($model->getAttributeLabel('status')); ?></th>
+        <td><?php //echo CHtml::encode(User::itemAlias("UserStatus", $model->status)); ?></td>
     </tr>
-</table>
+</table>-->
+<BR><BR><BR><BR><BR><BR> 

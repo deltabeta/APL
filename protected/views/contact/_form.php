@@ -31,7 +31,7 @@
     <?php
     $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'id' => 'contact-form',
-        'htmlOptions' => array('class' => 'col-sm-6', 'class' => 'well'),
+        'htmlOptions' => array('class' => 'col-sm-5', 'class' => 'well'),
         'type' => 'horizontal',
         'enableClientValidation' => true,
         'clientOptions' => array(

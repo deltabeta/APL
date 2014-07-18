@@ -398,14 +398,13 @@ echo $form->textFieldGroup($model, 'usetting_bounce_email', array('size' => 60, 
     </div>
     
     
-   <div class="row buttons" class="col-sm-3 control-label">
-        <?php
-      $this->widget(    'booster.widgets.TbButton',
-                    array('buttonType' => 'submit', 'label' => 'Save')
-                       
-                ); ?>
+    <div class="row buttons" class="col-sm-3 control-label">
+        <?php        $this->widget(    'booster.widgets.TbButton',
+                        array('buttonType' => 'submit', 'label' => 'Save')
+                        
+               ); ?>
            
-    </div>	     
+    </div>	   
         </div
     </div>
 

@@ -50,7 +50,7 @@
                     <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
                         <li class="dropdown messages-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope"></i>
                                 <span class="label label-success">4</span>
                             </a>
@@ -283,8 +283,8 @@
             <aside class="left-side sidebar-offcanvas">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
-                  
-                    
+
+
                     <!-- search form -->
                     <form action="#" method="get" class="sidebar-form">
                         <div class="input-group">
@@ -314,8 +314,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?php echo Yii::app()->request->baseUrl.'/index.php/mailing/create'; ?>"><i class="fa fa-angle-double-right"></i> Create mailing</a></li>
-                                <li><a href="<?php echo Yii::app()->request->baseUrl.'/index.php/mailing'; ?>"><i class="fa fa-angle-double-right"></i> Mailing Management</a></li>
+                                <li><a href="<?php echo Yii::app()->request->baseUrl . '/index.php/mailing/create'; ?>"><i class="fa fa-angle-double-right"></i> Create mailing</a></li>
+                                <li><a href="<?php echo Yii::app()->request->baseUrl . '/index.php/mailing'; ?>"><i class="fa fa-angle-double-right"></i> Mailing Management</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -325,8 +325,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?php echo Yii::app()->request->baseUrl.'/index.php/webmenu/create'; ?>"><i class="fa fa-angle-double-right"></i> Create page</a></li>
-                                <li><a href="<?php echo Yii::app()->request->baseUrl.'/index.php/webmenu/admin'; ?>"><i class="fa fa-angle-double-right"></i> Pages management</a></li>
+                                <li><a href="<?php echo Yii::app()->request->baseUrl . '/index.php/webmenu/create'; ?>"><i class="fa fa-angle-double-right"></i> Create page</a></li>
+                                <li><a href="<?php echo Yii::app()->request->baseUrl . '/index.php/webmenu/admin'; ?>"><i class="fa fa-angle-double-right"></i> Pages management</a></li>
 
                             </ul>
                         </li>
@@ -427,12 +427,12 @@
                 <section class="content">
 
                     <!-- Small boxes (Stat box) -->
-                     <?php echo $content; ?>
+                    <?php echo $content; ?>
 
                     <!-- top row -->
                     <div class="row">
                         <div class="col-xs-12 connectedSortable">
-                            
+
                         </div><!-- /.col -->
                     </div>
                     <!-- /.row -->
@@ -440,8 +440,8 @@
                     <!-- Main row -->
                     <div class="row">
                         <!-- Left col -->
-                        
-                        
+
+
                     </div><!-- /.row (main row) -->
 
                 </section><!-- /.content -->
@@ -478,12 +478,14 @@
 
         <!-- AdminLTE App -->
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/js/AdminLTE/app.js" type="text/javascript"></script>
-        
+
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/js/AdminLTE/dashboard.js" type="text/javascript"></script>     
-        
+
         <!-- AdminLTE for demo purposes -->
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/js/AdminLTE/demo.js" type="text/javascript"></script>
 
     </body>
 </html>
+
+

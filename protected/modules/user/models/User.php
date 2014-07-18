@@ -218,5 +218,8 @@ class User extends CActiveRecord {
         }
         return parent::afterSave();
     }
-
+public function findByEmail($email)
+  {
+    return self::model()->findByAttributes(array('email' => $email));
+  }
 }

@@ -29,31 +29,35 @@ class ProfileController extends Controller
 	public function actionEdit()
 	{
 		$model = $this->loadUser();
-		$profile=$model->profile;
+                $id= Yii::app()->user->id;
+		//$profile=$model->profile;
+                $contact = Contact::model()->findByPk($id);
 		
 		// ajax validator
 		if(isset($_POST['ajax']) && $_POST['ajax']==='profile-form')
 		{
-			echo UActiveForm::validate(array($model,$profile));
+			echo UActiveForm::validate(array($model));
 			Yii::app()->end();
 		}
 		
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			$profile->attributes=$_POST['Profile'];
+			//$profile->attributes=$_POST['Profile'];
 			
-			if($model->validate()&&$profile->validate()) {
+			if($model->validate()) {
 				$model->save();
-				$profile->save();
+                                $contact->contact_email= $model->email;
+                                $contact->save(FALSE);
+				//$profile->save();
 				Yii::app()->user->setFlash('profileMessage',UserModule::t("Changes is saved."));
 				$this->redirect(array('/user/profile'));
-			} else $profile->validate();
+			} //else $profile->validate();
 		}
 
 		$this->render('edit',array(
 			'model'=>$model,
-			'profile'=>$profile,
+			//'profile'=>$profile,
 		));
 	}
 	
@@ -62,7 +66,14 @@ class ProfileController extends Controller
 	 */
 	public function actionChangepassword() {
 		$model = new UserChangePassword;
+                
+                
 		if (Yii::app()->user->id) {
+                    
+                    
+                $id= Yii::app()->user->id;
+                $contact = Contact::model()->findByPk($id);
+                
 			
 			// ajax validator
 			if(isset($_POST['ajax']) && $_POST['ajax']==='changepassword-form')
@@ -78,6 +89,8 @@ class ProfileController extends Controller
 						$new_password->password = UserModule::encrypting($model->password);
 						$new_password->activkey=UserModule::encrypting(microtime().$model->password);
 						$new_password->save();
+                                                $contact->contact_login_pass= $new_password->password = UserModule::encrypting($model->password);
+                                                $contact->save(false);
 						Yii::app()->user->setFlash('profileMessage',UserModule::t("New password is saved."));
 						$this->redirect(array("profile"));
 					}

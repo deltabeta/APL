@@ -12,9 +12,15 @@
                     </tr><tr><td>Email:</td>
                         <td><a href="mailto:<?php echo $model->user_email; ?>"><?php echo $model->user_email; ?></a></td></tr><tr>
                     </tr><tr><td>Phone:</td>
+
                         <td><?php echo $model->porfile_phone; ?></td></tr><tr>
                     </tr><tr><td>Address:</td>
                         <td><?php echo $model->porfile_address; ?></td></tr><tr>
+
+                        <td><?php echo $model->profile_phone; ?></td></tr><tr>
+                    </tr><tr><td>Address:</td>
+                        <td><?php echo $model->porfile_address ; ?></td></tr><tr>
+
                     </tr><tr><td style="color:red;" colspan="2"></td></tr>
                 </tbody></table>
 
