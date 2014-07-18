@@ -63,7 +63,7 @@
 //    
 //));
     ?>
-
+                <div class="form">
     
     <?php  echo $form->errorSummary($model); ?>
     <!--<p class="note">Fields with <span class="required">*</span> are required.</p>-->
@@ -72,7 +72,7 @@
     <div id="monaccordeon">
         <div class="accordion-group">
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item1">Personal Information</div>
-            <div id="item1" class="collapse accordion-group ">
+            <div id="item1" class="collapse accordion-group in">
                 <div class="accordion-inner">
 
 
@@ -397,4 +397,4 @@
 
     <?php $this->endWidget(); ?>
 
-<!-- form -->
+</div><!-- form -->

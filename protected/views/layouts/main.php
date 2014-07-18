@@ -97,16 +97,26 @@
                                     )
                                     , 'visible' => Yii::app()->user->isGuest),
                             array('label' => 'My Space', 'url' => array('/user/login'), 'visible' => Yii::app()->user->isGuest),
-                            
-                                array('label' => 'Settings ', 'visible' => !Yii::app()->user->isGuest, 'items' => array(
+                                
+                          array('label' => 'My Profile', 'url' => array('/user/profile'), 'visible' => !Yii::app()->user->isGuest), 
+                                
+                       array(
+                         'label' =>Yii::app()->getModule('user')->t("Logout") . ' (' . Yii::app()->user->name . ')',  'url' => array('/user/logout'),
+                        'visible' => !Yii::app()->user->isGuest),
+                       
+                        
+//                                
+                               // array('label' => 'Settings ', 'visible' => !Yii::app()->user->isGuest, 'items' => array(
                                
                                //    array('label' => 'My Profile', 'url' => array('/user/create')), 
-                                array('label' => 'My Profile', 'url' => array('/contact/update/'.Yii::app()->user->id)), 
+                               // array('label' => 'My Profile', 'url' => array('/contact/update/'.Yii::app()->user->id)), 
                                   // 'url' => array('contact/dashbord' //'visible' => !Yii::app()->user->isGuest), 
                                    //or 'url' => array('/contact/view/id'),
-                                array('label' => 'Logout', 'url' => array('/user/logout'),)// 'visible' => !Yii::app()->user->isGuest)    
-                            ),),),
-                        ),
+                               // array('label' => 'Logout', 'url' => array('/user/logout'),)// 'visible' => !Yii::app()->user->isGuest)    
+                            ),
+                            ),
+                       //    ),
+                     //   ),
                     ),
                         )
                 );

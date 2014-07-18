@@ -8,18 +8,23 @@ $this->menu=array(
 		?array('label'=>UserModule::t('Manage Users'), 'url'=>array('/user/admin'))
 		:array()),
    // array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
-    array('label'=>UserModule::t('Profile'), 'url'=>array('/user/profile')),
+     array('label'=>UserModule::t('My Profile'), 'url'=>array('/user/profile')),
+    array('label'=>UserModule::t('My Dashbord'), 'url' => array('/contact/dashbord/'.Yii::app()->user->id)), 
+    array('label'=>UserModule::t('Edit Login Information'), 'url'=>array('edit')),
+    array('label'=>UserModule::t('Edit Personal Information '), 'url'=>array('/contact/update/'.Yii::app()->user->id)),
     array('label'=>UserModule::t('Change password'), 'url'=>array('changepassword')),
-    array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
+    //array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
+    
+    
 );
-?><h1><?php echo UserModule::t('Edit profile'); ?></h1>
+?><h1><?php echo UserModule::t('Edit My profile'); ?></h1>
 
 <?php if(Yii::app()->user->hasFlash('profileMessage')): ?>
 <div class="success">
 <?php echo Yii::app()->user->getFlash('profileMessage'); ?>
 </div>
 <?php endif; ?>
-<div class="grid-view">
+<div class="form">
 <?php // $form=$this->beginWidget('CActiveForm', array(
 //	'id'=>'profile-form',
 //	'enableAjaxValidation'=>true,
