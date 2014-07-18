@@ -7,7 +7,7 @@ $this->menu=array(
 	((UserModule::isAdmin())
 		?array('label'=>UserModule::t('Manage Users'), 'url'=>array('/user/admin'))
 		:array()),
-    array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
+   // array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
     array('label'=>UserModule::t('Profile'), 'url'=>array('/user/profile')),
     array('label'=>UserModule::t('Change password'), 'url'=>array('changepassword')),
     array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
@@ -19,34 +19,71 @@ $this->menu=array(
 <?php echo Yii::app()->user->getFlash('profileMessage'); ?>
 </div>
 <?php endif; ?>
-<div class="grid-view-loading">
-    
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'profile-form',
-	'enableAjaxValidation'=>true,
-	'htmlOptions' => array('enctype'=>'multipart/form-data'),
-)); ?>
+<div class="grid-view">
+<?php // $form=$this->beginWidget('CActiveForm', array(
+//	'id'=>'profile-form',
+//	'enableAjaxValidation'=>true,
+//	'htmlOptions' => array('enctype'=>'multipart/form-data'),
+//)); ?>
 
+    
+     <?php
+    $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
+        'id' => 'profile-form',
+        'htmlOptions' => array('class' => 'col-sm-5', 'class' => 'well'),
+        'type' => 'horizontal',
+        'enableClientValidation' => true,
+        'clientOptions' => array(
+            'validateOnSubmit' => true,
+        ),
+        'enableAjaxValidation' => false,
+    ));
+    ?> 
+    
+    
+    
 	<p class="note"><?php echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?></p>
 
-	<?php // echo $form->errorSummary(array($model,$profile)); ?>
+	<?php  echo $form->errorSummary(array($model)); ?>
 
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($model,'username'); ?>
+		<?php // echo $form->labelEx($model,'username'); ?>
+		<?php echo $form->textFieldGroup($model,'username',array('size'=>20,'maxlength'=>20,
+                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',)
+                        ));?>
+		<?php   echo $form->error($model,'username'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128)); ?>
+		<?php // echo $form->labelEx($model,'email'); ?>
+		<?php echo $form->textFieldGroup($model,'email',array('size'=>60,'maxlength'=>128,
+                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',)
+                        ));?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? UserModule::t('Create') : UserModule::t('Save')); ?>
+<br>  <br>
+	<div class=" buttons row ">
+		<?php $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit',
+                    'size' => 'large',
+                    'context' => 'success', 
+                    'label' =>  (UserModule::t('Save')),
+//                );
+                        
+                      )) ;?>
+            
+          
 	</div>
+<!--        <div class="row buttons pull-right">-->
+                <?php
+//                $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'size' => 'large', 'context' => 'success', 'label' => 'Register')
+//                );
+//                ?>
+
+                <?php // echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');     ?>
+
+            <!--</div>-->  
+        
 
 <?php $this->endWidget(); ?>
 
