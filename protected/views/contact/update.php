@@ -31,7 +31,7 @@
     <?php
     $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'id' => 'contact-form',
-        'htmlOptions' => array('class' => 'col-sm-6', 'class' => 'well'),
+        'htmlOptions' => array('class' => 'col-sm-5', 'class' => 'well'),
         'type' => 'horizontal',
         'enableClientValidation' => true,
         'clientOptions' => array(
@@ -63,7 +63,7 @@
 //    
 //));
     ?>
-
+                <br> <br> <br> 
     
     <?php  echo $form->errorSummary($model); ?>
     <!--<p class="note">Fields with <span class="required">*</span> are required.</p>-->
@@ -372,28 +372,26 @@
                         // ));
                         ?>
                         <?php // echo $form->error($model, 'contact_status');  ?>
+                   
                     </div>
-
                 </div>
             </div>
+        </div>     
+    </div>
+    <br>
+<div class="row">
             <div class="buttons pull-right">
                 <?php
-                $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'size' => 'large', 'context' => 'success', 'label' => 'Register')
+                $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 
+                    'size' => 'large', 'context' => 'success', 'label' => 'Update')
                );
               ?>
 
                 <?php //echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');     ?>
-
+    </div> 
             </div>  
-        </div
-    </div>
-
-</div>
-
-    <br>
-
-
-
+        
+    
 
     <?php $this->endWidget(); ?>
 

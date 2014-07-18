@@ -16,7 +16,7 @@ $this->breadcrumbs = array(
         <?php
         $this->widget(
                 'booster.widgets.TbPanel', array(
-            'title' => 'Add Yourself As A Clint',
+            'title' => 'Add Yourself As A Client',
             'context' => 'primary',
             'headerIcon' => 'user',
             'content' => 'You, being a Client, '
