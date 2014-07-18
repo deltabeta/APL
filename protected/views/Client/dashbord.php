@@ -2,6 +2,8 @@
 <h1>Account Overview</h1>
 <div class="row">
  
+    
+    
     <div class="span-9">
         <div class="udetail-box">
             <h3 class="udash-header">Personal Information</h3>
