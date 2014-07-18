@@ -378,11 +378,11 @@
             </div>
             <div class="buttons pull-right">
                 <?php
-//                $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'size' => 'large', 'context' => 'success', 'label' => 'Register')
-//                );
-//                ?>
+                $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'size' => 'large', 'context' => 'success', 'label' => 'Register')
+               );
+              ?>
 
-                <?php // echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');     ?>
+                <?php //echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');     ?>
 
             </div>  
         </div
