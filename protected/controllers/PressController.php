@@ -6,7 +6,7 @@ class PressController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='layoutjournalist';
 
 	/**
 	 * @return array action filters
@@ -63,8 +63,8 @@ class PressController extends Controller
 	public function actionCreate()
 	{
 		$model=new Press;
-
-		// Uncomment the following line if AJAX validation is needed
+                $model->press_user=Yii::app()->user->id;
+               		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Press']))
@@ -77,6 +77,8 @@ class PressController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 		));
+                
+                
 	}
 
 	/**

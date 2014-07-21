@@ -70,7 +70,7 @@
 	</div>
 <h2>Publication Type & Date</h2>
 
-<div class="row">
+<!--<div class="row">
 		<?php echo $form->labelEx($model,'press_date'); ?>
 		<?php echo $form->textField($model,'press_date'); ?>
 		<?php echo $form->error($model,'press_date'); ?>
@@ -80,7 +80,7 @@
 		<?php echo $form->labelEx($model,'press_date_started'); ?>
 		<?php echo $form->textField($model,'press_date_started'); ?>
 		<?php echo $form->error($model,'press_date_started'); ?>
-	</div>
+	</div>-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'press_date_completed'); ?>
@@ -134,7 +134,7 @@
 		<?php echo $form->error($model,'press_pub_abc'); ?>
 	</div>
 
-	<div class="row">
+<!--	<div class="row">
 		<?php echo $form->labelEx($model,'press_pub_linkedin'); ?>
 		<?php echo $form->textField($model,'press_pub_linkedin'); ?>
 		<?php echo $form->error($model,'press_pub_linkedin'); ?>
@@ -150,7 +150,7 @@
 		<?php echo $form->labelEx($model,'press_pub_twitter'); ?>
 		<?php echo $form->textField($model,'press_pub_twitter'); ?>
 		<?php echo $form->error($model,'press_pub_twitter'); ?>
-	</div>
+	</div>-->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
