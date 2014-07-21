@@ -3,11 +3,16 @@ $this->pageTitle = Yii::app()->name . ' - ' . UserModule::t("Profile");
 $this->breadcrumbs = array(
     UserModule::t("Profile"),
 );
+ $contact= Contact::model()->findByPk(Yii::app()->user->id);
+ if ($contact!=null)
+     $varuser='contact';
+ else
+     $varuser='client';
 $this->menu = array(
     ((UserModule::isAdmin()) ? array('label' => UserModule::t('Manage Users'), 'url' => array('/user/admin')) : array()),
    // array('label' => UserModule::t('List User'), 'url' => array('/user')),
     
-    array('label'=>UserModule::t('My Dashbord'), 'url' => array('/contact/dashbord/'.Yii::app()->user->id)), 
+    array('label'=>UserModule::t('My Dashbord'), 'url' => array('/'.$varuser.'/dashbord/')), 
     array('label' => UserModule::t('Change password'), 'url' => array('changepassword')),
     array('label'=>UserModule::t('Edit Login Information'), 'url'=>array('edit')),
     array('label'=>UserModule::t('Edit Personal Information '), 'url'=>array('/contact/update/'.Yii::app()->user->id)),

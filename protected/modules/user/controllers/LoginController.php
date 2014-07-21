@@ -10,20 +10,18 @@ class LoginController extends Controller {
     public function actionLogin() {
         if (Yii::app()->user->isGuest) {
             $model = new UserLogin;
-            $contact=null;
-            $contact= Contact::model()->findByPk(Yii::app()->user->id);
-            
+            $contact = null;
             // collect user input data
             if (isset($_POST['UserLogin'])) {
                 $model->attributes = $_POST['UserLogin'];
                 // validate user input and redirect to previous page if valid
                 if ($model->validate()) {
                     $this->lastViset();
-                    if ($contact!=null)
-                  $this->redirect( Yii::app()->request->baseUrl.'/user/profile/');
+                    $contact = Contact::model()->findByPk(Yii::app()->user->id);
+                    if ($contact != null)
+                        $this->redirect(Yii::app()->request->baseUrl . '/contact/dashbord/');
                     else
-                        $this->redirect( Yii::app()->request->baseUrl.'/contact/dashbord/'.Yii::app()->user->id);
-
+                        $this->redirect(Yii::app()->request->baseUrl . '/client/dashbord/');
                 }
             }
             // display the login form
@@ -48,14 +46,14 @@ class LoginController extends Controller {
             ),
         );
     }
+
 //    
     /**
      * @return array action filters
      */
-    public function filters()
-    {
+    public function filters() {
         return array(
-            'accessControl', 
+            'accessControl',
         );
     }
 
@@ -64,17 +62,17 @@ class LoginController extends Controller {
      * This method is used by the 'accessControl' filter.
      * @return array access control rules
      */
-    public function accessRules()
-    {
+    public function accessRules() {
         return array(
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('oauthadmin'),
-                'users'=>UserModule::getAdmins(),
+                'actions' => array('oauthadmin'),
+                'users' => UserModule::getAdmins(),
             ),
-            array('deny',  // deny all users
-                                'actions'=>array('oauthadmin'),
-                'users'=>array('*'),
+            array('deny', // deny all users
+                'actions' => array('oauthadmin'),
+                'users' => array('*'),
             ),
         );
     }
+
 }
