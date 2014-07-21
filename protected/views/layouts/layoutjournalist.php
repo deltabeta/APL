@@ -68,7 +68,7 @@
                                 array('label' => 'My dashbord ', 'url' => array('/client/dashbord/')),
                                 array(
                                     'label' => 'My contact list',
-                                    'url' => '/contactList/index/',
+                                    'url' => array('/listContact/'),
                                     
                                 ),
                                 array('label' => 'New press Release', 'url' => array('/press/create')),
