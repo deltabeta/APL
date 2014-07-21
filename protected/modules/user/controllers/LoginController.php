@@ -10,6 +10,7 @@ class LoginController extends Controller {
     public function actionLogin() {
         if (Yii::app()->user->isGuest) {
             $model = new UserLogin;
+            $contact=null;
             $contact= Contact::model()->findByPk(Yii::app()->user->id);
             
             // collect user input data
@@ -19,9 +20,10 @@ class LoginController extends Controller {
                 if ($model->validate()) {
                     $this->lastViset();
                     if ($contact!=null)
-                          $this->redirect('/contact/dashbord/'.Yii::app()->user->id);
+                  $this->redirect( Yii::app()->request->baseUrl.'/user/profile/');
                     else
-                        $this->redirect('/client/dashbord/'.Yii::app()->user->id);
+                        $this->redirect( Yii::app()->request->baseUrl.'/contact/dashbord/'.Yii::app()->user->id);
+
                 }
             }
             // display the login form

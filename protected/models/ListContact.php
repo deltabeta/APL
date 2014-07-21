@@ -101,7 +101,7 @@ class ListContact extends CActiveRecord
         
         public function  nbcontacts(){
             
-            $contacts = $this->listUser;
+            $contacts = $this->contacts;
             print_r($contacts);
       return    $nb = (string)count($contacts)      ;
           
