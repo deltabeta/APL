@@ -72,7 +72,7 @@ class HOAuthAction extends CAction
 	/**
 	 * @var boolean $useYiiUser enables support of Yii user module
 	 */
-	public static $useYiiUser = true;
+	public static $useYiiUser = false;
 
 	/**
 	 * @var boolean $alwaysCheckPass flag to control password checking for the scenario, 
@@ -175,7 +175,7 @@ class HOAuthAction extends CAction
 		try{
 			// trying to authenticate user via social network
 			$oAuth = UserOAuth::model()->authenticate( $provider );
-			$user = $oAuth->profile;
+			$userProfile = $oAuth->profile;
 
 			// If we already have a user logged in, associate the authenticated 
 			// provider with the logged-in user

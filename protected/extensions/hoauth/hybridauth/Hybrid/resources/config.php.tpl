@@ -11,62 +11,62 @@
 
 return 
 	array(
-		"base_url" => "http://localhost/APL/index.php/", 
+		"base_url" => "#GLOBAL_HYBRID_AUTH_URL_BASE#", 
 
 		"providers" => array ( 
-//			// openid providers
-//			"OpenID" => array ( 
-//				"enabled" => #OPENID_ADAPTER_STATUS#
-//			),
-//
-//			"AOL"  => array ( 
-//				"enabled" => #AOL_ADAPTER_STATUS# 
-//			),
-//
-//			"Yahoo" => array ( 
-//				"enabled" => #YAHOO_ADAPTER_STATUS#,
-//				"keys"    => array ( "id" => "#YAHOO_APPLICATION_APP_ID#", "secret" => "#YAHOO_APPLICATION_SECRET#" )
-//			),
-//
-//			"Google" => array ( 
-//				"enabled" => #GOOGLE_ADAPTER_STATUS#,
-//				"keys"    => array ( "id" => "#GOOGLE_APPLICATION_APP_ID#", "secret" => "#GOOGLE_APPLICATION_SECRET#" )
-//			),
+			// openid providers
+			"OpenID" => array (
+				"enabled" => #OPENID_ADAPTER_STATUS#
+			),
+
+			"AOL"  => array ( 
+				"enabled" => #AOL_ADAPTER_STATUS# 
+			),
+
+			"Yahoo" => array ( 
+				"enabled" => #YAHOO_ADAPTER_STATUS#,
+				"keys"    => array ( "id" => "#YAHOO_APPLICATION_APP_ID#", "secret" => "#YAHOO_APPLICATION_SECRET#" )
+			),
+
+			"Google" => array ( 
+				"enabled" => #GOOGLE_ADAPTER_STATUS#,
+				"keys"    => array ( "id" => "#GOOGLE_APPLICATION_APP_ID#", "secret" => "#GOOGLE_APPLICATION_SECRET#" )
+			),
 
 			"Facebook" => array ( 
 				"enabled" => #FACEBOOK_ADAPTER_STATUS#,
-				"keys"    => array ( "id" => "  246399985561103", "secret" => "e52e6b85e8d1fde50afb6808c650c693" )
+				"keys"    => array ( "id" => "#FACEBOOK_APPLICATION_APP_ID#", "secret" => "#FACEBOOK_APPLICATION_SECRET#" )
 			),
 
 			"Twitter" => array ( 
 				"enabled" => #TWITTER_ADAPTER_STATUS#,
-				"keys"    => array ( "key" => "4JkmTIpHPAjq1p1t", "secret" => "tu0F0lybbPRBIL0qnbzWFfyqYqQkB6sBgJUlwBOUPEg5w7TBim" ) 
+				"keys"    => array ( "key" => "#TWITTER_APPLICATION_KEY#", "secret" => "#TWITTER_APPLICATION_SECRET#" ) 
 			),
 
-//			// windows live
-//			"Live" => array ( 
-//				"enabled" => #LIVE_ADAPTER_STATUS#,
-//				"keys"    => array ( "id" => "#LIVE_APPLICATION_APP_ID#", "secret" => "#LIVE_APPLICATION_SECRET#" ) 
-//			),
-//
-//			"MySpace" => array ( 
-//				"enabled" => #MYSPACE_ADAPTER_STATUS#,
-//				"keys"    => array ( "key" => "#MYSPACE_APPLICATION_KEY#", "secret" => "#MYSPACE_APPLICATION_SECRET#" ) 
-//			),
+			// windows live
+			"Live" => array ( 
+				"enabled" => #LIVE_ADAPTER_STATUS#,
+				"keys"    => array ( "id" => "#LIVE_APPLICATION_APP_ID#", "secret" => "#LIVE_APPLICATION_SECRET#" ) 
+			),
+
+			"MySpace" => array ( 
+				"enabled" => #MYSPACE_ADAPTER_STATUS#,
+				"keys"    => array ( "key" => "#MYSPACE_APPLICATION_KEY#", "secret" => "#MYSPACE_APPLICATION_SECRET#" ) 
+			),
 
 			"LinkedIn" => array ( 
 				"enabled" => #LINKEDIN_ADAPTER_STATUS#,
-				"keys"    => array ( "key" => "771y4v85zbk8kt", "secret" => "4JkmTIpHPAjq1p1t" ) 
+				"keys"    => array ( "key" => "#LINKEDIN_APPLICATION_KEY#", "secret" => "#LINKEDIN_APPLICATION_SECRET#" ) 
 			),
 
-//			"Foursquare" => array (
-//				"enabled" => #FOURSQUARE_ADAPTER_STATUS#,
-//				"keys"    => array ( "id" => "#FOURSQUARE_APPLICATION_APP_ID#", "secret" => "#FOURSQUARE_APPLICATION_SECRET#" ) 
-//			),
+			"Foursquare" => array (
+				"enabled" => #FOURSQUARE_ADAPTER_STATUS#,
+				"keys"    => array ( "id" => "#FOURSQUARE_APPLICATION_APP_ID#", "secret" => "#FOURSQUARE_APPLICATION_SECRET#" ) 
+			),
 		),
 
 		// if you want to enable logging, set 'debug_mode' to true  then provide a writable file by the web server on "debug_file"
-		"debug_mode" => TRUE,
+		"debug_mode" => false,
 
 		"debug_file" => ""
 	);
