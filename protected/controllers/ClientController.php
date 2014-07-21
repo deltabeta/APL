@@ -3,6 +3,8 @@
 
 class ClientController extends Controller
 {
+    
+    public $layout = 'layoutjournalist';
  /**
   * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
   * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -92,12 +94,9 @@ class ClientController extends Controller
         ));
     }
  }
-    public function actionDashbord($id) {
+    public function actionDashbord() {
 
-        
-        
-
-        $model = Client::model()->findByPk($id);
+        $model = Client::model()->findByPk(Yii::app()->user->id);
 
         $this->render('dashbord', array(
             'model' => $model,

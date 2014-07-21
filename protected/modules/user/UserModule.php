@@ -225,15 +225,37 @@ class UserModule extends CWebModule
 //$message->addTo('baseif@ymail.com');
 //$message->from = Yii::app()->params['adminEmail'];
 //Yii::app()->mail->send($message);
-         * 
+       /**
+	 * Send mail method
 	 */
-	public static function sendMail($email,$subject,$message) {
-    	    $adminEmail = Yii::app()->params['adminEmail'];
-	    $headers = "MIME-Version: 1.0\r\nFrom: $adminEmail\r\nReply-To: $adminEmail\r\nContent-Type: text/html; charset=utf-8";
-	    $message = wordwrap($message, 70);
-	    $message = str_replace("\n.", "\n..", $message);
-	    return mail($email,'=?UTF-8?B?'.base64_encode($subject).'?=',$message,$headers);
+        
+        public static function sendMail($email,$subject,$msg) {
+            Yii::import('ext.yii-mail.YiiMailMessage');
+             $message = new YiiMailMessage;
+             $message->from = Yii::app()->params['adminEmail'];  
+             $msg = str_replace("\n.", "\n..", $msg);
+             $message->setBody ( wordwrap($msg, 70));
+           // $adminEmail = Yii::app()->params['adminEmail'];
+            $message->subject =$subject;
+                    
+                    //"MIME-Version: 1.0\r\nFrom: $adminEmail\r\nReply-To: $adminEmail\r\nContent-Type: text/html; charset=utf-8";
+	 
+            $message->addTo($email);
+             
+               Yii::app()->mail->send($message);
+          
+             
+	   
+	   // return mail($email,'=?UTF-8?B?'.base64_encode($subject).'?=',$message,$headers);
 	}
+        
+//	public static function sendMail($email,$subject,$message) {
+//    	$adminEmail = Yii::app()->params['adminEmail'];
+//	    $headers = "MIME-Version: 1.0\r\nFrom: $adminEmail\r\nReply-To: $adminEmail\r\nContent-Type: text/html; charset=utf-8";
+//	    $message = wordwrap($message, 70);
+//	    $message = str_replace("\n.", "\n..", $message);
+//	    return mail($email,'=?UTF-8?B?'.base64_encode($subject).'?=',$message,$headers);
+//	}
 
     /**
      * Send to user mail

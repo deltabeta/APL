@@ -87,6 +87,11 @@ class ContactController extends Controller {
     }
 
     public function actionDashbord($id) {
+        
+       
+        
+        
+        
         $this->render('dashbord', array(
             'model' => $this->loadModel($id),
         ));

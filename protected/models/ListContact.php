@@ -103,23 +103,9 @@ class ListContact extends CActiveRecord
 	}
         
         
-        public function getListContacts(){
-            
-            return $this->contacts;
-            
-        }
+       
         
-        public function  nbcontacts(){
-            
-                //$contact = ListContact::model()->findByPk($id);
-                
-                //$contact->contacts;
-               
-            $contact = $this->getListContacts();
-            $nb = count($contact);
-          
-            return $nb;
-        }
+       
         	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
