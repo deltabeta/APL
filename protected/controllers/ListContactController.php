@@ -51,8 +51,13 @@ class ListContactController extends Controller
 	 */
 	public function actionView($id)
 	{
+           
+                $list = ListContact::model()->findByPk($id);
+                $contact = $list->contacts;
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+		
+			'contact'=>$contact,
 		));
 	}
 
@@ -123,8 +128,19 @@ class ListContactController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('ListContact');
+                
+                //$contact = ListContact::model()->findByPk(1);
+                //$contact->contacts;
+                //echo count($contact->contacts);
+                //echo Yii::app()->user->id;
+                $user = Client::model()->findByPk(Yii::app()->user->id);
+                //print_r($user);
+                $list = $user->lists;
+                 $list = CHtml::listData($list, 'list_id', 'list_name' );
+               
+                
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'list'=>$list,
 		));
 	}
 

@@ -70,7 +70,10 @@ class ListContact extends CActiveRecord
                       
 		);
 	}
-
+        
+        
+        
+        
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
@@ -99,13 +102,23 @@ class ListContact extends CActiveRecord
 		));
 	}
         
+        
+        public function getListContacts(){
+            
+            return $this->contacts;
+            
+        }
+        
         public function  nbcontacts(){
             
-            $contacts = $this->listUser;
-            print_r($contacts);
-      return    $nb = (string)count($contacts)      ;
+                //$contact = ListContact::model()->findByPk($id);
+                
+                //$contact->contacts;
+               
+            $contact = $this->getListContacts();
+            $nb = count($contact);
           
-           // return $nb;
+            return $nb;
         }
         	/**
 	 * Returns the static model of the specified AR class.

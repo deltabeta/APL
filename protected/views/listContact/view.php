@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>View ListContact #<?php echo $model->list_id; ?></h1>
+<h1>My List</h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -26,4 +26,23 @@ $this->menu=array(
 		'list_name',
 		'ist_notes',
 	),
-)); ?>
+));
+?>
+<h3>Contact List</h3>
+<?php
+$contact = CHtml::listData($contact, 'contact_id', 'contact_name_first' );
+echo '<table border="1" style="border:1px solid">';
+foreach($contact as $key => $value){
+    
+    echo '<tr><td>'.$value.'</td></tr>';
+    
+}
+echo '</table>';
+
+
+//$this->widget('zii.widgets.CListView', array(
+//	'dataProvider'=>$contact,
+//	'itemView'=>'contact/_view',
+//));
+
+?>
