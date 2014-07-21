@@ -82,8 +82,10 @@ class ListUserController extends Controller
                             
                             foreach($_POST['contacts'] as $value){
                                 
-                               $command = Yii::app()->db->createCommand("insert into list_contact values('".$listuser->list_id."','".$value."')");
-                               $command->execute();
+                            
+                                
+                               //$command = Yii::app()->db->createCommand("insert into list_contact values('".$listuser->list_id."','".$value."')");
+                               //$command->execute();
                             }
                               $this->redirect(array('view','id'=>$listuser->list_id));
                         }

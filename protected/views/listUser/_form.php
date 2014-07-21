@@ -49,9 +49,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'ist_notes'); ?>
-		<?php echo $form->textArea($model,'ist_notes',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'ist_notes'); ?>
+		<?php echo $form->labelEx($model,'list_notes'); ?>
+		<?php echo $form->textArea($model,'list_notes',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'list_notes'); ?>
 	</div>
 
 	<div class="row buttons">
