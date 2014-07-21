@@ -1,6 +1,6 @@
 <?php
 
-class ListContactController extends Controller
+class ListUserController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -50,37 +50,53 @@ class ListContactController extends Controller
 	 * @param integer $id the ID of the model to be displayed
 	 */
 	public function actionView($id)
-	{
-           
-                $list = ListContact::model()->findByPk($id);
-                $contact = $list->contacts;
+	{               $contactDataProvider=new CActiveDataProvider('Contact',
+                array('criteria'=>array(
+                    'condition'=>'project_id=:projectId',
+                    'params'=>array(':projectId'=>$this->loadModel($id)->id),),
+                    'pagination'=>array('pageSize'=>1,)));
+                $this->render('view',array( 'model'=>$this->loadModel($id),'issueDataProvider'=>$issueDataProvider));
+            
+            
+            
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		
-			'contact'=>$contact,
+			'model'=>$this->loadModel($id),'issueDataProvider'=>$issueDataProvider
 		));
 	}
-
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
-	{
-		$model=new ListContact;
-
+	public function actionCreate($id)
+	{       $user = Client::model()->findByPk($id);
+		$listuser =new ListUser;
+                $contacts = Contact::model()->findAll();
+                $listcontact = CHtml::listData($contacts,'contact_id','contact_name_first');
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['ListContact']))
+		if(isset($_POST['ListUser']))
 		{
-			$model->attributes=$_POST['ListContact'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->list_id));
+                    
+			$listuser->attributes=$_POST['ListUser'];
+			if($listuser->save()){
+                            
+                            foreach($_POST['contacts'] as $value){
+                                
+                            
+                                
+                               //$command = Yii::app()->db->createCommand("insert into list_contact values('".$listuser->list_id."','".$value."')");
+                               //$command->execute();
+                            }
+                              $this->redirect(array('view','id'=>$listuser->list_id));
+                        }
+                      
+				
+                        
+                        
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$listuser,'contacts'=>$listcontact,'id_user'=>$id
 		));
 	}
 
@@ -96,9 +112,9 @@ class ListContactController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['ListContact']))
+		if(isset($_POST['ListUser']))
 		{
-			$model->attributes=$_POST['ListContact'];
+			$model->attributes=$_POST['ListUser'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->list_id));
 		}
@@ -127,20 +143,9 @@ class ListContactController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('ListContact');
-                
-                //$contact = ListContact::model()->findByPk(1);
-                //$contact->contacts;
-                //echo count($contact->contacts);
-                //echo Yii::app()->user->id;
-                $user = Client::model()->findByPk(Yii::app()->user->id);
-                //print_r($user);
-                $list = $user->lists;
-                 $list = CHtml::listData($list, 'list_id', 'list_name' );
-               
-                
+		$dataProvider=new CActiveDataProvider('ListUser');
 		$this->render('index',array(
-			'list'=>$list,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -149,10 +154,10 @@ class ListContactController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new ListContact('search');
+		$model=new ListUser('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['ListContact']))
-			$model->attributes=$_GET['ListContact'];
+		if(isset($_GET['ListUser']))
+			$model->attributes=$_GET['ListUser'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -163,12 +168,12 @@ class ListContactController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return ListContact the loaded model
+	 * @return ListUser the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=ListContact::model()->findByPk($id);
+		$model=ListUser::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -176,11 +181,11 @@ class ListContactController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param ListContact $model the model to be validated
+	 * @param ListUser $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='list-contact-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='list-user-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
