@@ -10,16 +10,18 @@ class LoginController extends Controller {
     public function actionLogin() {
         if (Yii::app()->user->isGuest) {
             $model = new UserLogin;
+            $contact= Contact::model()->findByPk(Yii::app()->user->id);
+            
             // collect user input data
             if (isset($_POST['UserLogin'])) {
                 $model->attributes = $_POST['UserLogin'];
                 // validate user input and redirect to previous page if valid
                 if ($model->validate()) {
                     $this->lastViset();
-                    if (Yii::app()->getBaseUrl() . "/index.php" === Yii::app()->user->returnUrl)
-                        $this->redirect(Yii::app()->controller->module->returnUrl);
+                    if ($contact!=null)
+                          $this->redirect('/contact/dashbord/'.Yii::app()->user->id);
                     else
-                        $this->redirect(Yii::app()->user->returnUrl);
+                        $this->redirect('/client/dashbord/'.Yii::app()->user->id);
                 }
             }
             // display the login form
