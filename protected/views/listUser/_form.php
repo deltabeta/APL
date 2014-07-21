@@ -48,6 +48,11 @@
                 ?>
 	</div>
 
+        
+        
+        
+        
+        
 	<div class="row">
 		<?php echo $form->labelEx($model,'list_notes'); ?>
 		<?php echo $form->textArea($model,'list_notes',array('rows'=>6, 'cols'=>50)); ?>
