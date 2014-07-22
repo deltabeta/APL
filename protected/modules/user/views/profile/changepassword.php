@@ -9,7 +9,7 @@ $this->menu=array(
 		:array()),
    // array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
     array('label'=>UserModule::t('My Profile'), 'url'=>array('/user/profile')),
-    array('label'=>UserModule::t('My Dashbord'), 'url' => array('/contact/dashbord/'), 
+    array('label'=>UserModule::t('My Dashbord'), 'url' => array('/contact/dashbord/')), 
     array('label'=>UserModule::t('Edit Login Information'), 'url'=>array('edit')),
     array('label'=>UserModule::t('Edit Personal Information '), 'url'=>array('/contact/update/'.Yii::app()->user->id)),
     
