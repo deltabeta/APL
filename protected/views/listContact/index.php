@@ -21,29 +21,29 @@ $this->breadcrumbs=array(
     <tr>
         <th id="list-contact-grid_c0">List name</th>
     <th id="list-contact-grid_c1">Nb contacts</th>
-    <th id="list-contact-grid_c2">Liste ajoutée</th>
-    <th id="list-contact-grid_c3">Liste modifièe</th>
+    <th id="list-contact-grid_c2">List Added</th>
+    <th id="list-contact-grid_c3">List Modified</th>
     <th></th>
     </tr>
     
      <?php
 
-
-foreach($list as $key => $value){
+foreach($list as  $value){
     
-    echo '<tr><td>'.$value.'</td>';
+    echo '<tr><td>'.$value->list_name.'</td>';
     
     //$nb = ListContact::model()->nbcontacts();
     
-    $contact = ListContact::model()->findByPk($key);
+    $contact = ListContact::model()->findByPk($value->list_id);
     $nb = count($contact->contacts);
     
     
-    echo '<td>'.$nb.'</td>
+    echo '<td>'.$nb.'</td>';
       
-        <td></td>
-        <td></td>
-<td>'.CHtml::link('Detail List',array('listContact/view/'.$key)).'</td>
+    if($value->list_added>0){ echo' <td>'.date('d/m/Y h:i',$value->list_added).'</td>';}else{echo' <td></td>';}
+    if($value->list_modified>0){ echo' <td>'.date('d/m/Y h:i',$value->list_modified).'</td>';}else{echo' <td></td>';}   
+    echo'
+<td>'.CHtml::link('Detail List',array('listContact/view/'.$value->list_id)).'</td>
 </tr>';    
 }
      

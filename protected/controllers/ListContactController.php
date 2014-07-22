@@ -71,16 +71,51 @@ class ListContactController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+                
 		if(isset($_POST['ListContact']))
 		{
-			$model->attributes=$_POST['ListContact'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->list_id));
+                    
+                        if(empty($_POST['listexist'])){
+                            $model->attributes=$_POST['ListContact'];
+                        
+                            if($model->save()){
+                                $contact = ListContact::model()->findByPk($model->list_id);
+                                $contacts_id = $_POST['contact_id'];
+                                $contact->contacts = $contacts_id;
+                               $contact->save();
+                                $this->redirect(array('view','id'=>$model->list_id));
+                            }
+                        
+                        }
+                        else{
+                             $contact = ListContact::model()->findByPk($_POST['listexist']);
+                             $contacts = $contact->contacts;
+                             
+                             $i=0;
+                             foreach ($contacts as $value){
+                                 $anciencontact[$i] = $value->contact_id;
+                                 $i++;
+                             }
+                             
+                             $contacts_id = $_POST['contact_id'];
+                             
+                           
+                             
+                             $tabcontact = array_merge($anciencontact,$contacts_id);
+                             $contactinsert = array_unique($tabcontact);
+                             print_r($contactinsert);
+                             $contact->contacts = $contactinsert;
+                            
+                             $contact->save();                         
+                             $this->redirect(array('view','id'=>$_POST['listexist']));
+                        }
+			
+				
 		}
-
+                $contact = Contact::model()->findAll();
+                 $listcontact = ListContact::model()->findAll();
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model,'contact'=>$contact,'listcontact'=>$listcontact
 		));
 	}
 
@@ -136,13 +171,16 @@ class ListContactController extends Controller
                 $user = Client::model()->findByPk(Yii::app()->user->id);
                 //print_r($user);
                 $list = $user->lists;
-                 $list = CHtml::listData($list, 'list_id', 'list_name' );
+
                
                 
 		$this->render('index',array(
 			'list'=>$list,
 		));
 	}
+        
+        
+        
 
 	/**
 	 * Manages all models.
