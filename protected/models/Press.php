@@ -163,5 +163,16 @@ class Press extends CActiveRecord
 		return parent::model($className);
 	}
         
-        
+            public function GetPressName()
+    {
+
+            $listid = $this->list_id;
+            
+            $listname = ListContact::model()->findByPk($listid); 
+            return $listname->list_name;
+            
+            
+            
+            
+    }
 }
