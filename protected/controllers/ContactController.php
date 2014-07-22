@@ -86,14 +86,14 @@ class ContactController extends Controller {
         ));
     }
 
-    public function actionDashbord($id) {
+    public function actionDashbord() {
         
        
-        
+          $model = Contact::model()->findByPk(Yii::app()->user->id);
         
         
         $this->render('dashbord', array(
-            'model' => $this->loadModel($id),
+            'model' => $model,
         ));
     }
 

@@ -70,7 +70,10 @@ class ListContact extends CActiveRecord
                       
 		);
 	}
-
+        
+        
+        
+        
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
@@ -99,14 +102,10 @@ class ListContact extends CActiveRecord
 		));
 	}
         
-        public function  nbcontacts(){
-            
-            $contacts = $this->contacts;
-            print_r($contacts);
-      return    $nb = (string)count($contacts)      ;
-          
-           // return $nb;
-        }
+        
+       
+        
+       
         	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
