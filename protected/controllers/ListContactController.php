@@ -62,7 +62,7 @@ class ListContactController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionDoc() {
-    $doc = new ASolrDocument;
+ $doc = new ASolrDocument;
 $doc->id = 123;
 $doc->name = "test document";
 $doc->save(); // adds the document to solr

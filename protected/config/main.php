@@ -10,16 +10,17 @@ return array(
 	//'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Africa Press List',
         
-        "aliases" => array(
-        "packages" => dirname(__DIR__)."/packages/",
-        ),
+       
     
     
 	// preloading 'log' component
 	'preload'=>array('log'),
     
         'preload' => array('booster'),
-
+    
+     "aliases" => array(
+		"packages" => dirname(__DIR__)."/packages/",
+),
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
@@ -29,7 +30,7 @@ return array(
                 'application.modules.user.components.*',
                 'application.modules.rights.*',
                 'application.modules.rights.components.*',
-                'application.extensions.solr.*',
+                'application.packages.*',
         
                 ),
 
