@@ -24,6 +24,7 @@ return array(
                 'application.modules.user.components.*',
                 'application.modules.rights.*',
                 'application.modules.rights.components.*',
+                'application.extensions.solr.*',
         
                 ),
 
@@ -95,6 +96,22 @@ return array(
         'sourceLanguage'=>'en',	
 	// application components
 	'components'=>array(
+            
+            
+            'userSearch'=>array(
+            'class'=>'CSolrComponent',
+            'host'=>'localhost',
+            'port'=>8080,
+            'indexPath'=>'/solr/user'
+        ),
+      'commentSearch'=>array(
+            'class'=>'CSolrComponent',
+            'host'=>'localhost',
+            'port'=>8080,
+            'indexPath'=>'/solr/comment'
+        ),
+            
+            
             
              'curl' => array(
         'class' => 'ext.curl.curl',
