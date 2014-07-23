@@ -50,7 +50,7 @@ class Press extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array(' list_id', 'required'),
+			array('press_subject,list_id,press_content, press_sender_name, press_sender_email, press_replyto_name, press_replyto_email', 'required'),
 			array('press_user, list_id, press_contacts_mailed, press_contacts_failed, press_date, press_pub_abc, press_pub_linkedin, press_pub_facebook, press_pub_twitter', 'numerical', 'integerOnly'=>true),
 			array('press_subject, press_sender_name, press_sender_email, press_replyto_name, press_replyto_email, press_file_1, press_file_2, press_file_3', 'length', 'max'=>255),
 			array('press_status', 'length', 'max'=>1),

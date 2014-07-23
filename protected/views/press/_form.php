@@ -64,8 +64,8 @@
 
 
     <div class="row">
-        <?php // echo $form->labelEx($model, 'Subject:'); ?> 
-        <?php // echo $form->textFieldGroup($model, 'press_subject', array('size' => 60, 'maxlength' => 255)); ?>
+        <?php  echo $form->labelEx($model, 'Subject:'); ?> 
+        <?php  echo $form->textFieldGroup($model, 'press_subject', array('size' => 60, 'maxlength' => 255)); ?>
         <?php echo $form->error($model, 'press_subject'); ?>
     </div>
 
@@ -241,6 +241,7 @@
 				'widgetOptions' => array(
 					'options' => array(
 						'language' => 'fr',
+                                                'format'=>'yyyy-mm-dd'
 					),
 				),
 				'wrapperHtmlOptions' => array(
@@ -266,7 +267,7 @@
 				'widgetOptions' => array(
 					'data' => array(
 						'Q' =>'Send directly to Mail Queue (Publish Now)',
-                                                //'N' =>'Choose Date',
+                                                'N' =>'Choose Date',
                    
 						'D' =>'Dont Send (Save as draft for later)',
 					),
