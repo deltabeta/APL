@@ -24,7 +24,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Scheduled</h1>
+<h3>press releases sent</h3>
 
 
 <div id="list-contact-grid" class="grid-view">
