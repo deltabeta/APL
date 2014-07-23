@@ -36,7 +36,7 @@ $('.search-form form').submit(function(){
     <th id="list-contact-grid_c1">Sender</th>
     <th id="list-contact-grid_c2">Attachments</th>
     <th id="list-contact-grid_c3">Contact List</th>
-    <th id="list-contact-grid_c3">Date</th>
+    <th id="list-contact-grid_c3">Date Created</th>
      <th id="list-contact-grid_c3">Delete Press</th>
     <th></th>
     </tr>
