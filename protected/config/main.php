@@ -9,7 +9,12 @@
 return array(
 	//'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Africa Press List',
-
+        
+        "aliases" => array(
+        "packages" => dirname(__DIR__)."/packages/",
+        ),
+    
+    
 	// preloading 'log' component
 	'preload'=>array('log'),
     
@@ -98,18 +103,27 @@ return array(
 	'components'=>array(
             
             
-            'userSearch'=>array(
-            'class'=>'CSolrComponent',
-            'host'=>'localhost',
-            'port'=>8080,
-            'indexPath'=>'/solr/user'
+//            'contactSearch'=>array(
+//            'class'=>'CSolrComponent',
+//            'host'=>'localhost',
+//            'port'=>80,
+//            'indexPath'=>'/listContact/create'
+//        ),
+//      'commentSearch'=>array(
+//            'class'=>'CSolrComponent',
+//            'host'=>'localhost',
+//            'port'=>80,
+//            'indexPath'=>'/solr/comment'
+//        ),
+            
+            
+            "solr" => array(
+        "class" => "packages.solr.ASolrConnection",
+        "clientOptions" => array(
+            "hostname" => "localhost",
+            "port" => 8983,
         ),
-      'commentSearch'=>array(
-            'class'=>'CSolrComponent',
-            'host'=>'localhost',
-            'port'=>8080,
-            'indexPath'=>'/solr/comment'
-        ),
+     ),
             
             
             
