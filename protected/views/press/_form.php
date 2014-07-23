@@ -142,7 +142,8 @@
 			array(
 				'widgetOptions' => array(
 					'options' => array(
-						'language' => 'es',
+						'language' => 'fr',
+                                            'format' => 'yyyy-mm-dd',
 					),
 				),
 				'wrapperHtmlOptions' => array(
@@ -239,7 +240,7 @@
 			array(
 				'widgetOptions' => array(
 					'options' => array(
-						'language' => 'es',
+						'language' => 'fr',
 					),
 				),
 				'wrapperHtmlOptions' => array(
