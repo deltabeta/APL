@@ -55,6 +55,7 @@ class Press extends CActiveRecord
 			array('press_subject, press_sender_name, press_sender_email, press_replyto_name, press_replyto_email, press_file_1, press_file_2, press_file_3', 'length', 'max'=>255),
 			array('press_status', 'length', 'max'=>1),
 			array('press_date_completed', 'safe'),
+                         array('press_sender_email,press_replyto_email', 'email'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('press_id, press_user, list_id, press_subject, press_content, press_status, press_contacts_mailed, press_contacts_failed, press_date, press_date_started, press_date_completed, press_sender_name, press_sender_email, press_replyto_name, press_replyto_email, press_file_1, press_file_2, press_file_3, press_pub_abc, press_pub_linkedin, press_pub_facebook, press_pub_twitter', 'safe', 'on'=>'search'),

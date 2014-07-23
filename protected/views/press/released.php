@@ -37,19 +37,19 @@ $('.search-form form').submit(function(){
     <th id="list-contact-grid_c2">Attachments</th>
     <th id="list-contact-grid_c3">Contact List</th>
     <th id="list-contact-grid_c3">Date created</th>
-    <th id="list-contact-grid_c3">Date scheduled</th>
+    <th id="list-contact-grid_c3">Sent on</th>
     <th></th>
     </tr>
     
      <?php   
  foreach($presses as  $value){    
-   echo '<tr><td>'.'QUEUE'.'</td>';
+ if($value->press_status=='C') { echo '<tr><td>'.'Completed'.'</td>';}else{ echo '<tr><td>'.'Faild'.'</td>';}
    echo '<td>'.$value->press_subject.'</td>';   
     echo '<td>'.$value->press_sender_name.'</td>';   
     echo '<td>'.$value->press_file_1.$value->press_file_2.$value->press_file_3.'</td>'; 
     echo '<td>'.$value->GetPressName().'</td>';   
     echo '<td>'.$value->press_date.'</td>' ;
-          echo '<td>'.$value->press_date_started.'</td>';  
+     echo '<td>'.$value->press_date_completed.'</td>';  
 
    
 }    

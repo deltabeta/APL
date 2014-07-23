@@ -32,11 +32,11 @@ class ListContactController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('admin','create','update'),
+				'actions'=>array('admin','create','update','delete','deletelist'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('delete'),
+				'actions'=>array(''),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -155,6 +155,14 @@ class ListContactController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
+        
+        
+        public function actionDeletelist($id)
+	{
+		$this->loadModel($id)->delete();
+
+                $this->redirect(Yii::app()->request->baseUrl.'/listContact/index');
 	}
 
 	/**

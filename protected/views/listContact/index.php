@@ -24,6 +24,7 @@ $this->breadcrumbs=array(
     <th id="list-contact-grid_c2">List Added</th>
     <th id="list-contact-grid_c3">List Modified</th>
     <th></th>
+    <th></th>
     </tr>
     
      <?php
@@ -44,6 +45,7 @@ foreach($list as  $value){
     if($value->list_modified>0){ echo' <td>'.date('d/m/Y h:i',$value->list_modified).'</td>';}else{echo' <td></td>';}   
     echo'
 <td>'.CHtml::link('Detail List',array('listContact/view/'.$value->list_id)).'</td>
+    <td>'.CHtml::link('Delete List',array('listContact/deletelist/'.$value->list_id),array('onClick'=>'confirm("Sure to delete this row ?")')).'</td>
 </tr>';    
 }
      

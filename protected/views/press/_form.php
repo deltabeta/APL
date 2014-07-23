@@ -133,7 +133,7 @@
             </div>
     
     -->
-
+<!--
     <div class="row">
         <?php // echo $form->labelEx($model, 'press_date_completed'); ?>
         <?php echo $form->datePickerGroup(
@@ -152,25 +152,25 @@
 				'hint' => 'Click inside! This is a super cool date field.',
 				'prepend' => '<i class="glyphicon glyphicon-calendar"></i>'
 			)
-		); ?>
+		); ?> 
         
         <?php //echo $form->textFieldGroup($model, 'press_date_completed'); ?>
         <?php echo $form->error($model, 'press_date_completed'); ?>
     </div>
+-->
 
-
-    <div class="row">
+<!--    <div class="row">
         <?php // echo $form->labelEx($model, 'press_contacts_mailed'); ?>
         <?php echo $form->textFieldGroup($model, 'press_contacts_mailed'); ?>
         <?php echo $form->error($model, 'press_contacts_mailed'); ?>
-    </div>
-
+    </div>-->
+<!--
     <div class="row">
         <?php // echo $form->labelEx($model, 'press_contacts_failed'); ?>
         <?php echo $form->textFieldGroup($model, 'press_contacts_failed'); ?>
         <?php echo $form->error($model, 'press_contacts_failed'); ?>
     </div>
-
+-->
 
 
 
@@ -197,11 +197,11 @@
     <?php echo $form->error($model, 'press_file_3'); ?>
             </div>-->
 
-    <div class="row">
+<!--    <div class="row">
         <?php // echo $form->labelEx($model, 'press_pub_abc'); ?>
         <?php echo $form->textFieldGroup($model, 'press_pub_abc'); ?>
         <?php echo $form->error($model, 'press_pub_abc'); ?>
-    </div>
+    </div>-->
 
     <!--	<div class="row">
     <?php echo $form->labelEx($model, 'press_pub_linkedin'); ?>
@@ -265,8 +265,8 @@
                                  ),
 				'widgetOptions' => array(
 					'data' => array(
-						'C' =>'Send directly to Mail Queue (Publish Now)',
-                                                'Q' =>'Choose Date',
+						'Q' =>'Send directly to Mail Queue (Publish Now)',
+                                                //'N' =>'Choose Date',
                    
 						'D' =>'Dont Send (Save as draft for later)',
 					),

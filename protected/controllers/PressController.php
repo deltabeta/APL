@@ -30,7 +30,7 @@ class PressController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('delete','admin','drafts', 'create', 'update'),
+                'actions' => array('released','scheduled','delete','admin','drafts', 'create', 'update'),
                 'users' => array('@'),
             ),
 //            array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -58,7 +58,7 @@ class PressController extends Controller {
         $criteria->condition = 'press_user=:press_user AND press_status=:press_status';
         $criteria->params = array(':press_user' => $press_user, ':press_status' => 'Q');
         $presses = Press::model()->findAll($criteria);
-        $this->render('drafts', array(
+        $this->render('scheduled', array(
             'presses' => $presses,
         ));
         
@@ -92,6 +92,17 @@ class PressController extends Controller {
         $criteria->params = array(':press_user' => $press_user, ':press_status' => 'D');
         $presses = Press::model()->findAll($criteria);
         $this->render('drafts', array(
+            'presses' => $presses,
+        ));
+    }
+    
+    public function actionReleased() {
+        $press_user = Yii::app()->user->id;
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'press_user=:press_user AND (press_status=:press_status OR press_status=:press_status1 )';
+        $criteria->params = array(':press_user' => $press_user, ':press_status' =>'C', ':press_status1' =>'F');
+        $presses = Press::model()->findAll($criteria);
+        $this->render('released', array(
             'presses' => $presses,
         ));
     }
