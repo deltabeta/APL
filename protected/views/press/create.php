@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Press</h1>
+<h1>Add new Press-Release </h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
