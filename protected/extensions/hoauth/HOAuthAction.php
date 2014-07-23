@@ -73,7 +73,7 @@ class HOAuthAction extends CAction {
     /**
      * @var boolean $useYiiUser enables support of Yii user module
      */
-    public static $useYiiUser = false;
+    public static $useYiiUser = True;
 
     /**
      * @var boolean $alwaysCheckPass flag to control password checking for the scenario, 
@@ -329,7 +329,14 @@ class HOAuthAction extends CAction {
                     // we have new version of yii-user of about 06.2013
                     $profile->firstname = $userProfile->firstName;
                     $profile->lastname = $userProfile->lastName;
-
+                    
+                    $contact = new Contact;
+                    $contact->contact_name_first = $userProfile->firstName;
+                    $contact->contact_name_last = $userProfile->lastName;
+                    $contact->contact_email = $userProfile->email;
+                   
+                    $contact->save(false);
+                            
                     $profile->identifier = $userProfile->identifier;
                     $profile->webSiteURL = $userProfile->webSiteURL;
                     $profile->profileURL = $userProfile->profileURL;

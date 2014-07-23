@@ -31,7 +31,13 @@
             <table cellspacing="0" cellpadding="2" style="margin-top: 15px;">
                 <tbody>
                     <tr><td>Country:</td>
-                        <td><?php echo $model->contact_iso_country; ?></td></tr>
+                        <td><?php 
+                        
+                       
+                        if ($model->contact_iso_country){
+                         echo IsoCountry::model()->GetCountryName($model->contact_iso_country);
+                        } ?>
+                        </td></tr>
                     <tr><td>City:</td>
                         <td><?php echo $model->contact_city; ?></td></tr>
                     <tr><td>Adress:</td>
