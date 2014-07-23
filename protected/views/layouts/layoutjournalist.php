@@ -72,6 +72,15 @@
                                     
                                 ),
                                 array('label' => 'New press Release', 'url' => array('/press/create')),
+                                 array(
+                                    'label' => 'My press Releases',
+                                    'url' =>'/press/scheduled',
+                                    'items' => array(
+                                        array('label' => 'press Drafts', 'url' => array('/press/drafts')),
+                                        array('label' => 'press Scheduled', 'url' => array('/press/scheduled')),
+                                        array('label' => 'Press Sent on ', 'url' => array('/press/released')),
+                                      
+                                    )),
                                 array(
                         'label' => 'About Us',
                         'url' => '#',

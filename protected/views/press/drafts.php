@@ -24,9 +24,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Drafts</h1>
-
-
+<h3>Drafts</h3>
 <div id="list-contact-grid" class="grid-view">
 <table class="items">
     
