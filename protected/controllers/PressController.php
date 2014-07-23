@@ -30,7 +30,7 @@ class PressController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('released','scheduled','delete','admin','drafts', 'create', 'update'),
+                'actions' => array('released','scheduled','delete','admin','drafts', 'create', 'update','deletepress'),
                 'users' => array('@'),
             ),
 //            array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -138,7 +138,14 @@ class PressController extends Controller {
         $this->loadModel($id)->delete();
             $this->redirect('drafts');
     }
-
+    
+    public function actionDeletepress($id) {
+        
+        $this->loadModel($id)->delete();
+        $this->redirect(Yii::app()->request->baseUrl . '/press/index');
+        
+    }
+    
     /**
      * Lists all models.
      */
