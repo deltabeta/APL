@@ -43,7 +43,10 @@
                     <tr><td>Function:</td>
                         <td><?php echo $model->porfile_camp_function; ?></td></tr>
                     <tr><td>Country:</td>
-                        <td><?php echo $model->porfile_camp_country; ?></td></tr>
+                        <td><?php if ($model->porfile_camp_country){
+                         echo IsoCountry::model()->GetCountryName($model->porfile_camp_country);
+                        } 
+                        ?></td></tr>
                     <tr><td>Email:</td>
                         <td><?php echo $model->porfile_camp_email; ?></td></tr>
                     <tr><td>Website:</td>
