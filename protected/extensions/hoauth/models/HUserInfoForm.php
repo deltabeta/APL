@@ -61,7 +61,9 @@ class HUserInfoForm extends CFormModel {
 	 * @access public
 	 */
 	public function __construct($model, $emailAtt, $nameAtt = null, $scenario = 'both')
-	{
+	{ 
+               $contact = new Contact;
+               $client  = new Client;
 		if(empty($emailAtt))
 			throw new CException('$emailAtt can not be empty! Please specify email attribute name.');
 
@@ -70,8 +72,9 @@ class HUserInfoForm extends CFormModel {
 		if(empty($nameAtt))
 			$scenario = 'email';
 		else
-			$this->username = $model->$nameAtt;
+			$this->username = str_replace(' ', '_', $model->$nameAtt);
 
+       
 		// correcting scenarios, if some of fields is not empty
 		if ($this->scenario == 'both')
 		{
@@ -80,10 +83,28 @@ class HUserInfoForm extends CFormModel {
 			if(!empty($this->username))
 				$this->scenario = 'email';
 		}
-
+               
 		$this->nameAtt = $nameAtt;
 		$this->emailAtt = $emailAtt;
 		$this->_model = $model;
+               
+                
+               // echo  $model->id;
+                $contact->contact_id = $model->id;
+//                $contact->contact_name_first = $userProfile->firstName;
+//                $contact->contact_name_last = $userProfile->lastName;
+                $contact->contact_email = $model->$emailAtt;
+                $contact->save(false);
+                
+             
+//                    $Client->user_id = $model->id;
+////                    $Client->porfile_name_first = $userProfile->firstName;
+////                    $Client->porfile_name_last = $userProfile->lastName;
+//                    $Client->user_email = $model->$emailAtt;l;
+//                   
+//                    $Client->save(false);
+                
+                
 
 		parent::__construct($scenario);
 	}
@@ -325,6 +346,7 @@ class HUserInfoForm extends CFormModel {
 						'validateOnChange' => true,
 						),
 					),
+                            
 				), $this);
 		}
 		return $this->_form;
@@ -343,7 +365,7 @@ class HUserInfoForm extends CFormModel {
 	 */
 	public function getHeader()
 	{
-		$header = '';
+		$header = '\n';
 		switch($this->scenario)
 		{
 			case 'both':
@@ -357,6 +379,6 @@ class HUserInfoForm extends CFormModel {
 			break;
 		}
 
-		return "<p class=\"hFormHeader\">$header</p>";
+		return "<H3 class=\"hFormHeader\">$header</H3>";
 	}
 }

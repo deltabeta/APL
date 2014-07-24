@@ -48,7 +48,7 @@
  * @property User $userPackage
  * @property User[] $users
  */
-class Client extends APLActiveRecord 
+class Client extends CActiveRecord 
 {  
     
     public static $regMode = false;

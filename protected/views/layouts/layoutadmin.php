@@ -484,8 +484,11 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/admin/js/AdminLTE/demo.js" type="text/javascript"></script>
+        
+        
 
     </body>
 </html>
+
 
 
