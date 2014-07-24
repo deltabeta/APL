@@ -74,7 +74,7 @@
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item1">Personal Information</div>
             <div id="item1" class="collapse accordion-group in">
                 <div class="accordion-inner">
-
+<fieldset>
 
 <!--                    <div class="row">
                         <?php // echo $form->labelEx($model,'contact_email');  ?>
@@ -160,6 +160,7 @@
                         <?php // echo $form->textField($model,'contact_gender',array('size'=>1,'maxlength'=>1));  ?>
                         <?php echo $form->error($model, 'contact_gender'); ?>
                     </div>
+                        </fieldset>
                 </div>
             </div>     
         </div>
@@ -172,7 +173,7 @@
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item2">Address </div>
             <div id="item2" class="collapse accordion-group ">
                 <div class="accordion-inner">
-
+<fieldset>
                     <div class="row">
                         <?php //echo $form->labelEx($model,'contact_adress');   ?>
                         <?php
@@ -244,6 +245,7 @@
                         <?php echo $form->error($model, 'contact_city'); ?>
 
                     </div>
+                        </fieldset>
                 </div>
             </div>
         </div>     
@@ -256,6 +258,7 @@
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item3">Othres </div>
             <div id="item3" class="collapse accordion-group">
                 <div class="accordion-inner">
+                    <fieldset>
                     <div class="row">
                         <?php //echo $form->labelEx($model,'contact_phone');  ?>
                         <?php
@@ -373,7 +376,7 @@
                         ?>
                         <?php // echo $form->error($model, 'contact_status');  ?>
                     </div>
-
+</fieldset>
                 </div>
             </div>
             <div class="buttons pull-right">
@@ -384,7 +387,8 @@
 
                 <?php // echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');     ?>
 
-            </div>  
+            </div>
+            
         </div
     </div>
 
