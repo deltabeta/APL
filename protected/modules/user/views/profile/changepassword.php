@@ -3,16 +3,23 @@ $this->breadcrumbs=array(
 	UserModule::t("Profile") => array('/user/profile'),
 	UserModule::t("Change password"),
 );
+$contact= Contact::model()->findByPk(Yii::app()->user->id);
+ if ($contact!=null)
+     $varuser='contact';
+ else
+     $varuser='client';
+
 $this->menu=array(
 	((UserModule::isAdmin())
 		?array('label'=>UserModule::t('Manage Users'), 'url'=>array('/user/admin'))
 		:array()),
    // array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
     array('label'=>UserModule::t('My Profile'), 'url'=>array('/user/profile')),
-    array('label'=>UserModule::t('My Dashbord'), 'url' => array('/contact/dashbord/')), 
+    array('label'=>UserModule::t('My Dashbord'), 'url' => array('/'.$varuser.'/dashbord/')), 
     array('label'=>UserModule::t('Edit Login Information'), 'url'=>array('edit')),
-    array('label'=>UserModule::t('Edit Personal Information '), 'url'=>array('/contact/update/'.Yii::app()->user->id)),
     
+  array('label'=>UserModule::t('Edit Personal Information '), 'url'=>array('/'.$varuser.'/update/'.Yii::app()->user->id)),
+     
    // array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
 );
 ?>
@@ -30,7 +37,7 @@ $this->menu=array(
         'clientOptions' => array(
             'validateOnSubmit' => true,
         ),
-        'enableAjaxValidation' => false,
+        'enableAjaxValidation' => True,
     ));
     ?> 
 
@@ -72,8 +79,8 @@ $this->menu=array(
 <!--	<div class="row submit">
 	<?php // echo CHtml::submitButton(UserModule::t("Save")); ?>
 	</div>-->
-
-        <div class=" buttons row ">
+<div class="row">
+	<div class="buttons pull-right" >
 		<?php $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit',
                     'size' => 'large',
                     'context' => 'success', 
@@ -83,7 +90,7 @@ $this->menu=array(
                       )) ;?>
             
           
-	</div>
+	</div></div>
         
 <?php $this->endWidget(); ?>
 </div><!-- form -->

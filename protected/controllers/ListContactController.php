@@ -80,26 +80,6 @@ $docs = ASolrDocument::model()->findAll($criteria);
         $model = new ListContact;
 
 
-
-////To add or update many documents
-//
-//        Yii::app()->contactSearch->updateMany(array(
-//        '1' => array('id' => 1,
-//        'name' => 'tom',
-//        'age' => 25),
-//        '2' => array('id' => 2,
-//        'name' => 'pitt',
-//         'age' => 28   )
-//        ));
-//
-////To search in your index
-//        $result = Yii::app()->contactSearch->get('name:tom', 0, 20);
-//        echo "Results number is " . $result->response->numFound;
-//        foreach ($result->response->docs as $doc) {
-//            echo "{$doc->name} <br>";
-//        }
-
-
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
@@ -124,11 +104,7 @@ $docs = ASolrDocument::model()->findAll($criteria);
                     $anciencontact[$i] = $value->contact_id;
                     $i++;
                 }
-
                 $contacts_id = $_POST['contact_id'];
-
-
-
                 $tabcontact = array_merge($anciencontact, $contacts_id);
                 $contactinsert = array_unique($tabcontact);
                 print_r($contactinsert);

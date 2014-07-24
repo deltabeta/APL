@@ -15,7 +15,7 @@ $this->menu = array(
     array('label'=>UserModule::t('My Dashbord'), 'url' => array('/'.$varuser.'/dashbord/')), 
     array('label' => UserModule::t('Change password'), 'url' => array('changepassword')),
     array('label'=>UserModule::t('Edit Login Information'), 'url'=>array('edit')),
-    array('label'=>UserModule::t('Edit Personal Information '), 'url'=>array('/contact/update/'.Yii::app()->user->id)),
+    array('label'=>UserModule::t('Edit Personal Information '), 'url'=>array('/'.$varuser.'/update/'.Yii::app()->user->id)),
    // array('label' => UserModule::t('Logout'), 'url' => array('/user/logout')),
 );
 ?><h1><?php echo UserModule::t('Your profile'); ?></h1>

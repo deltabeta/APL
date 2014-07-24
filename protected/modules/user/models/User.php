@@ -62,10 +62,11 @@ class User extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.CConsoleApplication
         return ((get_class(Yii::app()) == 'CConsoleApplication' || (get_class(Yii::app()) != 'CConsoleApplication' && Yii::app()->getModule('user')->isAdmin())) ? array(
-                    array('username', 'length', 'max' => 20, 'min' => 3, 'message' => UserModule::t("Incorrect username (length between 3 and 20 characters).")),
+                    array('username', 'length', 'max' => 20, 'min' => 4, 'message' => UserModule::t("Incorrect username (length between 4 and 20 characters).")),
                     array('password', 'length', 'max' => 128, 'min' => 6, 'message' => UserModule::t("Incorrect password (minimal length 6 symbols).")),
                     array('password', 'match', 'pattern' => '/\W/', 'message' => 'Password must contain at least one special character.'),    
-                    array('email', 'email'),
+                    
+            array('email', 'email'),
                     array('username', 'unique', 'message' => UserModule::t("This user's name already exists.")),
                     array('email', 'unique', 'message' => UserModule::t("This user's email address already exists.")),
                     array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => UserModule::t("Incorrect symbols (A-z0-9).")),

@@ -3,16 +3,22 @@ $this->breadcrumbs=array(
 	UserModule::t("Profile")=>array('profile'),
 	UserModule::t("Edit"),
 );  
+
+$contact= Contact::model()->findByPk(Yii::app()->user->id);
+ if ($contact!=null)
+     $varuser='contact';
+ else
+     $varuser='client';
 $this->menu=array(
 	((UserModule::isAdmin())
 		?array('label'=>UserModule::t('Manage Users'), 'url'=>array('/user/admin'))
 		:array()),
    // array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
      array('label'=>UserModule::t('My Profile'), 'url'=>array('/user/profile')),
-    array('label'=>UserModule::t('My Dashbord'), 'url' => array('/contact/dashbord/'.Yii::app()->user->id)), 
+    array('label'=>UserModule::t('My Dashbord'), 'url' => array('/'.$varuser.'/dashbord/'.Yii::app()->user->id)), 
     array('label'=>UserModule::t('Edit Login Information'), 'url'=>array('edit')),
-    array('label'=>UserModule::t('Edit Personal Information '), 'url'=>array('/contact/update/'.Yii::app()->user->id)),
-    array('label'=>UserModule::t('Change password'), 'url'=>array('changepassword')),
+   array('label'=>UserModule::t('Edit Personal Information '), 'url'=>array('/'.$varuser.'/update/'.Yii::app()->user->id)),
+     array('label'=>UserModule::t('Change password'), 'url'=>array('changepassword')),
     //array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
     
     
@@ -35,13 +41,13 @@ $this->menu=array(
      <?php
     $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'id' => 'profile-form',
-        'htmlOptions' => array('class' => 'col-sm-5', 'class' => 'well'),
+        'htmlOptions' => array('class' => 'col-sm-4', 'class' => 'well'),
         'type' => 'horizontal',
         'enableClientValidation' => true,
         'clientOptions' => array(
             'validateOnSubmit' => true,
         ),
-        'enableAjaxValidation' => false,
+        'enableAjaxValidation' => True,
     ));
     ?> 
     
@@ -67,8 +73,8 @@ $this->menu=array(
                         ));?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
-<br>  <br>
-	<div class=" buttons row ">
+<div class="row">
+	<div class="buttons pull-right" >
 		<?php $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit',
                     'size' => 'large',
                     'context' => 'success', 
@@ -78,6 +84,7 @@ $this->menu=array(
                       )) ;?>
             
           
+	</div>  
 	</div>
 <!--        <div class="row buttons pull-right">-->
                 <?php

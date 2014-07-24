@@ -12,14 +12,15 @@ $this->breadcrumbs = array(
         <?php echo Yii::app()->user->getFlash('registration'); ?>
     </div>
 <?php else: ?>
-    <span class=span-10">
+    <span class="col-sm-10">
         <?php
         $this->widget(
                 'booster.widgets.TbPanel', array(
             'title' => 'Add Yourself As A Client',
             'context' => 'primary',
             'headerIcon' => 'user',
-            'content' => 'You, being a Client, '
+            'content' => 'You, being a Client, ',
+            'htmlOptions' => array('class' => 'col-sm-15'),
                 )
         )
         ?>  </span>
@@ -46,7 +47,7 @@ $this->breadcrumbs = array(
                 <div id="item0" class="collapse accordion-group in">
                     <div class="accordion-inner">
 
-
+<fieldset>
 
                         <div class="row">
                             <?php // echo $form->labelEx($model, 'username'); ?>
@@ -59,7 +60,7 @@ $this->breadcrumbs = array(
 
                             <span class="label label-info"    
                                   >Minimum is 6 characters <br>Must contain at least one special character</span></div>
-                      
+
                         <div class="row">
                             <?php //echo $form->labelEx($model, 'password'); ?>
                             <?php
@@ -92,9 +93,9 @@ $this->breadcrumbs = array(
                             ?>
                             <?php // echo $form->error($model, 'email'); ?>
                         </div>
-                   
-                </div>     
-            </div> </div>
+</fieldset>
+                    </div>     
+                </div> </div>
 
             <br>
 
@@ -124,29 +125,39 @@ $this->breadcrumbs = array(
 //            }
 //        }
             ?>
-            <fieldset>
-                <?php $this->renderPartial('/../../../views/client/_form', array('model' => $client, 'form' => $form)); ?>
-                <!--//('/../../../views/contact/_form'-->
-                <fieldset>
 
+            <?php $this->renderPartial('/../../../views/client/_form', array('model' => $client, 'form' => $form)); ?>
 
-                    <?php if (UserModule::doCaptcha('registration')): ?>
-                        <div class="row">
-                            <?php echo $form->labelEx($model, 'verifyCode'); ?>
+<fieldset>
 
-                            <?php $this->widget('CCaptcha'); ?>
-                            <?php echo $form->textField($model, 'verifyCode'); ?>
-                            <?php echo $form->error($model, 'verifyCode'); ?>
+            <?php if (UserModule::doCaptcha('registration')): ?>
+                <div class="row">
+                    <?php echo $form->labelEx($model, 'verifyCode'); ?>
 
-                            <p class="hint"><?php echo UserModule::t("Please enter the letters as they are shown in the image above."); ?>
-                                <br/><?php echo UserModule::t("Letters are not case-sensitive."); ?></p>
-                        </div>
-                    <?php endif; ?>
+                    <?php $this->widget('CCaptcha'); ?>
+                    <?php echo $form->textField($model, 'verifyCode'); ?>
+                    <?php echo $form->error($model, 'verifyCode'); ?>
 
-                    <div class="row submit">
-                        <?php echo CHtml::submitButton(UserModule::t("Register")); ?>
-                    </div>
+                    <p class="hint"><?php echo UserModule::t("Please enter the letters as they are shown in the image above."); ?>
+                        <br/><?php echo UserModule::t("Letters are not case-sensitive."); ?></p>
+                </div>
+    </fieldset>
+            <?php endif; ?>
 
-                    <?php $this->endWidget(); ?>
-                    </div><!-- form -->
-                <?php endif; ?>
+            <div class="row">
+	<div class="buttons pull-right" >
+		<?php $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit',
+                    'size' => 'large',
+                    'context' => 'success', 
+                    'label' =>  (UserModule::t('Register')),
+//                );
+                        
+                      )) ;?>
+            
+          
+	</div>  
+	</div>
+
+            <?php $this->endWidget(); ?>
+        </div><!-- form -->
+    <?php endif; ?>
