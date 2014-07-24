@@ -177,19 +177,19 @@
     <!--das muss gemacht werden  seif bitte nicht vergessen !!!!!!!!!!!!-->
    	
             <div class="row">
-    <?php echo $form->labelEx($model, 'press_file_1'); ?>
+    <?php //echo $form->labelEx($model, 'press_file_1'); ?>
     <?php echo $form->fileFieldGroup($model, 'press_file_1');?>
     <?php echo $form->error($model, 'press_file_1'); ?>     
             </div>
     
             <div class="row">
-    <?php echo $form->labelEx($model, 'press_file_2'); ?>
+    <?php //echo $form->labelEx($model, 'press_file_2'); ?>
     <?php echo $form->fileFieldGroup($model, 'press_file_2'); ?>
     <?php echo $form->error($model, 'press_file_2'); ?>
             </div>
     
             <div class="row">
-    <?php echo $form->labelEx($model, 'press_file_3'); ?>
+    <?php //echo $form->labelEx($model, 'press_file_3'); ?>
     <?php echo $form->fileFieldGroup($model, 'press_file_3'); ?>
     <?php echo $form->error($model, 'press_file_3'); ?>
             </div>
