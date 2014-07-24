@@ -24,9 +24,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Drafts</h1>
-
-
+<h3>Drafts</h3>
 <div id="list-contact-grid" class="grid-view">
 <table class="items">
     
@@ -49,7 +47,8 @@ $('.search-form form').submit(function(){
     echo '<td>'.$value->press_file_1.$value->press_file_2.$value->press_file_3.'</td>'; 
     echo '<td>'.$value->GetPressName().'</td>';   
     echo '<td>'.$value->press_date.'</td>';  
-    echo '<td>'.CHtml::link('Delete Press',array('delete/'.$value->list_id)).'</td>';
+    echo '<td>'.CHtml::link('Delete Press',array('press/deletepress/'.$value->list_id),array('onClick'=>'confirm("Sure to delete this row ?")')).'</td>
+</tr>';    
 
 
    

@@ -30,7 +30,7 @@ class PressController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('released','scheduled','delete','admin','drafts', 'create', 'update'),
+                'actions' => array('released','scheduled','delete','admin','drafts', 'create', 'update','deletepress'),
                 'users' => array('@'),
             ),
 //            array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -55,8 +55,8 @@ class PressController extends Controller {
     public function  actionScheduled(){
           $press_user = Yii::app()->user->id;
         $criteria = new CDbCriteria;
-        $criteria->condition = 'press_user=:press_user AND press_status=:press_status';
-        $criteria->params = array(':press_user' => $press_user, ':press_status' => 'Q');
+        $criteria->condition = 'press_user=:press_user AND (press_status=:press_status OR press_status=:press_status1)';
+        $criteria->params = array(':press_user' => $press_user, ':press_status' => 'Q', ':press_status1' =>'N');
         $presses = Press::model()->findAll($criteria);
         $this->render('scheduled', array(
             'presses' => $presses,
@@ -138,7 +138,14 @@ class PressController extends Controller {
         $this->loadModel($id)->delete();
             $this->redirect('drafts');
     }
-
+    
+    public function actionDeletepress($id) {
+        
+        $this->loadModel($id)->delete();
+        $this->redirect(Yii::app()->request->baseUrl . '/press/index');
+        
+    }
+    
     /**
      * Lists all models.
      */

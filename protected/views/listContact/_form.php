@@ -6,7 +6,6 @@
 <script>
     function read(){
         var selectElmt = document.getElementById('listexist');
-        alert(selectElmt.options[selectElmt.selectedIndex].value);
         if(selectElmt.options[selectElmt.selectedIndex].value!=''){
           document.getElementById("ListContact_list_name").readOnly = true;  
         }
