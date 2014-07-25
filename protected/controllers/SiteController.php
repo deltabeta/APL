@@ -17,6 +17,9 @@ class SiteController extends Controller {
             'page' => array(
                 'class' => 'CViewAction',
             ),
+            
+            
+            
             // OAUTH 
             'oauth' => array(
 // the list of additional properties of this action is below

@@ -24,6 +24,8 @@ class RegistrationController extends Controller {
         $model = new RegistrationForm;
         //$profile = new Profile;
         $contact = new Contact;
+    $categories = new BusinessCategory;
+    $iso_language = new IsoLanguage;
 
         
         // ajax validator
@@ -53,24 +55,35 @@ class RegistrationController extends Controller {
                          $contact->contact_email= $model->email;
                          $contact->contact_login_pass= $model->password = UserModule::encrypting($model->password);
                         $contact->save(false);
-
+                        
+                        $contactcat = Contact::model()->findByPk($contact->contact_id);
+                        $categories_id = $_POST['BusinessCategory']['cat_title'];
+                        $contact->businessCategories = $categories_id;
+                        
+                        $lang_iso = $_POST['IsoLanguage']['lang_iso'];
+                        $contact->isoLanguages = $lang_iso;
+                        
+                 /***************Ne pas oublier Swift mailier*************************/
+                        
+                        $contact->save();
+                        
 
 
 
                         if (Yii::app()->controller->module->sendActivationMail) {
 
 
-                            $activation_url = $this->createAbsoluteUrl('/user/activation/activation', array("activkey" => $model->activkey, "email" => $model->email));
-
-                            Yii::import('ext.yii-mail.YiiMailMessage');
-                            $message = new YiiMailMessage;
-                            $message->setBody(
-                                    UserModule::t("Please activate you account go to {activation_url}", array('{activation_url}' => $activation_url))
-                                    , 'text/html');
-                            $message->subject = UserModule::t("You registered from {site_name}", array('{site_name}' => Yii::app()->name));
-                            $message->addTo($model->email);
-                            $message->from = Yii::app()->params['adminEmail'];
-                            Yii::app()->mail->send($message);
+//                            $activation_url = $this->createAbsoluteUrl('/user/activation/activation', array("activkey" => $model->activkey, "email" => $model->email));
+//
+//                            Yii::import('ext.yii-mail.YiiMailMessage');
+//                            $message = new YiiMailMessage;
+//                            $message->setBody(
+//                                    UserModule::t("Please activate you account go to {activation_url}", array('{activation_url}' => $activation_url))
+//                                    , 'text/html');
+//                            $message->subject = UserModule::t("You registered from {site_name}", array('{site_name}' => Yii::app()->name));
+//                            $message->addTo($model->email);
+//                            $message->from = Yii::app()->params['adminEmail'];
+//                            Yii::app()->mail->send($message);
 
 
                             //UserModule::sendMail($user->email,$subject,$message);
@@ -104,7 +117,9 @@ class RegistrationController extends Controller {
                 } else
                     $contact->validate();
             }
-            $this->render('/user/registration', array('model' => $model, 'contact' => $contact));
+            
+            //$categories = BusinessCategory::model()->findAll();
+            $this->render('/user/registration', array('model' => $model, 'contact' => $contact, 'categories'=>$categories, 'iso_language'=>$iso_language));
         }
     }
     

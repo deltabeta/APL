@@ -55,10 +55,10 @@ class Contact extends CActiveRecord {
             array('contact_address_nr, contact_iso_country', 'numerical', 'integerOnly' => true),
             //array('contact_login_pass', 'length', 'max' => 32, 'min' => 6),
             // array('contact_login_pass', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/','message' => ("Incorrect symbols (A-z0-9)")),  
-           // array('contact_login_pass', 'match', 'pattern' => '/\W/', 'message' => 'Password must contain at least one special character.'),
-          //  array('verifyPassword', 'compare', 'compareAttribute' => 'contact_login_pass', 'message' => ("Retype Password is incorrect.")),
+          //  array('contact_login_pass', 'match', 'pattern' => '/\W/', 'message' => 'Password must contain at least one special character.'),
+           // array('verifyPassword', 'compare', 'compareAttribute' => 'contact_login_pass', 'message' => ("Retype Password is incorrect.")),
             //    array('email', 'unique', 'message' => ("This user's email address already exists.")),
-          //  array('contact_email', 'email'),
+           // array('contact_email', 'email'),
             array('contact_name_ini, contact_name_first, contact_name_last, '
                 . 'contact_adress, contact_address_addon, contact_city, contact_phone, '
                 . 'contact_website, contact_tw, contact_fb, contact_go, contact_yt, contact_li, '
@@ -108,11 +108,8 @@ class Contact extends CActiveRecord {
         // class name for the relations automatically generated below.
         return array(
             'contactIsoCountry' => array(self::BELONGS_TO, 'IsoCountry', 'contact_iso_country'),
-            'businessCategories' => array(self::MANY_MANY, 'BusinessCategory', 'contact_category(contact_id, cat_id)'),
-            'isoLanguages' => array(self::MANY_MANY, 'IsoLanguage', 'contact_language(contact_id, lang_iso)'),
             'user'=>array(self::HAS_ONE, 'User', 'id'),//////////////////////////////////////////////////
-            'companies' => array(self::MANY_MANY, 'Company', 'contact_geo_coverage(company_id, contact_id, geo_country_id)'),
-            'geo_countries' => array(self::MANY_MANY, 'IsoCountry', 'contact_geo_coverage(company_id, contact_id, geo_country_id)'),
+            'categories' => array(self::MANY_MANY, 'BusinessCategory', 'contact_category(cat_id, contact_id)'),
         
         );
     }
@@ -221,13 +218,13 @@ class Contact extends CActiveRecord {
         return parent::model($className);
     }
 
-//    public function afterSave() {
-//        if (get_class(Yii::app())=='CWebApplication'&&  Contact::$regMode==false) {
-//            Yii::app()->user->updateSession();
-//        }
-//        return parent::afterSave();
-//    }
-//    
+    public function afterSave() {
+        if (get_class(Yii::app())=='CWebApplication'&&  Contact::$regMode==false) {
+            Yii::app()->user->updateSession();
+        }
+        return parent::afterSave();
+    }
+    
     
     protected function afterValidate() {
         parent::afterValidate();
@@ -256,5 +253,5 @@ class Contact extends CActiveRecord {
             ),
         );
     }
-    
+
 }

@@ -80,9 +80,11 @@ class ContactController extends Controller {
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->contact_id));
         }
-
+        
+        
+        
         $this->render('create', array(
-            'model' => $model,
+            'model' => $model
         ));
     }
 

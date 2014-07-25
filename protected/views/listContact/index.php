@@ -10,8 +10,77 @@ $this->breadcrumbs=array(
 //	array('label'=>'Create ListContact', 'url'=>array('create')),
 //	array('label'=>'Manage ListContact', 'url'=>array('admin')),
 //);
+
+
+
 ?>
 
+
+<h1>Search For Journalists </h1>
+<div class="form">
+<?php
+    $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
+        'id' => 'search-form',
+        'htmlOptions' => array('class' => 'col-sm-5', 'class' => 'well'),
+        'type' => 'horizontal',
+        'enableClientValidation' => false,
+        'clientOptions' => array(
+            'validateOnSubmit' => true,
+        ),
+        // Please note: When you enable ajax validation, make sure the corresponding
+        // controller action is handling ajax validation correctly.
+        // There is a call to performAjaxValidation() commented in generated controller code.
+        // See class documentation of CActiveForm for details on this.
+        'enableAjaxValidation' => false,
+    ));
+    ?>
+
+
+<div class="row">
+                            <?php
+                         echo $form->dropDownListGroup(
+			$categories,
+			'cat_id',
+			array(
+				'wrapperHtmlOptions' => array(
+					'class' => 'col-sm-5',
+				),
+	   			'widgetOptions' => array(
+	   				'data' => CHtml::listData(BusinessCategory::model()->findAll(), 'cat_id', 'cat_title'
+                                ),
+					'htmlOptions' => array('multiple' => false),
+				)));
+                                           
+                            ?>
+                 </div>
+    
+    
+    
+    <div class="row">
+                            <?php
+                         echo $form->dropDownListGroup(
+			$isolanguages,
+			'lang_iso',
+			array(
+				'wrapperHtmlOptions' => array(
+					'class' => 'col-sm-5',
+				),
+	   			'widgetOptions' => array(
+	   				'data' => CHtml::listData(IsoLanguage::model()->findAll(), 'lang_iso', 'language'
+                                ),
+					'htmlOptions' => array('multiple' => false),
+				)));
+                                           
+                            ?>
+                 </div>
+ <div class="buttons pull-right">
+<?php $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'size' => 'large', 'context' => 'success', 'label' => 'Search')
+                ); ?>
+    </div>
+    <div class="row"></div>
+<?php $this->endWidget(); ?>
+
+</div><!-- form -->
 <h1>List Contacts</h1>
 
 

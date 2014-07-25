@@ -166,20 +166,50 @@ $docs = ASolrDocument::model()->findAll($criteria);
      * Lists all models.
      */
     public function actionIndex() {
-        $dataProvider = new CActiveDataProvider('ListContact');
+            
+        $categories = new BusinessCategory;
+        $isolanguages = new IsoLanguage;
+         if(isset($_POST['BusinessCategory']) or isset($_POST['IsoLanguage'])){
 
-        //$contact = ListContact::model()->findByPk(1);
-        //$contact->contacts;
-        //echo count($contact->contacts);
-        //echo Yii::app()->user->id;
-        $user = Client::model()->findByPk(Yii::app()->user->id);
-        //print_r($user);
-        $list = $user->lists;
-
-
+            if(isset($_POST['BusinessCategory'])){
+                $cat_id = $_POST['BusinessCategory']['cat_id'];
+            $fromcategory = ',contact_category';
+            $wherecategory = '  and contact_category.contact_id=list_contact.contact_id 
+                                and contact_category.cat_id='.$cat_id;
+            
+            }
+            
+            
+            if(isset($_POST['IsoLanguage'])){
+                $lang_iso = $_POST['IsoLanguage']['lang_iso'];
+                $fromlang = ',contact_language';
+                $wherelang = " and contact_language.contact_id=list_contact.contact_id
+                               and contact_language.lang_iso='".$lang_iso."'";
+                
+            }
+            
+            $sql = "select *  from list_contact, list $fromcategory $fromlang
+                    where list_contact.list_id=list.list_id
+                    $wherecategory
+                    $wherelang   
+                    ";
+            echo $sql;
+           $tab = Yii::app()->db->createCommand($sql)->queryAll();
+            
+            require_once 'protected/models/technique.php';
+            $technique = new Technique(); 
+            $list = $technique->arrayToObject($tab);
+           
+        }
+        else{
+            $user = Client::model()->findByPk(Yii::app()->user->id);
+            $list = $user->lists;
+        }
 
         $this->render('index', array(
             'list' => $list,
+            'categories' => $categories,
+            'isolanguages' => $isolanguages
         ));
     }
 

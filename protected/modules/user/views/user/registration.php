@@ -13,7 +13,9 @@ $this->breadcrumbs = array(
     </div>
 <?php else: ?>
     <span class="col-sm-10">
-        <?php
+       
+
+ <?php
         $this->widget(
                 'booster.widgets.TbPanel', array(
             'title' => 'Add Yourself As A Journalist',
@@ -136,7 +138,7 @@ $this->breadcrumbs = array(
 //        }
             ?>
 
-            <?php $this->renderPartial('/../../../views/contact/_form', array('model' => $contact, 'form' => $form)); ?>
+            <?php $this->renderPartial('/../../../views/contact/_form', array('model' => $contact, 'form' => $form,'categories' => $categories, 'iso_language'=>$iso_language)); ?>
             <!--//('/../../../views/contact/_form'-->
 
 

@@ -30,6 +30,7 @@ return array(
                 'application.modules.rights.*',
                 'application.modules.rights.components.*',
                 'application.extensions.solr.*',
+            
         
                 ),
 
