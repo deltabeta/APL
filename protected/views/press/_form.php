@@ -9,7 +9,7 @@
     <?php
     $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'id' => 'press-form',
-        'htmlOptions' => array('class' => 'col-sm-5', 'class' => 'well'),
+        'htmlOptions' => array('class' => 'col-sm-5', 'class' => 'well','enctype'=>'multipart/form-data'),
         'type' => 'horizontal',
         'enableClientValidation' => false,
         'clientOptions' => array(
@@ -175,27 +175,24 @@
 
 
     <!--das muss gemacht werden  seif bitte nicht vergessen !!!!!!!!!!!!-->
-    <!--	
+   	
             <div class="row">
-    <?php echo $form->labelEx($model, 'press_file_1'); ?>
-    <?php echo $form->textFieldGroup($model, 'press_file_1', array('size' => 60, 'maxlength' => 255,            
-        'wrapperHtmlOptions' => array('class' => 'col-sm-6',),       
-        ));                    
-    ?>
-    <?php echo $form->error($model, 'press_file_1'); ?>
+    <?php //echo $form->labelEx($model, 'press_file_1'); ?>
+    <?php echo $form->fileFieldGroup($model, 'press_file_1');?>
+    <?php echo $form->error($model, 'press_file_1'); ?>     
             </div>
     
             <div class="row">
-    <?php echo $form->labelEx($model, 'press_file_2'); ?>
-    <?php echo $form->textFieldGroup($model, 'press_file_2', array('size' => 60, 'maxlength' => 255)); ?>
+    <?php //echo $form->labelEx($model, 'press_file_2'); ?>
+    <?php echo $form->fileFieldGroup($model, 'press_file_2'); ?>
     <?php echo $form->error($model, 'press_file_2'); ?>
             </div>
     
             <div class="row">
-    <?php echo $form->labelEx($model, 'press_file_3'); ?>
-    <?php echo $form->textFieldGroup($model, 'press_file_3', array('size' => 60, 'maxlength' => 255)); ?>
+    <?php //echo $form->labelEx($model, 'press_file_3'); ?>
+    <?php echo $form->fileFieldGroup($model, 'press_file_3'); ?>
     <?php echo $form->error($model, 'press_file_3'); ?>
-            </div>-->
+            </div>
 
 <!--    <div class="row">
         <?php // echo $form->labelEx($model, 'press_pub_abc'); ?>

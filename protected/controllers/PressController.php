@@ -76,9 +76,18 @@ class PressController extends Controller {
 
         if (isset($_POST['Press'])) {
             $model->attributes = $_POST['Press'];
-            if ($model->save())
+              $model->press_file_1=CUploadedFile::getInstance($model,'press_file_1');
+              $model->press_file_2=CUploadedFile::getInstance($model,'press_file_2');
+               $model->press_file_3=CUploadedFile::getInstance($model,'press_file_3');
+            if ($model->save()){
+               if($model->press_file_1!=null)
+                 $model->press_file_1->saveAs(Yii::app()->basePath . '/../uploads/'.$model->press_file_1);
+               if($model->press_file_2!=null)
+                  $model->press_file_2->saveAs(Yii::app()->basePath . '/../uploads/'.$model->press_file_2);
+                if($model->press_file_3!=null)
+                  $model->press_file_3->saveAs(Yii::app()->basePath . '/../uploads/'.$model->press_file_3);
                 $this->redirect(array('view', 'id' => $model->press_id));
-        }
+        }}
 
         $this->render('create', array(
             'model' => $model,
