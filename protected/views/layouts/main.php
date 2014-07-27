@@ -1,4 +1,4 @@
-<?php/* @var $this Controller */ ?>
+<?php /* @var $this Controller */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
@@ -43,12 +43,18 @@
                     <?php echo CHtml::encode(Yii::app()->name); ?></div>
             </div><!-- header -->
 
-            
-            
-            
+
+
+
             <div id="mainmenu">
                 <?php
-               
+                $contact = Contact::model()->findByPk(Yii::app()->user->id);
+                if ($contact != null)
+                    $varuser = 'contact';
+                else
+                    $varuser = 'client';
+
+
                 $this->widget(
                         'booster.widgets.TbNavbar', array(
                     'type' => '',
@@ -62,10 +68,11 @@
                             'class' => 'booster.widgets.TbMenu',
                             'type' => 'navbar',
                             'items' => array(
-                                array('label' => 'Home ', 'url' => array('/site/index')),
+                                array('label' => 'Home ', 'url' => array('/site/index'), 'visible' => Yii::app()->user->isGuest),
                                 array(
                                     'label' => 'For who and how?',
                                     'url' => Yii::app()->request->baseUrl . '/site/howtouse',
+                                    'visible' => Yii::app()->user->isGuest,
                                     'items' => array(
                                         array('label' => 'For who and how', 'url' => array('/site/forwhoandhow')),
                                         array('label' => 'How to use', 'url' => array('/site/howtouse')),
@@ -73,15 +80,46 @@
                                         array('label' => 'Press', 'url' => '#'),
                                     )
                                 ),
-                                array('label' => 'Costs of Use', 'url' => array('/site/costofuse')),
+                                array('label' => 'Costs of Use', 'url' => array('/site/costofuse'), 'visible' => Yii::app()->user->isGuest),
                                 array(
-                        'label' => 'About Us',
-                        'url' => '#',
-                        'items' => array(
-                            array('label' => 'About the African Press List', 'url' => array('/site/about')),
-                            array('label' => 'Contact us', 'url' =>  array('/site/contact')),
-                        )
+                                    'visible' => Yii::app()->user->isGuest,
+                                    'label' => 'About Us',
+                                    'url' => '#',
+                                    'items' => array(
+                                        array('label' => 'About the African Press List', 'url' => array('/site/about')),
+                                        array('label' => 'Contact us', 'url' => array('/site/contact')),
                                     )
+                                ),
+                                
+                          // Connected USer 
+                                
+                                array('label' => 'My dashbord ', 'url' => array('/' . $varuser . '/dashbord/'), 'visible' => !Yii::app()->user->isGuest),
+                               
+                                //Navbar  For Journaliste                                   
+                                
+                                array('label' => 'My Releases', 'url' => array('#'), 'visible' =>  ( (!Yii::app()->user->isGuest )&& ($contact != null)),),
+                                array('label' => 'Black List','url' => array('#'), 'visible' =>  ( (!Yii::app()->user->isGuest) && ($contact != null)),),
+                                
+                               
+                                //Navbar For Client 
+                                
+                                array( 'label' => 'My contact list','url' => array('/listContact/'), 'visible' =>  ( !Yii::app()->user->isGuest && $contact == null)),
+                                
+                                array('label' => 'Create New List', 'url' => array('/listContact/create'),  'visible' =>  ( !Yii::app()->user->isGuest && $contact == null), ),
+                                
+                                array(
+                                    'visible' =>  ( !Yii::app()->user->isGuest && $contact == null),
+                                    
+                                    'label' => 'My press Releases',
+                                    'url' => '/press/scheduled',
+                                    'items' => array(
+                                        array('label' => 'press Drafts', 'url' => array('/press/drafts')),
+                                        array('label' => 'press Scheduled', 'url' => array('/press/scheduled')),
+                                        array('label' => 'Press Sent on ', 'url' => array('/press/released')),
+                                    )),
+                                
+                                 array('label' => 'New press Release', 'url' => array('/press/create'), 'visible' =>  ( !Yii::app()->user->isGuest && $contact == null),),
+                                
                             ),
                         ),
                         //'<form class="navbar-form navbar-left" action=""><div class="form-group"><input type="text" class="form-control" placeholder="Search"></div></form>',
@@ -91,48 +129,40 @@
                             'htmlOptions' => array('class' => 'pull-right'),
                             'items' => array(
                                 '--',
-                            array('label' => ' Sign-Up', 'items' => array(
-                                        array('label' => 'As Client', 'url' => array('/user/registrationclient')),
+                                array('label' => ' Sign-Up', 'items' => array(
+                                        array('label' => 'As Client', 'url' => array('/user/registrationClient')),
                                         array('label' => 'As Journalist ', 'url' => array('/user/registration')),
                                     )
                                     , 'visible' => Yii::app()->user->isGuest),
-                            array('label' => 'My Space', 'url' => array('/user/login'), 'visible' => Yii::app()->user->isGuest),
-                                
-                          array('label' => 'My Profile', 'url' => array('/user/profile'), 'visible' => !Yii::app()->user->isGuest), 
-                                
-                       array(
-                         'label' =>Yii::app()->getModule('user')->t("Logout") . ' (' . Yii::app()->user->name . ')',  'url' => array('/user/logout'),
-                        'visible' => !Yii::app()->user->isGuest),
-                       
-                        
+                                array('label' => 'My Space', 'url' => array('/user/login'), 'visible' => Yii::app()->user->isGuest),
+                                array('label' => 'My Profile', 'icon'=>'wrench white','url' => array('/user/profile'), 'visible' => !Yii::app()->user->isGuest),
+                                array(
+                                    'label' => Yii::app()->getModule('user')->t("Logout") . ' (' . Yii::app()->user->name . ')', 'url' => array('/user/logout'),
+                                    'visible' => !Yii::app()->user->isGuest),
 //                                
-                               // array('label' => 'Settings ', 'visible' => !Yii::app()->user->isGuest, 'items' => array(
-                               
-                               //    array('label' => 'My Profile', 'url' => array('/user/create')), 
-                               // array('label' => 'My Profile', 'url' => array('/contact/update/'.Yii::app()->user->id)), 
-                                  // 'url' => array('contact/dashbord' //'visible' => !Yii::app()->user->isGuest), 
-                                   //or 'url' => array('/contact/view/id'),
-                               // array('label' => 'Logout', 'url' => array('/user/logout'),)// 'visible' => !Yii::app()->user->isGuest)    
+                            // array('label' => 'Settings ', 'visible' => !Yii::app()->user->isGuest, 'items' => array(
+                            //    array('label' => 'My Profile', 'url' => array('/user/create')), 
+                            // array('label' => 'My Profile', 'url' => array('/contact/update/'.Yii::app()->user->id)), 
+                            // 'url' => array('contact/dashbord' //'visible' => !Yii::app()->user->isGuest), 
+                            //or 'url' => array('/contact/view/id'),
+                            // array('label' => 'Logout', 'url' => array('/user/logout'),)// 'visible' => !Yii::app()->user->isGuest)    
                             ),
-                            ),
-                       //    ),
-                     //   ),
+                        ),
+                    //    ),
+                    //   ),
                     ),
                         )
                 );
-                
-               
-                
                 ?>
 
 
 
             </div>
-            
+
             <br>
-            <div id="mainmenu">
-                <?php
-                // Yii User 
+                <div id="mainmenu">
+<?php
+// Yii User 
 //                $this->widget('zii.widgets.CMenu', array(
 //                    'items' => array(
 //                        array('url' => Yii::app()->getModule('user')->loginUrl, 'label' => Yii::app()->getModule('user')->t("Login"), 'visible' => Yii::app()->user->isGuest),
@@ -141,11 +171,9 @@
 //                        array('url' => Yii::app()->getModule('user')->logoutUrl, 'label' => Yii::app()->getModule('user')->t("Logout") . ' (' . Yii::app()->user->name . ')', 'visible' => !Yii::app()->user->isGuest),
 //                    ),
 //                ));
-                ?>
-            </div>
-                <?php 
-                 
-                if (isset($this->breadcrumbs)): ?>
+?>
+                </div>
+                    <?php if (isset($this->breadcrumbs)): ?>
                     <?php
                     $this->widget('zii.widgets.CBreadcrumbs', array(
                         'links' => $this->breadcrumbs,
@@ -155,45 +183,45 @@
 
 
 
-                <?php echo $content; ?>
+<?php echo $content; ?>
 
 
 
-<?php //echo 'aaaa'.Yii::app()->getModule('user')->isAdmin(); ?>
-            <div class="clear"></div>
-            <h4 class="titrepartner">Partners</h4>
-           <div class="partners">
-                <div class="row" >
-                    
-                    <div class="span-6">
-                        <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
-                        
-                    </div>
-                    
-                    <div class="span-6">
-                        <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
-                        
-                    </div>
-                    
-                    <div class="span-6">
-                        <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
-                        
-                    </div>
-                    
-                    <div class="span-6">
-                        <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
-                        
-                    </div>
-                    
-                </div> 
-            
-            </div>
-            
-            <div class="clear"></div>
-            <div id="footer">
-                Copyright &copy; <?php echo date('Y'); ?> by The WebSide.<br/>
-                All Rights Reserved.<br/>
-            </div><!-- footer -->
+<?php //echo 'aaaa'.Yii::app()->getModule('user')->isAdmin();   ?>
+                <div class="clear"></div>
+                <h4 class="titrepartner">Partners</h4>
+                <div class="partners">
+                    <div class="row" >
+
+                        <div class="span-6">
+                            <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
+
+                        </div>
+
+                        <div class="span-6">
+                            <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
+
+                        </div>
+
+                        <div class="span-6">
+                            <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
+
+                        </div>
+
+                        <div class="span-6">
+                            <img src=<?php echo Yii::app()->request->baseUrl . '/images/logo.jpg'; ?>  />
+
+                        </div>
+
+                    </div> 
+
+                </div>
+
+                <div class="clear"></div>
+                <div id="footer">
+                    Copyright &copy; <?php echo date('Y'); ?> by The WebSide.<br/>
+                    All Rights Reserved.<br/>
+                </div><!-- footer -->
 
         </div><!-- page -->
 
@@ -203,8 +231,4 @@
 
 
 
-<?php
-
-
-
-?>
+<?php ?>

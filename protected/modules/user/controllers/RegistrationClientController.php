@@ -104,7 +104,7 @@ class RegistrationClientController extends Controller {
                 } else
                     $Client->validate();
             }
-            $this->render('/client/registration', array('model' => $model, 'client' => $Client));
+            $this->render('/Client/registration', array('model' => $model, 'client' => $Client));
         }
     }
     

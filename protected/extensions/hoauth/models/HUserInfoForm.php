@@ -72,8 +72,8 @@ class HUserInfoForm extends CFormModel {
 		if(empty($nameAtt))
 			$scenario = 'email';
 		else
-			$this->username = str_replace(' ', '_', $model->$nameAtt);
-
+			//$this->username = str_replace(' ', '_', $model->$nameAtt);
+$this->username = $model->$nameAtt;
        
 		// correcting scenarios, if some of fields is not empty
 		if ($this->scenario == 'both')
@@ -95,7 +95,7 @@ class HUserInfoForm extends CFormModel {
 //                $contact->contact_name_last = $userProfile->lastName;
                 $contact->contact_email = $model->$emailAtt;
                 $contact->save(false);
-                
+//                
              
 //                    $Client->user_id = $model->id;
 ////                    $Client->porfile_name_first = $userProfile->firstName;

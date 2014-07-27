@@ -1,6 +1,6 @@
 <?php
 
-class RegistrationController extends Controller {
+class RegistrationAdminController extends Controller {
 
     public $defaultAction = 'registration';
 
@@ -22,12 +22,7 @@ class RegistrationController extends Controller {
     public function actionRegistration() {
         Profile::$regMode = true;
         $model = new RegistrationForm;
-        //$profile = new Profile;
-        $contact = new Contact;
-    $categories = new BusinessCategory;
-    $iso_language = new IsoLanguage;
-
-        
+        //$profile = new Profile;   
         // ajax validator
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'registration-form') {
            // echo UActiveForm::validate(array($model, $profile));
@@ -37,12 +32,12 @@ class RegistrationController extends Controller {
         if (Yii::app()->user->id) {
             $this->redirect(Yii::app()->controller->module->profileUrl);
         } else {
-            if (isset($_POST['RegistrationForm'],$_POST['Contact'] )) {
+            if (isset($_POST['RegistrationForm'] )) {
                 $model->attributes = $_POST['RegistrationForm'];
-                $contact->attributes = $_POST['Contact'];
+             
                
                 
-                if ($model->validate() && $contact->validate()) {
+                if ($model->validate()) {
                     $soucePassword = $model->password;
                     $model->activkey = UserModule::encrypting(microtime() . $model->password);
                     $model->password = UserModule::encrypting($model->password);
@@ -50,26 +45,8 @@ class RegistrationController extends Controller {
                     $model->superuser = 0;
                     $model->status = ((Yii::app()->controller->module->activeAfterRegister) ? User::STATUS_ACTIVE : User::STATUS_NOACTIVE);
 
-                    if ($model->save(false)) {
-                        $contact->contact_id = $model->id;
-                         $contact->contact_email= $model->email;
-                         $contact->contact_login_pass= $model->password = UserModule::encrypting($model->password);
-                        $contact->save(false);
-                        
-                        $contactcat = Contact::model()->findByPk($contact->contact_id);
-                        if(isset($_POST['BusinessCategory']['cat_title'])){
-                            $categories_id = $_POST['BusinessCategory']['cat_title'];
-                            $contact->businessCategories = $categories_id;
-                        }
-                        if(isset($_POST['IsoLanguage']['lang_iso'])){
-                            $lang_iso = $_POST['IsoLanguage']['lang_iso'];
-                            $contact->isoLanguages = $lang_iso;
-                        }
-                        
-                 /***************Ne pas oublier Swift mailier*************************/
-                        
-                        $contact->save();
-                        
+                    $model->save(false);
+                      
 
 
 
@@ -117,12 +94,9 @@ class RegistrationController extends Controller {
                             $this->refresh();
                         }
                     }
-                } else
-                    $contact->validate();
+                } 
             }
-            
-            //$categories = BusinessCategory::model()->findAll();
-            $this->render('/user/registration', array('model' => $model, 'contact' => $contact, 'categories'=>$categories, 'iso_language'=>$iso_language));
+            $this->render('/admin/registration', array('model' => $model));
         }
     }
     
@@ -130,4 +104,4 @@ class RegistrationController extends Controller {
     
     
 
-}
+

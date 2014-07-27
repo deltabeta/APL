@@ -18,13 +18,10 @@ class LoginController extends Controller {
                 if ($model->validate()) {
                     $this->lastViset();
                     $contact = Contact::model()->findByPk(Yii::app()->user->id);
-                    $client = Client::model()->findByPk(Yii::app()->user->id);
                     if ($contact != null)
                         $this->redirect(Yii::app()->request->baseUrl . '/index.php/contact/dashbord/');
-                    else if($client != null)
-                        $this->redirect(Yii::app()->request->baseUrl . '/index.php/client/dashbord/');
                     else
-                         $this->redirect(Yii::app()->request->baseUrl . '/index.php/mailing/index/');
+                        $this->redirect(Yii::app()->request->baseUrl . '/index.php/Client/dashbord/');
                 }
             }
             // display the login form

@@ -13,12 +13,13 @@ $this->menu=array(
 	((UserModule::isAdmin())
 		?array('label'=>UserModule::t('Manage Users'), 'url'=>array('/user/admin'))
 		:array()),
-   // array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
-    array('label'=>UserModule::t('My Profile'), 'url'=>array('/user/profile')),
-    array('label'=>UserModule::t('My Dashbord'), 'url' => array('/'.$varuser.'/dashbord/')), 
+////   // array('label'=>UserModule::t('List User'), 'url'=>array('/user')),  
+//    array('label'=>UserModule::t('My Dashbord'), 'url' => array('/'.$varuser.'/dashbord/')), 
     array('label'=>UserModule::t('Edit Login Information'), 'url'=>array('edit')),
     
   array('label'=>UserModule::t('Edit Personal Information '), 'url'=>array('/'.$varuser.'/update/'.Yii::app()->user->id)),
+    
+   array('label'=>UserModule::t('Change password'), 'url'=>array('changepassword')),
      
    // array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
 );

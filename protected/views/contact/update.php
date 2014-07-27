@@ -4,10 +4,27 @@
 /* @var $form CActiveForm */
 ?>
 
+</div> 
+<div class="last"><br><br>
+    <div id="col-xs-12 col-md-8">
 
-
-<!--<span class=span-10">
         <?php
+        $this->widget('booster.widgets.TbTabs', array(
+            'type' => 'tabs',
+            'placement' => 'right',
+            'tabs' => array(
+                array('label' => ('Edit Login Information'), 'url' => array('/user/profile/edit')),
+                array('label' => ('Edit Personal Information '), 'url' => array('/contact/update/' . Yii::app()->user->id)),
+                array('label' => ('Change password'), 'url' => array('/user/profile/changepassword')),),
+            'htmlOptions' => array('class' => 'operations'),
+        ));
+        ?>
+    </div><!-- sidebar -->
+</div>
+
+
+<!--<span class=span-10">-->
+<?php
 //        $this->widget(
 //                'booster.widgets.TbPanel', array(
 //            'title' => 'Add Yourself As A Journalist',
@@ -23,15 +40,14 @@
 //            . ' It is nice if we can do some promotion for you in return.'
 //                )
 //        )
-                ?>  </span>-->
+?> 
 
-
-
+<div class="form span-20">
 
     <?php
     $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'id' => 'contact-form',
-        'htmlOptions' => array('class' => 'col-sm-5', 'class' => 'well'),
+        'htmlOptions' => array('class' => 'col-sm-4', 'class' => 'well'),
         'type' => 'horizontal',
         'enableClientValidation' => true,
         'clientOptions' => array(
@@ -41,7 +57,7 @@
         // controller action is handling ajax validation correctly.
         // There is a call to performAjaxValidation() commented in generated controller code.
         // See class documentation of CActiveForm for details on this.
-        'enableAjaxValidation' => false,
+        'enableAjaxValidation' => true,
     ));
     ?>   <?php
     //
@@ -63,30 +79,31 @@
 //    
 //));
     ?>
-                <br> <br> <br> 
-    
-    <?php  echo $form->errorSummary($model); ?>
-    <!--<p class="note">Fields with <span class="required">*</span> are required.</p>-->
-    
-    
+
+
+    <?php echo $form->errorSummary($model); ?>
+<!--<p class="note">Fields with <span class="required">*</span> are required.</p>-->
+
+
     <div id="monaccordeon">
         <div class="accordion-group">
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item1">Personal Information</div>
-            <div id="item1" class="collapse accordion-group ">
+            <div id="item1" class="collapse accordion-group in">
                 <div class="accordion-inner">
+    <fieldset>
 
-
-<!--                    <div class="row">
-                        <?php // echo $form->labelEx($model,'contact_email');  ?>
-                        <?php // echo $form->labelEx($model,'contact_email'); ?>
-                        <?php
+                    <!--                    <div class="row">
+                    <?php // echo $form->labelEx($model,'contact_email');  ?>
+                    <?php // echo $form->labelEx($model,'contact_email'); ?>
+                    <?php
 //                        echo $form->textFieldGroup($model, 'contact_email', array('size' => 60, 'maxlength' => 255,
 //                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
 //                        ));
-//                        ?>
-                        <?php // echo $form->error($model, 'contact_email'); ?> <span class="label label-info"    
-                              >Minimum is 6 characters <br>Must contain at least one special character</span>
-                    </div>     -->
+//                        
+                    ?>
+<?php // echo $form->error($model, 'contact_email');  ?> <span class="label label-info"    
+                                                  >Minimum is 6 characters <br>Must contain at least one special character</span>
+                                        </div>     -->
 
                     <div class="row"> 
                         <?php //echo $form->labelEx($model,'contact_login_pass');  ?>
@@ -94,8 +111,9 @@
 //                        echo $form->passwordFieldGroup($model, 'contact_login_pass', array('size' => 60, 'maxlength' => 255,
 //                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
 //                        ));
-//                        ?>
-                        <?php // echo $form->error($model, 'contact_login_pass'); ?>
+//                        
+                        ?>
+<?php // echo $form->error($model, 'contact_login_pass');  ?>
 
                     </div>
 
@@ -105,8 +123,9 @@
 //                        echo $form->passwordFieldGroup($model, 'verifyPassword', array('size' => 60, 'maxlength' => 255,
 //                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
 //                        ));
-//                        ?>
-                        <?php // echo $form->error($model, 'verifyPassword'); ?>
+//                        
+                        ?>
+<?php // echo $form->error($model, 'verifyPassword');  ?>
                     </div>
 
 
@@ -157,9 +176,10 @@
                                 )
                         );
                         ?>
-                        <?php // echo $form->textField($model,'contact_gender',array('size'=>1,'maxlength'=>1));  ?>
-                        <?php echo $form->error($model, 'contact_gender'); ?>
+<?php // echo $form->textField($model,'contact_gender',array('size'=>1,'maxlength'=>1));   ?>
+<?php echo $form->error($model, 'contact_gender'); ?>
                     </div>
+    </fieldset>
                 </div>
             </div>     
         </div>
@@ -172,7 +192,7 @@
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item2">Address </div>
             <div id="item2" class="collapse accordion-group ">
                 <div class="accordion-inner">
-
+    <fieldset>
                     <div class="row">
                         <?php //echo $form->labelEx($model,'contact_adress');   ?>
                         <?php
@@ -200,7 +220,7 @@
                             'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
                         ));
                         ?>
-                        <?php echo $form->error($model, 'contact_address_addon'); ?>
+<?php echo $form->error($model, 'contact_address_addon'); ?>
                     </div>
 
 
@@ -208,7 +228,7 @@
 
                     <div class="row">
                         <div class="col-sm-3 control-label" >
-                            <?php echo $form->labelEx($model, 'contact_iso_country'); ?></div>
+                        <?php echo $form->labelEx($model, 'contact_iso_country'); ?></div>
 
 
                         <?php
@@ -220,16 +240,16 @@
                                 'placeholder' => $model->getAttributeLabel('contact_iso_country'),
                                 'width' => '48.5%',
                                 'class' => 'col-sm-3',
-                                 'allowClear' => true,
+                                'allowClear' => true,
                             ),
                             'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'
                             ),
                         ));
                         ?></div>
-                    <?php // echo $form->dropDownList($model, 'contact_iso_country', CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
-                    <?php // echo $form->textField($model,'departmentId'); ?>
-                    <?php // echo $form->textField($model,'contact_iso_country'); ?>
-                        <?php echo $form->error($model, 'contact_iso_country'); ?><br>
+                        <?php // echo $form->dropDownList($model, 'contact_iso_country', CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
+<?php // echo $form->textField($model,'departmentId');  ?>
+<?php // echo $form->textField($model,'contact_iso_country');  ?>
+<?php echo $form->error($model, 'contact_iso_country'); ?><br>
 
 
 
@@ -241,9 +261,10 @@
                             'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
                         ));
                         ?>
-                        <?php echo $form->error($model, 'contact_city'); ?>
+<?php echo $form->error($model, 'contact_city'); ?>
 
                     </div>
+    </fieldset>
                 </div>
             </div>
         </div>     
@@ -256,6 +277,7 @@
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item3">Othres </div>
             <div id="item3" class="collapse accordion-group">
                 <div class="accordion-inner">
+                        </fieldset>
                     <div class="row">
                         <?php //echo $form->labelEx($model,'contact_phone');  ?>
                         <?php
@@ -323,7 +345,7 @@
                             'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
                         ));
                         ?>
-                        <?php echo $form->error($model, 'contact_li'); ?>
+<?php echo $form->error($model, 'contact_li'); ?>
                     </div>
 
 
@@ -350,7 +372,7 @@
                         //   'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
                         // ));
                         ?>
-                        <?php // echo $form->error($model, 'contact_is_imported'); ?>
+                        <?php // echo $form->error($model, 'contact_is_imported');  ?>
                     </div>
 
                     <div class="row">
@@ -360,7 +382,7 @@
                         //  'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
                         // ));
                         ?>
-                        <?php ///echo $form->error($model, 'contact_imported_src'); ?>
+                        <?php ///echo $form->error($model, 'contact_imported_src');  ?>
                     </div>
 
                     <div class="row">
@@ -371,28 +393,29 @@
                         //'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
                         // ));
                         ?>
-                        <?php // echo $form->error($model, 'contact_status');  ?>
-                   
+<?php // echo $form->error($model, 'contact_status');   ?>
+
                     </div>
+                            </fieldset>
                 </div>
             </div>
         </div>     
     </div>
     <br>
-<div class="row">
-            <div class="buttons pull-right">
-                <?php
-                $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 
-                    'size' => 'large', 'context' => 'success', 'label' => 'Update')
-               );
-              ?>
+    <div class="row">
+        <div class="buttons pull-right" >
+            <?php
+            $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit',
+                'size' => 'large', 'context' => 'success', 'label' => 'Update')
+            );
+            ?>
 
-                <?php //echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');     ?>
-    </div> 
-            </div>  
-        
-    
+<?php //echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');      ?>
+        </div> 
+    </div>     </div>  
 
-    <?php $this->endWidget(); ?>
+
+
+<?php $this->endWidget(); ?>
 
 <!-- form -->

@@ -15,6 +15,7 @@ return
 	array(
 		"base_url" => "http://localhost/APL/index.php/user/login/oauth", 
 
+		//"base_url" => "https://tompanther.arvixe.com/~webside/yetgroup.com/demo-webserver/APL/index.php/user/login/oauth", 
 		"providers" => array ( 
 			// openid providers
 //			"OpenID" => array (

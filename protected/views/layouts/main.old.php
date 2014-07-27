@@ -40,10 +40,7 @@
             <div id="header">
                 <div id="logo">
 
-                    <?php //echo CHtml::encode(Yii::app()->name);
- echo 'journalist';
-                    
-                    ?></div>
+                    <?php echo CHtml::encode(Yii::app()->name); ?></div>
             </div><!-- header -->
 
             
@@ -65,28 +62,26 @@
                             'class' => 'booster.widgets.TbMenu',
                             'type' => 'navbar',
                             'items' => array(
-                                array('label' => 'My dashbord ', 'url' => array('/client/dashbord/')),
+                                array('label' => 'Home ', 'url' => array('/site/index')),
                                 array(
-                                    'label' => 'My contact list',
-                                    'url' => array('/listContact/'),
-                                    
-                                ),
-                                array(
-                                    'label' => 'Create New List',
-                                    'url' => array('/listContact/create'),
-                                    
-                                ),
-                                array('label' => 'New press Release', 'url' => array('/press/create')),
-                                 array(
-                                    'label' => 'My press Releases',
-                                    'url' =>'/press/scheduled',
+                                    'label' => 'For who and how?',
+                                    'url' => Yii::app()->request->baseUrl . '/site/howtouse',
                                     'items' => array(
-                                        array('label' => 'press Drafts', 'url' => array('/press/drafts')),
-                                        array('label' => 'press Scheduled', 'url' => array('/press/scheduled')),
-                                        array('label' => 'Press Sent on ', 'url' => array('/press/released')),
-                                      
-                                    )),
-                                
+                                        array('label' => 'For who and how', 'url' => array('/site/forwhoandhow')),
+                                        array('label' => 'How to use', 'url' => array('/site/howtouse')),
+                                        array('label' => 'Tips to write', 'url' => array('/site/tipstowrite')),
+                                        array('label' => 'Press', 'url' => '#'),
+                                    )
+                                ),
+                                array('label' => 'Costs of Use', 'url' => array('/site/costofuse')),
+                                array(
+                        'label' => 'About Us',
+                        'url' => '#',
+                        'items' => array(
+                            array('label' => 'About the African Press List', 'url' => array('/site/about')),
+                            array('label' => 'Contact us', 'url' =>  array('/site/contact')),
+                        )
+                                    )
                             ),
                         ),
                         //'<form class="navbar-form navbar-left" action=""><div class="form-group"><input type="text" class="form-control" placeholder="Search"></div></form>',
@@ -97,7 +92,7 @@
                             'items' => array(
                                 '--',
                             array('label' => ' Sign-Up', 'items' => array(
-                                        array('label' => 'As Client', 'url' => array('/user/registrationclient')),
+                                        array('label' => 'As Client', 'url' => array('/user/registrationClient')),
                                         array('label' => 'As Journalist ', 'url' => array('/user/registration')),
                                     )
                                     , 'visible' => Yii::app()->user->isGuest),
@@ -125,6 +120,9 @@
                     ),
                         )
                 );
+                
+               
+                
                 ?>
 
 

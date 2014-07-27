@@ -13,6 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create ListContact</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model,'contact'=>$contact)); ?>
+
+<?php $this->renderPartial('_form', array('model'=>$model,'contact'=>$contact, 'categories' => $categories,
+            'isolanguages' => $isolanguages)); ?>

@@ -6,7 +6,7 @@ class ListContactController extends Controller {
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
-    public $layout = 'layoutjournalist';
+    //public $layout = 'main';
 
     /**
      * @return array action filters
@@ -80,8 +80,44 @@ $docs = ASolrDocument::model()->findAll($criteria);
         $model = new ListContact;
 
 
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
+      
+         if(isset($_POST['BusinessCategory']) or isset($_POST['IsoLanguage'])){
+
+            if(isset($_POST['BusinessCategory'])){
+                $cat_id = $_POST['BusinessCategory']['cat_id'];
+            $fromcategory = ',contact_category';
+            $wherecategory = '  and contact_category.contact_id=contact.contact_id 
+                                and contact_category.cat_id='.$cat_id;
+            
+            }
+            
+            
+            if(isset($_POST['IsoLanguage'])){
+                $lang_iso = $_POST['IsoLanguage']['lang_iso'];
+                $fromlang = ',contact_language';
+                $wherelang = " and contact_language.contact_id=contact.contact_id
+                               and contact_language.lang_iso='".$lang_iso."'";
+                
+            }
+            
+            $sql = "select *  from contact $fromcategory $fromlang
+                    where contact.status = 1
+                    $wherecategory
+                    $wherelang   
+                    ";
+           $tab = Yii::app()->db->createCommand($sql)->queryAll();
+            
+            require_once 'protected/models/technique.php';
+            $technique = new Technique(); 
+            $contact = $technique->arrayToObject($tab);
+           
+        }
+        else{
+            $contact = Contact::model()->findAll();
+        }
+        
+
+        
 
         if (isset($_POST['ListContact'])) {
 
@@ -114,10 +150,15 @@ $docs = ASolrDocument::model()->findAll($criteria);
                 $this->redirect(array('view', 'id' => $_POST['listexist']));
             }
         }
-        $contact = Contact::model()->findAll();
+        
+        
+        $categories = new BusinessCategory;
+        $isolanguages = new IsoLanguage;
+        
         $listcontact = ListContact::model()->findAll();
         $this->render('create', array(
-            'model' => $model, 'contact' => $contact, 'listcontact' => $listcontact
+            'model' => $model, 'contact' => $contact, 'listcontact' => $listcontact, 'categories' => $categories,
+            'isolanguages' => $isolanguages
         ));
     }
 
@@ -167,49 +208,13 @@ $docs = ASolrDocument::model()->findAll($criteria);
      */
     public function actionIndex() {
             
-        $categories = new BusinessCategory;
-        $isolanguages = new IsoLanguage;
-         if(isset($_POST['BusinessCategory']) or isset($_POST['IsoLanguage'])){
-
-            if(isset($_POST['BusinessCategory'])){
-                $cat_id = $_POST['BusinessCategory']['cat_id'];
-            $fromcategory = ',contact_category';
-            $wherecategory = '  and contact_category.contact_id=list_contact.contact_id 
-                                and contact_category.cat_id='.$cat_id;
-            
-            }
-            
-            
-            if(isset($_POST['IsoLanguage'])){
-                $lang_iso = $_POST['IsoLanguage']['lang_iso'];
-                $fromlang = ',contact_language';
-                $wherelang = " and contact_language.contact_id=list_contact.contact_id
-                               and contact_language.lang_iso='".$lang_iso."'";
-                
-            }
-            
-            $sql = "select *  from list_contact, list $fromcategory $fromlang
-                    where list_contact.list_id=list.list_id
-                    $wherecategory
-                    $wherelang   
-                    ";
-            echo $sql;
-           $tab = Yii::app()->db->createCommand($sql)->queryAll();
-            
-            require_once 'protected/models/technique.php';
-            $technique = new Technique(); 
-            $list = $technique->arrayToObject($tab);
-           
-        }
-        else{
+        
             $user = Client::model()->findByPk(Yii::app()->user->id);
             $list = $user->lists;
-        }
+     
 
         $this->render('index', array(
             'list' => $list,
-            'categories' => $categories,
-            'isolanguages' => $isolanguages
         ));
     }
 
