@@ -30,7 +30,7 @@ class ListContactController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('admin', 'create', 'update', 'delete', 'deletelist','doc','docsearch'),
+                'actions' => array('admin', 'create', 'update', 'delete', 'deletelist','deleteall'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -61,20 +61,7 @@ class ListContactController extends Controller {
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionDoc() {
- $doc = new ASolrDocument;
-$doc->id = 123;
-$doc->name = "test document";
-$doc->save(); // adds the document to solr
-$doc->getSolrConnection()->commit();
-    }
-    
-    public function actionDocsearch() {
-    $criteria = new ASolrCriteria;
-$criteria->query = "name:test"; // lucene query syntax
-$docs = ASolrDocument::model()->findAll($criteria);
-    }
-    
+   
     
     public function actionCreate() {
         $model = new ListContact;
@@ -202,7 +189,28 @@ $docs = ASolrDocument::model()->findAll($criteria);
 
         $this->redirect(Yii::app()->request->baseUrl . '/listContact/index');
     }
-
+    
+    public function actionDeleteall($id) {
+        $contact = $_POST['contact_id'];
+        
+        $listcontact = ListContact::model()->findByPk($id);
+        $contactsdb = $listcontact->contacts;
+        
+         foreach ($contactsdb as $value){
+             $tab[] = $value->contact_id;
+         }
+        
+        foreach ($contact as $contact_id){
+           
+            if(($key = array_search($contact_id, $tab)) !== false) {
+               unset($tab[$key]);
+            } 
+        }
+        $listcontact->contacts = $tab;
+        $listcontact->save();
+        $this->redirect(Yii::app()->request->baseUrl . '/listContact/view/'.$id);
+    }
+    
     /**
      * Lists all models.
      */

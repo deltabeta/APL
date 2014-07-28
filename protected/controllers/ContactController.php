@@ -42,7 +42,7 @@ class ContactController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('view'),
+                'actions' => array('view','deleteall'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -135,6 +135,9 @@ $model = Contact::model()->findByPk($id);
         if (!isset($_GET['ajax']))
             $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
     }
+    
+    
+    
 
     /**
      * Lists all models.

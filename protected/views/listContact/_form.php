@@ -3,20 +3,10 @@
 /* @var $model ListContact */
 /* @var $form CActiveForm */
 ?>
-<script>
-    function read(){
-        var selectElmt = document.getElementById('listexist');
-        if(selectElmt.options[selectElmt.selectedIndex].value!=''){
-          document.getElementById("ListContact_list_name").readOnly = true;  
-        }
-        else{
-            document.getElementById("ListContact_list_name").readOnly = false;
-        }
-
-    }
-</script>
 
 
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.slimscroll.js"></script>
 
 <h1>Search For Journalists </h1>
 <div class="form">
@@ -117,16 +107,18 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'list_name'); ?>
+            <input type="radio" name="action" value="create" id="create" checked="true" onchange="read()" style="float: left; margin-right: 10px;"/>
+		<?php echo $form->labelEx($model,'Create a list'); ?>
 		<?php echo $form->textField($model,'list_name',array('size'=>20,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'list_name'); ?>
 	</div>
         <div class="row">
+            <input type="radio" name="action" value="update" id="update" onchange="read()" style="float: left; margin-right: 10px;"/>
             <label>Choose a list</label>
             
 		<?php echo CHtml::dropDownList('listexist', '0', 
               CHtml::listData(ListContact::model()->findAll(), 'list_id', 'list_name'
-                            ),array('empty' => '(Select a list)','onchange'=>'read()')); ?>
+                            ),array('empty' => '(Select a list)','disabled'=>'true')); ?>
 	</div>
         
          <?php if( !$model->list_id){ ?>
@@ -142,26 +134,33 @@
 	</div>
         <?php } ?>
         <div class="row">
+            <div id="testDiv">
             <table>
+                <tr><td><input type="checkbox" id="selecctall" style="float:left; margin-right:10px;"/><b>Select all</b></td></tr>
                 <tr>
                     <td>
 		<?php 
-                    $i=1;
+
                     foreach($contact as  $value){
-                        echo '<div><input name="contact_id[]" value="'.$value->contact_id.'" type="checkbox" style="float:left; margin-right:10px;" /><label>'.$value->contact_name_first.'</lable></div>';
+                        echo '<div><input name="contact_id[]" class="checkbox1"  value="'.$value->contact_id.'" type="checkbox" style="float:left; margin-right:10px;" /><label>'.$value->contact_email.'</lable></div>';
                     
-                    if($i==5){
-                        echo '</td><td>';
-                        $i=0;
-                        
-                    }
-                    $i++;
+                   
                     }
                 ?>
                     </td>
                 </tr>
             </table>
 	</div>
+        
+            <script type="text/javascript">
+//    $('#testDiv').slimScroll({
+//      color: '#00f',
+//    size: '10px',
+//    height: '180px',
+//    alwaysVisible: true
+//  });
+</script>
+        </div>
         
 	<div class="row buttons pull-right">
 		<?php $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'size' => 'large', 'context' => 'success', 'label' => 'Create')
