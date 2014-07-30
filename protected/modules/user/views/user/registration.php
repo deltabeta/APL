@@ -138,7 +138,7 @@ $this->breadcrumbs = array(
 //        }
             ?>
 
-            <?php $this->renderPartial('/../../../views/contact/_form', array('model' => $contact, 'form' => $form,'categories' => $categories, 'iso_language'=>$iso_language)); ?>
+            <?php $this->renderPartial('/../../../views/contact/_form', array('model' => $contact, 'form' => $form,'categories' => $categories, 'iso_language'=>$iso_language, 'company'=>$company)); ?>
             <!--//('/../../../views/contact/_form'-->
 
 

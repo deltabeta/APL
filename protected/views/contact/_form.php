@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>
 <?php
 /* @var $this ContactController */
 /* @var $model Contact */
@@ -216,7 +217,42 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                             ?>
 
 
-                        </div>   
+                        </div> 
+
+
+
+<div class="row">
+
+
+                            <?php
+   
+                            
+                         $url = Yii::app()->createUrl('company/listcountry');   
+                         echo $form->checkboxListGroup(
+			$company,
+			'comp_id',
+			array(
+				'wrapperHtmlOptions' => array(
+					'class' => 'col-sm-5',
+				),
+	   			'widgetOptions' => array(
+	   				'data' => CHtml::listData(Company::model()->findAll(), 'comp_id', 'comp_name'
+                                ),
+					'htmlOptions' => array('multiple' => true,'onclick'=>"listcountry(this.value,'".$url."/'+this.value)"),
+				)));
+                            
+                
+                            ?>
+    
+    <?php 
+    $country = Company::model()->findAll();
+    foreach($country as $value){
+        echo '<div id="country'.$value->comp_id.'"></div>';
+    } ?>
+    
+
+                        </div> 
+
 
                     </fieldset>
                 </div>

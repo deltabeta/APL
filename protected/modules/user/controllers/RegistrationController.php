@@ -26,6 +26,7 @@ class RegistrationController extends Controller {
         $contact = new Contact;
     $categories = new BusinessCategory;
     $iso_language = new IsoLanguage;
+    $company = new Company;
 
         
         // ajax validator
@@ -66,7 +67,16 @@ class RegistrationController extends Controller {
                             $contact->isoLanguages = $lang_iso;
                         }
                         
-                 /***************Ne pas oublier Swift mailier*************************/
+                        if(isset($_POST['Company']['comp_id'])){
+                            $companies = $_POST['Company']['comp_id'];
+                           
+                            foreach($companies as $value){
+                                $countries = $_POST['country'.$value];
+                                //$company = Company::model()->findByPk($value);
+                                $contact->companies = $companies;
+                                $contact->geo_countries = $countries;
+                            }
+                        }
                         
                         $contact->save();
                         
@@ -122,7 +132,7 @@ class RegistrationController extends Controller {
             }
             
             //$categories = BusinessCategory::model()->findAll();
-            $this->render('/user/registration', array('model' => $model, 'contact' => $contact, 'categories'=>$categories, 'iso_language'=>$iso_language));
+            $this->render('/user/registration', array('model' => $model, 'contact' => $contact, 'categories'=>$categories, 'iso_language'=>$iso_language, 'company'=>$company));
         }
     }
     

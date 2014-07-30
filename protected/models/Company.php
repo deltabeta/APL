@@ -72,7 +72,8 @@ class Company extends CActiveRecord
 			'contactGeoCoverages' => array(self::HAS_MANY, 'ContactGeoCoverage', 'company_id'),
 			'roleChannels' => array(self::HAS_MANY, 'RoleChannel', 'company_id'),
                         'contacts' => array(self::MANY_MANY, 'Contact', 'contact_geo_coverage(company_id, contact_id, geo_country_id)'),
-                        'geo_countries' => array(self::MANY_MANY, 'IsoCountry', 'contact_geo_coverage(company_id, contact_id, geo_country_id)'),
+                       
+                        
 		);
 	}
 
