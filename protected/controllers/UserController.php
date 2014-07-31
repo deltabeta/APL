@@ -55,6 +55,9 @@ class UserController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
+        
+        
+        
 
 	/**
 	 * Creates a new model.
