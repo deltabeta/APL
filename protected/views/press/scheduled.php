@@ -2,8 +2,8 @@
 /* @var $this ListContactController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Presses List',
+$this->breadcrumbs = array(
+    'Presses List',
 );
 //
 //$this->menu=array(
@@ -28,33 +28,39 @@ $('.search-form form').submit(function(){
 
 
 <div id="list-contact-grid" class="grid-view">
-<table class="items">
-    
-    <tr>
-    <th id="list-contact-grid_c0">Type</th>
-    <th id="list-contact-grid_c1">Subject</th>
-    <th id="list-contact-grid_c1">Sender</th>
-    <th id="list-contact-grid_c2">Attachments</th>
-    <th id="list-contact-grid_c3">Contact List</th>
-    <th id="list-contact-grid_c3">Date created</th>
-    <th id="list-contact-grid_c3">Date scheduled</th>
-    <th></th>
-    </tr>
-    
-     <?php   
- foreach($presses as  $value){    
-  if($value->press_status=='Q') { echo '<tr><td>'.'IN QUEUE'.'</td>';} else{echo '<tr><td>'.'NEW'.'</td>';}
-   echo '<td>'.$value->press_subject.'</td>';   
-    echo '<td>'.$value->press_sender_name.'</td>';   
-    echo '<td>'.$value->press_file_1.$value->press_file_2.$value->press_file_3.'</td>'; 
-    echo '<td>'.$value->GetPressName().'</td>';   
-    echo '<td>'.$value->press_date.'</td>' ;
-          echo '<td>'.$value->press_date_started.'</td>';  
+    <table class="items">
 
-   
-}    
-   
- ?>
-</table>
-    </div>
-  
+        <tr>
+            <th id="list-contact-grid_c0">Type</th>
+            <th id="list-contact-grid_c1">Subject</th>
+            <th id="list-contact-grid_c1">Sender</th>
+            <th id="list-contact-grid_c2">Attachments</th>
+            <th id="list-contact-grid_c3">Contact List</th>
+            <th id="list-contact-grid_c3">Date created</th>
+            <th id="list-contact-grid_c3">Date scheduled</th>
+            <th id="list-contact-grid_c3">Delete Press</th>
+            <th id="list-contact-grid_c3">Modify Press</th>
+
+            <th></th>
+        </tr>
+
+        <?php
+        foreach ($presses as $value) {
+            if ($value->press_status == 'Q') {
+                echo '<tr><td>' . 'IN QUEUE' . '</td>';
+            } else {
+                echo '<tr><td>' . 'NEW' . '</td>';
+            }
+            echo '<td>' . $value->press_subject . '</td>';
+            echo '<td>' . $value->press_sender_name . '</td>';
+            echo '<td>' . $value->press_file_1 . $value->press_file_2 . $value->press_file_3 . '</td>';
+            echo '<td>' . $value->GetPressName() . '</td>';
+            echo '<td>' . $value->press_date . '</td>';
+            echo '<td>' . $value->press_date_started . '</td>';
+            echo '<td>' . CHtml::link('Delete Press', array('press/deletepress1/' . $value->press_id), array('onClick' => 'confirm("Sure to delete this row ?")')) . '</td>';
+
+            echo '<td>' . CHtml::link('Modify Press', array('press/update/' . $value->press_id)) . '</td></tr>';
+        }
+        ?>
+    </table>
+</div>
