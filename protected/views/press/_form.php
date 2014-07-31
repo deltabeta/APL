@@ -11,7 +11,7 @@
         'id' => 'press-form',
         'htmlOptions' => array('class' => 'col-sm-5', 'class' => 'well','enctype'=>'multipart/form-data'),
         'type' => 'horizontal',
-        'enableClientValidation' => false,
+        'enableClientValidation' => true,
         'clientOptions' => array(
             'validateOnSubmit' => true,
         ),
@@ -19,7 +19,7 @@
         // controller action is handling ajax validation correctly.
         // There is a call to performAjaxValidation() commented in generated controller code.
         // See class documentation of CActiveForm for details on this.
-        'enableAjaxValidation' => false,
+        'enableAjaxValidation' => true,
     ));
     ?> 
 
@@ -235,6 +235,7 @@
 			$model,
 			'press_date_started',
 			array(
+                                
 				'widgetOptions' => array(
 					'options' => array(
 						'language' => 'fr',
@@ -248,10 +249,24 @@
 				'prepend' => '<i class="glyphicon glyphicon-calendar"></i>'
 			)
 		); ?>
-
-
+       
         <?php echo $form->error($model, 'press_date_started'); ?>
-  
+        
+        
+<?php 
+$this->widget(
+    'booster.widgets.TbTimePicker',
+    array(
+        'model' => $model,
+        'attribute' => 'hours',
+        'options' => array(
+            'showMeridian' => false
+        ),
+        'wrapperHtmlOptions' => array('class' => 'col-md-3'),
+    )
+);
+
+?>  
   </div>
  
     <?php echo $form->radioButtonListGroup(

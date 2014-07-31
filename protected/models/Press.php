@@ -26,6 +26,7 @@
  * @property integer $press_pub_linkedin
  * @property integer $press_pub_facebook
  * @property integer $press_pub_twitter
+ * @property string $hours
  *
  * The followings are the available model relations:
  * @property List $list
@@ -49,7 +50,7 @@ class Press extends CActiveRecord {
         // will receive user inputs.
         return array(
             array('press_subject,list_id,press_content, press_sender_name, press_sender_email, press_replyto_name, press_replyto_email', 'required'),
-            array('press_user, list_id, press_contacts_mailed, press_contacts_failed, press_date, press_pub_abc, press_pub_linkedin, press_pub_facebook, press_pub_twitter', 'numerical', 'integerOnly' => true),
+            array('press_user, list_id, press_contacts_mailed, press_contacts_failed, press_pub_abc, press_pub_linkedin, press_pub_facebook, press_pub_twitter', 'numerical', 'integerOnly' => true),
             array('press_subject, press_sender_name, press_sender_email, press_replyto_name, press_replyto_email', 'length', 'max' => 255),
             array('press_status', 'length', 'max' => 1),
             array('press_date_completed', 'safe'),
@@ -103,6 +104,7 @@ class Press extends CActiveRecord {
             'press_pub_linkedin' => 'Press Pub Linkedin',
             'press_pub_facebook' => 'Press Pub Facebook',
             'press_pub_twitter' => 'Press Pub Twitter',
+            'hours' => 'hours',
         );
     }
 
