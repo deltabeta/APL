@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>
 <script type = "text/javascript">
 
     function f()
@@ -71,7 +72,9 @@ echo $form->form;
     <div class="col-xs-2"><!--
 
 
-        -->           <select class="form-control" id="type" name="type" onchange="f()">
+        -->        
+        <?php $url = Yii::app()->createUrl('contact/session');    ?>
+        <select class="form-control" id="type" name="type" onchange="sendData('type='+this.value,'<?php echo $url; ?>')">
             <option value="0" id="0"  selected="selected">Client</option>
             <option value="1" id="1"> Journaliste</option>
 

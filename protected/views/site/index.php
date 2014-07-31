@@ -13,7 +13,8 @@ $this->pageTitle=Yii::app()->name;
 <div class="row">
     <div class="span-16" >   
         <div class="homeparagraph">
-    <p> As a fast growing young economy Africa often is compared with emerging markets like Brazil, India and Turkey. There are many parallels but also many differences. What can make Africa a complicated case is the fact that Africa is not one country but 54. How are you going to build your brand in 54 countries? How to conduct your media strategy? How can you get in contact with over 10,000 African journalists in a highly fragmented media landscape?</p>
+    <?php echo Yii::app()->session['type']; ?>
+            <p> As a fast growing young economy Africa often is compared with emerging markets like Brazil, India and Turkey. There are many parallels but also many differences. What can make Africa a complicated case is the fact that Africa is not one country but 54. How are you going to build your brand in 54 countries? How to conduct your media strategy? How can you get in contact with over 10,000 African journalists in a highly fragmented media landscape?</p>
 <div class="clear"></div>
 <p>
 Africa Business Communities has spent over three years getting connected with the African media. We have built relationships with thousands of African journalists resulting in the Africa Press List.</p>

@@ -58,6 +58,39 @@ function listcountry(param, page)
 
 
 
+function sendData(param, page)
+{
+    
+        if (document.all){
+            //Internet Explorer
+            var XhrObj = new ActiveXObject("Microsoft.XMLHTTP");
+        }//fin if
+        else{
+            //Mozilla
+            var XhrObj = new XMLHttpRequest();
+        }//fin else
+
+        //dÃ©finition de l'endroit d'affichage:
+
+        var content = document.getElementById("user");
+
+        XhrObj.open("POST", page);
+
+        //Ok pour la page cible
+        XhrObj.onreadystatechange = function(){
+            if (XhrObj.readyState == 4 && XhrObj.status == 200)
+                content.innerHTML = XhrObj.responseText;
+        }
+        XhrObj.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        XhrObj.send(param);
+    
+
+
+}//fin fonction SendData
+
+
+
+
 
 function read() {
 

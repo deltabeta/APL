@@ -38,7 +38,7 @@ class ContactController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('admin','dashbord', 'index', 'create','update'),
+                'actions' => array('admin','dashbord', 'index', 'create','update','session'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -65,6 +65,12 @@ class ContactController extends Controller {
         ));
     }
 
+    public function actionSession()
+	{
+                Yii::app()->session['type'] = $_POST['type'];
+	
+	}
+    
     /**
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
