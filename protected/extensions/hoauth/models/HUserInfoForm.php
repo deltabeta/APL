@@ -89,14 +89,14 @@ $this->username = $model->$nameAtt;
 		$this->_model = $model;
                
                 
-               // echo  $model->id;
-                $contact->contact_id = $model->id;
-//                $contact->contact_name_first = $userProfile->firstName;
-//                $contact->contact_name_last = $userProfile->lastName;
-                $contact->contact_email = $model->$emailAtt;
-                $contact->save(false);
-//                
-             
+//               // echo  $model->id;
+//                $contact->contact_id = $model->id;
+////                $contact->contact_name_first = $userProfile->firstName;
+////                $contact->contact_name_last = $userProfile->lastName;
+//                $contact->contact_email = $model->$emailAtt;
+//                $contact->save(false);
+////                
+//             
 //                    $Client->user_id = $model->id;
 ////                    $Client->porfile_name_first = $userProfile->firstName;
 ////                    $Client->porfile_name_last = $userProfile->lastName;

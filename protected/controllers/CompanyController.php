@@ -61,7 +61,7 @@ class CompanyController extends Controller
 		$country = IsoCountry::model()->findAll();
                 $company = Company::model()->findByPk($id);
                 echo '<b>'.$company->comp_name.'</b><br>';
-                echo '<select name="country'.$id.'" multiple>';
+                echo '<select name="country'.$id.'[]" multiple>';
                 foreach($country as $value){
                 
                     echo '<option value="'.$value->country_iso.'">'.$value->country_name.'</option>';

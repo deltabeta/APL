@@ -9,15 +9,6 @@ $contact= Contact::model()->findByPk(Yii::app()->user->id);
      $varuser='contact';
  else
      $varuser='client';
- 
-
- try {
-    $USER_oauth = UserOAuth::model()->findByPk(Yii::app()->user->id);
-} catch (Exception $exc) {
-    $USER_oauth =null;
-}
-
-
 $this->menu=array(
 	((UserModule::isAdmin())
 		?array('label'=>UserModule::t('Manage Users'), 'url'=>array('/user/admin'))
@@ -76,41 +67,11 @@ $this->menu=array(
 
 	<div class="row">
 		<?php // echo $form->labelEx($model,'email'); ?>
-            
-		<?php  if  ($USER_oauth!=null)
-                    
-                echo $form->textFieldGroup($model,'email',array('size'=>60,'maxlength'=>128,
+		<?php echo $form->textFieldGroup($model,'email',array('size'=>60,'maxlength'=>128,
                             'wrapperHtmlOptions' => array('class' => 'col-sm-6',)
-                        ));
-                
-                else 
-                {
-                   echo $form->textFieldGroup(
-			$model,
-			'email',
-			array(
-				'wrapperHtmlOptions' => array(
-					'class' => 'col-sm-5',
-				),
-				'widgetOptions' => array(
-					'htmlOptions' => array('disabled' => true)
-				)
-			)
-		); 
-                    
-                    
-                }
-                
-                ?>
-            
-            
+                        ));?>
 		<?php echo $form->error($model,'email'); ?>
-            
-            
-            
 	</div>
-        
-        
 <div class="row">
 	<div class="buttons pull-right" >
 		<?php $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit',

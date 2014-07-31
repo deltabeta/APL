@@ -88,7 +88,6 @@ class HOAuthAction extends CAction {
      */
     public $usernameAttribute = false;
 
-    
     /**
      * @var string $_emailAttribute
      */
@@ -278,7 +277,6 @@ class HOAuthAction extends CAction {
         Yii::app()->controller->redirect($returnUrl);
     }
 
-    
     /**
      * Registers new user, collects username and email if needed
      *
@@ -289,9 +287,8 @@ class HOAuthAction extends CAction {
     protected function processUser($user, $userProfile) {
         if ($this->useYiiUser) {
             $profile = new Profile();
-          $contact = new Contact();
-          $Client = new Client();
-          $type=null;
+//            $contact = new Contact();
+//            $Client = new Client();
             // enabling register mode
             // old versions of yii
             $profile->regMode = true;
@@ -314,7 +311,6 @@ class HOAuthAction extends CAction {
         if (!$form->validateUser()) {
             $this->controller->render(self::ALIAS . '.views.form', array(
                 'form' => $form,
-                
             ));
             Yii::app()->end();
         }
@@ -322,95 +318,71 @@ class HOAuthAction extends CAction {
         // updating attributes in $user model (if needed)
         $user = $form->validUserModel;
 
-        
-        
         // the model won't be new, if user provided email and password of existing account
         if ($user->isNewRecord) {
             if (!$user->save())
                 throw new Exception("Error, while saving {$this->model} model:\n\n" . var_export($user->errors, true));
 
-                
-                    
-   
-       
             // trying to send activation email
             $this->sendActivationMail($user);
 
             if ($this->useYiiUser) {
                 $profile->user_id = $user->primaryKey;
-                
-        $profile->identifier = $userProfile->identifier;
-           $profile->email = $user->email;
-           $profile->firstname = $userProfile->firstName;
-        $profile->webSiteURL = $userProfile->webSiteURL;
-        $profile->profileURL = $userProfile->profileURL;
-        $profile->photoURL = $userProfile->photoURL;
-        $profile->displayName = $userProfile->displayName;
-        $profile->description = $userProfile->description;
-        $profile->gender = $userProfile->gender;
-        $profile->language = $userProfile->language;
-        $profile->birthDay = $userProfile->birthDay;
-        $profile->birthMonth = $userProfile->birthMonth;
-        $profile->birthYear = $userProfile->birthYear;
-     
-        $profile->emailVerified = $userProfile->emailVerified;
-        $profile->phone = $userProfile->phone;
-        $profile->address = $userProfile->address;
-        $profile->country = $userProfile->country;
-        $profile->region = $userProfile->region;
-        $profile->city = $userProfile->city;
-        $profile->zip = $userProfile->zip;
-       
-       $type =   Yii::app()->session['type'];
-        
-//      $type = Yii::app()->user->getState("type");
-        
-//        
-  if ($type==1)
-{
-        $contact->contact_id =$profile->user_id ;
-                    $contact->contact_name_first = $userProfile->firstName;
-                    $contact->contact_name_last = $userProfile->lastName;
-                    $contact->contact_email = $user->email;
-                   $contact->save(FALSE);
-  }               
-     else if ($type==0)
-    {
-        $Client->user_id = $profile->user_id ;
-                    $Client->porfile_name_first = $userProfile->firstName;
-                    $Client->porfile_name_last = $userProfile->lastName;
-                    $Client->user_email = $user->email;
-                    $Client->save(FALSE);         
-    }
-           $profile->save(FALSE);
-        
-         
-          //  $contact->contact_email = $userProfile->email;
-                    
-//                    if($contact != Null)
-//                    {
-                   
-                    
-//                    }
-//                    
-//                     if($Client != Null)
-//                    {
-//                    
-//                    $Client->save();
-////                    }
                 if ($profile->hasAttribute('firstname')) {
                     // we have new version of yii-user of about 06.2013
                     $profile->firstname = $userProfile->firstName;
                     $profile->lastname = $userProfile->lastName;
-                 
+                //     $contact->contact_email = $userProfile->email;
+                    
+//                    if($contact != Null)
+//                    {
+//                    $contact->contact_id = Yii::app()->user->id;
+//                    $contact->contact_name_first = $userProfile->firstName;
+//                    $contact->contact_name_last = $userProfile->lastName;
+//                    $contact->contact_email = $userProfile->email;
+//                   
+//                    $contact->save(false);
+//                    }
+//                    
+//                     if($Client != Null)
+//                    {
+//                    $Client->user_id = Yii::app()->user->id;
+//                    $Client->porfile_name_first = $userProfile->firstName;
+//                    $Client->porfile_name_last = $userProfile->lastName;
+//                    $Client->user_email = $userProfile->email;
+//                   
+//                    $Client->save(false);
+//                    }
+//                    
+                    
+                    
+//                    $profile->identifier = $userProfile->identifier;
+//                    $profile->webSiteURL = $userProfile->webSiteURL;
+//                    $profile->profileURL = $userProfile->profileURL;
+//                    $profile->photoURL = $userProfile->photoURL;
+//                    $profile->displayName = $userProfile->displayName;
+//                    $profile->description = $userProfile->description;
+//                    $profile->gender = $userProfile->gender;
+//                    $profile->language = $userProfile->language;
+//                    $profile->birthDay = $userProfile->birthDay;
+//                    $profile->birthMonth = $userProfile->birthMonth;
+//                    $profile->birthYear = $userProfile->birthYear;
+//                    $profile->email = $userProfile->email;
+//                    $profile->emailVerified = $userProfile->phone;
+//                    $profile->address = $userProfile->address;
+//                    $profile->country = $userProfile->country;
+//                    $profile->region = $userProfile->region;
+//                    $profile->city = $userProfile->city;
+//                    $profile->zip = $userProfile->zip;
                 } else {
                     $profile->first_name = $userProfile->firstName;
                     $profile->last_name = $userProfile->lastName;
                     
+                  $profile->displayName = $userProfile->displayName;
                 }
 
                 if (!$profile->save())
-                   ;// throw new Exception("Error, while saving " . get_class($profile) . "	model:\n\n" . var_export($user->errors, true));
+                    throw new Exception("Error, while saving " . get_class($profile) . "	model:\n\n" . var_export($user->errors, true));
             }
         }
 

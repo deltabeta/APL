@@ -16,12 +16,10 @@ switch($errorCode)
 	break;
 }
 ?>
-
-<br><br><br>
 <div class="form">
 	<div class="errorSummary">
-            <p class="bg-danger"><b><?= HOAuthAction::t('Sorry, but your account') ?> <?php echo $error; ?>!</b></p>
-            <p class="bg-danger">
+		<p><b><?= HOAuthAction::t('Sorry, but your account') ?> <?php echo $error; ?>!</b></p>
+		<p>
 			<?php
 			echo CHtml::link(HOAuthAction::t('Return to main page'), '/') .
 			' | ' .

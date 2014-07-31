@@ -76,8 +76,8 @@ class Contact extends CActiveRecord
 			'businessCategories' => array(self::MANY_MANY, 'BusinessCategory', 'contact_category(contact_id, cat_id)'),
                         'isoLanguages' => array(self::MANY_MANY, 'IsoLanguage', 'contact_language(contact_id, lang_iso)'),
 			'lists' => array(self::MANY_MANY, 'List', 'list_contact(contact_id, list_id)'),
-                        'companies' => array(self::MANY_MANY, 'Company', 'contact_geo_coverage(company_id, contact_id, geo_country_id)'),
-                         'geo_countries' => array(self::MANY_MANY, 'IsoCountry', 'contact_geo_coverage(company_id, contact_id, geo_country_id)'),
+                        'companies' => array(self::MANY_MANY, 'Company', 'contact_geo_coverage(company_id, contact_id)'),
+                        'geo_countries' => array(self::MANY_MANY, 'IsoCountry', 'contact_geo_coverage(contact_id, geo_country_id)'),
 		);
 	}
 

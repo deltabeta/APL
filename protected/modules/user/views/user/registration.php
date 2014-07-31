@@ -49,7 +49,7 @@ $this->breadcrumbs = array(
 
         <p class="note"><?php echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?></p>
 
-        <?php // echo $form->errorSummary(array($model, $contact));  ?>
+        <?php  echo $form->errorSummary(array($model, $contact));  ?>
 
 
         <div id="monaccordeon">
@@ -67,7 +67,8 @@ $this->breadcrumbs = array(
                                     'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                                 ));
                                 ?>
-                                <?php echo $form->error($model, 'username'); ?>  <span class="label label-info"    
+                                <?php //echo $form->error($model, 'username'); ?>  
+                                <span class="label label-info"    
                                       >Minimum is 6 characters <br>Must contain at least one special character</span>
 
                             </div>
@@ -79,7 +80,7 @@ $this->breadcrumbs = array(
                                     'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                                 ));
                                 ?>
-                                <?php echo $form->error($model, 'password'); ?>
+                                <?php // echo $form->error($model, 'password'); ?>
                     <!--            <p class="hint">
     <?php // echo UserModule::t("Minimal password length 4 symbols.");  ?>
                                 </p>-->
@@ -92,7 +93,7 @@ $this->breadcrumbs = array(
                                     'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                                 ));
                                 ?>
-    <?php echo $form->error($model, 'verifyPassword'); ?>
+    <?php // echo $form->error($model, 'verifyPassword'); ?>
                             </div>
 
 
@@ -103,7 +104,7 @@ $this->breadcrumbs = array(
                                     'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                                 ));
                                 ?>
-    <?php echo $form->error($model, 'email'); ?>
+    <?php // echo $form->error($model, 'email'); ?>
                             </div>
                         </fieldset>
                     </div>
@@ -145,11 +146,11 @@ $this->breadcrumbs = array(
 <fieldset>
                 <?php if (UserModule::doCaptcha('registration')): ?>
                 <div class="row">
-        <?php echo $form->labelEx($model, 'verifyCode'); ?>
+        <?php // echo $form->labelEx($model, 'verifyCode'); ?>
 
         <?php $this->widget('CCaptcha'); ?>
                 <?php echo $form->textField($model, 'verifyCode'); ?>
-                <?php echo $form->error($model, 'verifyCode'); ?>
+                <?php // echo $form->error($model, 'verifyCode'); ?>
 
                     <p class="hint"><?php echo UserModule::t("Please enter the letters as they are shown in the image above."); ?>
                         <br/><?php echo UserModule::t("Letters are not case-sensitive."); ?></p>

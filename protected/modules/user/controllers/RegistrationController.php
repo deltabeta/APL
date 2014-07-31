@@ -27,7 +27,7 @@ class RegistrationController extends Controller {
     $categories = new BusinessCategory;
     $iso_language = new IsoLanguage;
     $company = new Company;
-
+    
         
         // ajax validator
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'registration-form') {
@@ -68,17 +68,32 @@ class RegistrationController extends Controller {
                         }
                         
                         if(isset($_POST['Company']['comp_id'])){
+                            
                             $companies = $_POST['Company']['comp_id'];
-                           
+                            
                             foreach($companies as $value){
-                                $countries = $_POST['country'.$value];
-                                //$company = Company::model()->findByPk($value);
-                                $contact->companies = $companies;
-                                $contact->geo_countries = $countries;
+                                if(isset($_POST['country'.$value])){
+                                    $countries = $_POST['country'.$value];
+                                    foreach($countries as $c){
+                                        $cgc = new ContactGeoCoverage;
+                                        $cgc->contact = $contact->contact_id;
+                                        $cgc->company = $value;
+                                        $cgc->geoCountry = $c;
+                                        $cgc->save();                                   
+                                        
+                                    }
+                                }
+                                
                             }
+                            
+                            
+                            
+//                           $contact->companies = $companies;
+//                           $contact->geo_countries  = array(004,008,010);
+                            
                         }
                         
-                        $contact->save();
+                        //$contact->save();
                         
 
 
