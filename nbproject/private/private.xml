@@ -12,38 +12,15 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/Endpoint.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/models/UserOAuth.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/widgets/views/networksList.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/Providers/Facebook.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/Auth.php</file>
-            <file>file:/C:/wamp/www/APL/protected/modules/user/controllers/RegistrationController.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/Providers/LinkedIn.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/User_Profile.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/Provider_Model.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/views/form.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/HOAuthAction.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/thirdparty/Facebook/facebook.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/thirdparty/OpenID/LightOpenID.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/User_Contact.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/models/HUserInfoForm.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/Provider_Model_OAuth2.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/thirdparty/OAuth/OAuth.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/widgets/HOAuthActive.php</file>
-            <file>file:/C:/wamp/www/APL/protected/modules/user/UserModule.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/Providers/Twitter.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/Logger.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/widgets/HOAuth.php</file>
-            <file>file:/C:/wamp/www/APL/protected/modules/user/controllers/LoginController.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/User_Activity.php</file>
-            <file>file:/C:/wamp/www/APL/protected/modules/user/models/Profile.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/Error.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/Provider_Adapter.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/User.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/widgets/views/link.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/thirdparty/Facebook/base_facebook.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/hybridauth/Hybrid/Storage.php</file>
-            <file>file:/C:/wamp/www/APL/protected/extensions/hoauth/views/yiiUserError.php</file>
+            <file>file:/C:/wamp/www/APL/protected/models/Press.php</file>
+            <file>file:/C:/wamp/www/APL/protected/models/Contact.php</file>
+            <file>file:/C:/wamp/www/APL/protected/controllers/PressController.php</file>
+            <file>file:/C:/wamp/www/APL/protected/views/press/create.php</file>
+            <file>file:/C:/wamp/www/APL/protected/views/press/drafts.php</file>
+            <file>file:/C:/wamp/www/APL/protected/views/press/update.php</file>
+            <file>file:/C:/wamp/www/APL/protected/views/press/_form.php</file>
+            <file>file:/C:/wamp/www/APL/protected/views/press/scheduled.php</file>
+            <file>file:/C:/wamp/www/APL/protected/models/Client.php</file>
         </group>
     </open-files>
 </project-private>
