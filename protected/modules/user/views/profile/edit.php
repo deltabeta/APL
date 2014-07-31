@@ -14,9 +14,10 @@ $contact= Contact::model()->findByPk(Yii::app()->user->id);
  try {
     $USER_oauth = UserOAuth::model()->findByPk(Yii::app()->user->id);
 } catch (Exception $exc) {
-    $USER_oauth =null;
+    $USER_oauth =Null;
 }
 
+print_r($USER_oauth);
 
 $this->menu=array(
 	((UserModule::isAdmin())
@@ -77,13 +78,13 @@ $this->menu=array(
 	<div class="row">
 		<?php // echo $form->labelEx($model,'email'); ?>
             
-		<?php  if  ($USER_oauth!=null)
+		<?php  if  ($USER_oauth==null)
                     
                 echo $form->textFieldGroup($model,'email',array('size'=>60,'maxlength'=>128,
                             'wrapperHtmlOptions' => array('class' => 'col-sm-6',)
                         ));
                 
-                else 
+                else if  ($USER_oauth!=null)
                 {
                    echo $form->textFieldGroup(
 			$model,
