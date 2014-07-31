@@ -55,7 +55,7 @@ return array(
             'loginNotActiv' => false,
  
             # activate user on registration (only sendActivationMail = false)
-            'activeAfterRegister' => TRUE,
+            'activeAfterRegister' => FALSE,
  
             # automatically login from registration
             'autoLogin' => true,
