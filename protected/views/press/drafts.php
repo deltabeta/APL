@@ -45,8 +45,21 @@ $('.search-form form').submit(function(){
  foreach($presses as  $value){    
    echo '<tr><td>'.'DRAFT'.'</td>';
    echo '<td>'.$value->press_subject.'</td>';   
-    echo '<td>'.$value->press_sender_name.'</td>';   
-    echo '<td>'.$value->press_file_1.$value->press_file_2.$value->press_file_3.'</td>'; 
+    echo '<td>'.$value->press_sender_name.'</td>';
+    $file1='';
+    if(!empty($value->press_file_1)){
+        $file1= CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/images.png" height="60" width="60">',array('../uploads/'.$value->press_file_1),array('target'=>'_blank'));
+    }
+    $file2='';
+    if(!empty($value->press_file_2)){
+        $file2= CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/images.png" height="60" width="60">',array('../uploads/'.$value->press_file_2),array('target'=>'_blank'));
+    }
+    $file3='';
+    if(!empty($value->press_file_3)){
+        $file3= CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/images.png" height="60" width="60">',array('../uploads/'.$value->press_file_3),array('target'=>'_blank'));
+    }
+    
+    echo '<td>'.$file1.$file2.$file3.'</td>'; 
     echo '<td>'.$value->GetPressName().'</td>';   
     echo '<td>'.$value->press_date.'</td>';  
     echo '<td>'.CHtml::link('Delete Press',array('press/deletepress/'.$value->press_id),array('onClick'=>'confirm("Sure to delete this row ?")')).'</td>';    
