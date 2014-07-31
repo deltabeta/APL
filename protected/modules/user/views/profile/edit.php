@@ -11,13 +11,23 @@ $contact= Contact::model()->findByPk(Yii::app()->user->id);
      $varuser='client';
  
 
- try {
-    $USER_oauth = UserOAuth::model()->findByPk(Yii::app()->user->id);
-} catch (Exception $exc) {
-    $USER_oauth =Null;
-}
+// try {
+//    $USER_oauth = UserOauth::model()->findByPk(Yii::app()->user->id);
+//} catch (Exception $exc) {
+//    $USER_oauth =Null;
+//}
+//$USER_oauth = UserOauth::model()->findBy(array('user_id'=>Yii::app()->user->id));
+//$USER_oauth=  UserOauth::model()->find('user_id=?', Yii::app()->user->id);
+//echo Yii::app()->user->id;
 
-print_r($USER_oauth);
+
+$user_id = Yii::app()->user->id;
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'user_id=:user_id';
+        $criteria->params = array(':user_id' => $user_id);
+        $USER_oauth = UserOauth::model()->findAll($criteria);
+
+
 
 $this->menu=array(
 	((UserModule::isAdmin())
@@ -78,7 +88,9 @@ $this->menu=array(
 	<div class="row">
 		<?php // echo $form->labelEx($model,'email'); ?>
             
-		<?php  if  ($USER_oauth==null)
+		<?php  
+              
+                if  ($USER_oauth==null)
                     
                 echo $form->textFieldGroup($model,'email',array('size'=>60,'maxlength'=>128,
                             'wrapperHtmlOptions' => array('class' => 'col-sm-6',)
