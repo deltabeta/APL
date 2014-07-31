@@ -43,7 +43,7 @@ $('.search-form form').submit(function(){
     
      <?php   
  foreach($presses as  $value){    
-  if($value->press_status=='Q') { echo '<tr><td>'.'QUEUE'.'</td>';} else{echo '<tr><td>'.'NEW'.'</td>';}
+  if($value->press_status=='Q') { echo '<tr><td>'.'IN QUEUE'.'</td>';} else{echo '<tr><td>'.'NEW'.'</td>';}
    echo '<td>'.$value->press_subject.'</td>';   
     echo '<td>'.$value->press_sender_name.'</td>';   
     echo '<td>'.$value->press_file_1.$value->press_file_2.$value->press_file_3.'</td>'; 
