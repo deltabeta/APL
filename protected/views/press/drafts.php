@@ -62,7 +62,7 @@ $('.search-form form').submit(function(){
     echo '<td>'.$file1.$file2.$file3.'</td>'; 
     echo '<td>'.$value->GetPressName().'</td>';   
     echo '<td>'.$value->press_date.'</td>';  
-    echo '<td>'.CHtml::link('Delete Press',array('press/deletepress/'.$value->press_id),array('onClick'=>'confirm("Sure to delete this row ?")')).'</td>';    
+    echo '<td>'.CHtml::link('Delete Press',array('press/deletepress/'.$value->press_id),array('onClick'=>'return confirm("Sure to delete this row ?")')).'</td>';    
 
     echo '<td>'.CHtml::link('Modify Press',array('press/update/'.$value->press_id)).'</td></tr>';    
 

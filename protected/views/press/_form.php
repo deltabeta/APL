@@ -278,8 +278,8 @@ $this->widget(
                                  ),
 				'widgetOptions' => array(
 					'data' => array(
-						'Q' =>'Send directly to Mail Queue (Publish Now)',
-                                                'N' =>'Choose Date',
+						'N' =>'Send directly to Mail Queue (Publish Now)',
+                                                'Q' =>'Choose Date',
                    
 						'D' =>'Dont Send (Save as draft for later)',
 					),
