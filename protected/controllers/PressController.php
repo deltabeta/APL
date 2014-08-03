@@ -92,13 +92,17 @@ class PressController extends Controller {
             //  $model->press_date_started = $_POST['Press']['press_date_started'].' '. $_POST['Press']['hours'].':00';       
 
             if ($model->save()) {
+                //test mail 
+                $email = Yii::app()->mandrillwrap;
+                $email->sendEmail();$email = Yii::app()->mandrillwrap;
+                                $email->sendEmail();
                 if ($model->press_file_1 != null)
                     $model->press_file_1->saveAs(Yii::app()->basePath . '/../uploads/' . $model->press_file_1);
                 if ($model->press_file_2 != null)
                     $model->press_file_2->saveAs(Yii::app()->basePath . '/../uploads/' . $model->press_file_2);
                 if ($model->press_file_3 != null)
                     $model->press_file_3->saveAs(Yii::app()->basePath . '/../uploads/' . $model->press_file_3);
-                $this->redirect(array('view', 'id' => $model->press_id));
+               // $this->redirect(array('view', 'id' => $model->press_id));
             }
         }
 

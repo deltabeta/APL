@@ -107,6 +107,10 @@ return array(
         'sourceLanguage'=>'en',	
 	// application components
 	'components'=>array(
+            'mandrillwrap'=>array(
+                 'class'=>'ext.mandrillwrap.mandrillwrap',  
+                    
+                ),
             
             
 //            'contactSearch'=>array(
