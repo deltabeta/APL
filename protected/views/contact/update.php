@@ -51,7 +51,7 @@
         'type' => 'horizontal',
         'enableClientValidation' => true,
         'clientOptions' => array(
-            'validateOnSubmit' => true,
+            'validateOnSubmit' => false,
         ),
         // Please note: When you enable ajax validation, make sure the corresponding
         // controller action is handling ajax validation correctly.
@@ -87,6 +87,8 @@
 
     <div id="monaccordeon">
         <div class="accordion-group">
+            
+        <span  class="glyphicon glyphicon-chevron-down"></span>
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item1">Personal Information</div>
             <div id="item1" class="collapse accordion-group in">
                 <div class="accordion-inner">
@@ -189,6 +191,7 @@
 
     <div id="monaccordeon">
         <div class="accordion-group">
+        <span  class="glyphicon glyphicon-chevron-down"></span>
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item2">Address </div>
             <div id="item2" class="collapse accordion-group ">
                 <div class="accordion-inner">
@@ -274,25 +277,26 @@
 
     <div id="monaccordeon">
         <div class="accordion-group">
-            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item3">Othres </div>
+        <span  class="glyphicon glyphicon-chevron-down"></span>
+            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item3">Others </div>
             <div id="item3" class="collapse accordion-group">
                 <div class="accordion-inner">
                         </fieldset>
-                    <div class="row">
+                    <div class="col-sm-6">
                         <?php //echo $form->labelEx($model,'contact_phone');  ?>
                         <?php
                         echo $form->textFieldGroup($model, 'contact_phone', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
+                            'wrapperHtmlOptions' => array('class' => 'col-sm-10',),
                         ));
                         ?>
                         <?php echo $form->error($model, 'contact_phone'); ?>
                     </div>
 
-                    <div class="row">
+                    <div class="row col-sm-13">
                         <?php //echo $form->labelEx($model,'contact_website');  ?>
                         <?php
                         echo $form->textFieldGroup($model, 'contact_website', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
+                            'wrapperHtmlOptions' => array('class' => 'col-sm-2',),
                         ));
                         ?>
                         <?php echo $form->error($model, 'contact_website'); ?>

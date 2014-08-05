@@ -54,6 +54,9 @@ $this->breadcrumbs = array(
 
         <div id="monaccordeon">
             <div class="accordion-group">
+                
+        <span  class="glyphicon glyphicon-chevron-down"></span>
+        
                 <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item0">Login Information</div>
                 <div id="item0" class="collapse accordion-group in">
                     <div class="accordion-inner">

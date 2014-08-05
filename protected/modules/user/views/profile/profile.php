@@ -37,7 +37,11 @@ $this->widget(
             'create_at' => $model->create_at,
             'lastvisit_at' => $model->lastvisit_at,
             'status'=> User::itemAlias("UserStatus", $model->status),
+         
+           
+          'Notification'=> '',
         
+          
         ),
         'attributes' => array(
             array('name' => 'firstName', 'label' => 'Username : '),
@@ -45,13 +49,28 @@ $this->widget(
             array('name' => 'create_at', 'label' => 'Create at : '),
             array('name' => 'lastvisit_at', 'label' => 'Last Visit : '),
             array('name' => 'status', 'label' => 'Status : '),
+           // array('name' => 'Notification', 'label' => 'Notification  : '),    
 
 
         ),
     )
 );
+
+if ($contact!=null)
+{
+     if (($contact->contact_name_first==null)||($contact->contact_name_last==null))
+         
+echo '<span class="label label-info ">'
+ 
+         . '<b>Please check your personal information.<br> '
+         . 'Actually you will not be showen in the <br> search journalist</b></span>';
+     
+     
+
+}
  ?>
-<!--<table class="grid-view" >
+        
+  <!--<table class="grid-view" > 
    <tr>
         <th class="label  size-large label-info"><?php // echo CHtml::encode($model->getAttributeLabel('username')); ?></th>-->
         <td><?php // echo CHtml::encode($model->username); ?></td>

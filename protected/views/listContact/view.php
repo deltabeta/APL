@@ -16,14 +16,14 @@ $this->menu=array(
 );
 ?>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>
-<h1>My List</h1>
+<!--<h1>My List</h1>-->
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'list_name',
-	),
-));
+<?php // $this->widget('zii.widgets.CDetailView', array(
+//	'data'=>$model,
+//	'attributes'=>array(
+//		'list_name',
+//	),
+//));
 ?>
 
 
@@ -32,8 +32,15 @@ $this->menu=array(
 <?php
 echo '
 <form action="'.Yii::app()->request->baseUrl.'/listcontact/deleteall/'.$model->list_id.'" method="post">    
-<table border="1" style="border:1px solid">';
-echo '<tr><th><input type="checkbox" id="selecctall"/> Select All</th><th>Company / Contact</th><th>Language</th><th>Publish Region</th><th>Field of interest</th></tr>';
+<table  class="table table-hover" border="1" style="border:1px solid">';
+echo '<tr class="active" >'
+. '<th>'
+        . '<input type="checkbox" id="selecctall"/> '
+        . 'Select All</th>'
+        . '<th>Company / Contact</th>'
+        . '<th>Language</th>'
+        . '<th>Publish Region</th>'
+        . '<th>Field of interest</th>' . '</tr>';
 foreach($contact as  $value){
 
     

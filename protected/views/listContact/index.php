@@ -1,3 +1,4 @@
+
 <?php
 /* @var $this ListContactController */
 /* @var $dataProvider CActiveDataProvider */
@@ -21,22 +22,23 @@ $this->breadcrumbs=array(
 
 
 <div id="list-contact-grid" class="grid-view">
-<table class="items">
+<table class="table table-hover">
     
     <tr>
-        <th id="list-contact-grid_c0">List name</th>
+    <th id="list-contact-grid_c0">List name</th>
     <th id="list-contact-grid_c1">Nb contacts</th>
     <th id="list-contact-grid_c2">List Added</th>
     <th id="list-contact-grid_c3">List Modified</th>
-    <th></th>
-    <th></th>
+    <th > <i class="icon-large icon-search"></i>Detail</th>
+    <th>Delete</th>
+    
     </tr>
     
      <?php
 
 foreach($list as  $value){
     
-    echo '<tr><td>'.$value->list_name.'</td>';
+    echo '<tr><td> <i class="fa fa-list-alt fa-lg"> </i> '.$value->list_name.'</td>';
     
     //$nb = ListContact::model()->nbcontacts();
     
@@ -44,13 +46,13 @@ foreach($list as  $value){
     $nb = count($contact->contacts);
     
     
-    echo '<td>'.$nb.'</td>';
+    echo '<td> <i class="fa fa-users fa-lg"></i> '.$nb.'</td>';
       
-    if($value->list_added>0){ echo' <td>'.date('d/m/Y h:i',$value->list_added).'</td>';}else{echo' <td></td>';}
-    if($value->list_modified>0){ echo' <td>'.date('d/m/Y h:i',$value->list_modified).'</td>';}else{echo' <td></td>';}   
+    if($value->list_added>0){ echo' <td> <i class="fa fa-clock-o fa-lg"> </i>'.date('d/m/Y h:i',$value->list_added).'</td>';}else{echo' <td></td>';}
+    if($value->list_modified>0){ echo' <td> <i class="fa fa-clock-o fa-lg "> </i>'.date('d/m/Y h:i',$value->list_modified).'</td>';}else{echo' <td></td>';}   
     echo'
-<td>'.CHtml::link('Detail List',array('listContact/view/'.$value->list_id)).'</td>
-    <td>'.CHtml::link('Delete List',array('listContact/deletelist/'.$value->list_id),array('onClick'=>'return confirm("Are you sure to delete this row ?")')).'</td>
+<td> <i class="fa fa-file-text fa-lg"> </i> '.CHtml::link('Detail List',array('listContact/view/'.$value->list_id)).'</td>
+    <td> <i class="fa fa-trash-o fa-lg">  </i> '.CHtml::link('Delete List',array('listContact/deletelist/'.$value->list_id),array('onClick'=>'return confirm("Are you sure to delete this row ?")')).'</td>
 </tr>';    
 }
      

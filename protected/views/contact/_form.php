@@ -72,6 +72,8 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 
     <div id="monaccordeon">
         <div class="accordion-group">
+            
+        <span  class="glyphicon glyphicon-chevron-down"></span>
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item1">Personal Information</div>
             <div id="item1" class="collapse accordion-group in">
                 <div class="accordion-inner">
@@ -264,25 +266,27 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 
     <div id="monaccordeon">
         <div class="accordion-group">
+            
+        <span  class="glyphicon glyphicon-chevron-down"></span> 
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item2">Address </div>
             <div id="item2" class="collapse accordion-group ">
                 <div class="accordion-inner">
                     <fieldset>
-                        <div class="row">
+                        <div class="row col-sm-6">
                             <?php //echo $form->labelEx($model,'contact_adress');   ?>
                             <?php
                             echo $form->textFieldGroup($model, 'contact_adress', array('size' => 60, 'maxlength' => 255,
-                                'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
+                                'wrapperHtmlOptions' => array('class' => 'col-sm-10',),
                             ));
                             ?>
                             <?php echo $form->error($model, 'contact_adress'); ?>
                         </div>
 
-                        <div class="row">
+                        <div class="col-sm-13  row">
                             <?php //echo $form->labelEx($model,'contact_address_nr');   ?>
                             <?php
                             echo $form->textFieldGroup($model, 'contact_address_nr', array('size' => 60, 'maxlength' => 255,
-                                'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
+                                'wrapperHtmlOptions' => array('class' => 'col-sm-2',),
                             ));
                             ?>
                             <?php echo $form->error($model, 'contact_address_nr'); ?>
@@ -349,7 +353,9 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 
     <div id="monaccordeon">
         <div class="accordion-group">
-            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item3">Othres </div>
+            
+        <span  class="glyphicon glyphicon-chevron-down"></span>
+            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item3">Others </div>
             <div id="item3" class="collapse accordion-group">
                 <div class="accordion-inner">
                     <fieldset>

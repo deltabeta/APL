@@ -16,7 +16,7 @@ class ActivationController extends Controller
 			if (isset($find)&&$find->status) {
                             
 			    $this->render('/user/message',array('title'=>UserModule::t("User activation"),
-                                'content'=>UserModule::t("You account is active.")));
+                                'content'=>UserModule::t("Your account is active.")));
 			} 
                         
                         elseif(isset($find->activkey) && ($find->activkey==$activkey)) {
