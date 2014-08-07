@@ -11,7 +11,7 @@
     <?php
     $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'id' => 'press-form',
-        'htmlOptions' => array('class' => 'col-sm-5', 'class' => 'well', 'enctype' => 'multipart/form-data'),
+        'htmlOptions' => array('class' => 'col-sm-5', 'class' => 'well','enctype'=>'multipart/form-data'),
         'type' => 'horizontal',
         'enableClientValidation' => true,
         'clientOptions' => array(
@@ -36,30 +36,29 @@
     <?php echo $form->error($model, 'press_user'); ?>
             </div>-->
 
-
+    <div class="row">
+        
     <div class="form-group">
-
-
+        
         <div class="col-sm-3 control-label" >
-
-            <?php echo $form->labelEx($model, 'Contact List:'); ?> </div><i class="fa fa-list-alt"></i> 
-            <?php //echo $form->dropDownList($model, 'list_id', CHtml::listData(ListContact::model()->findAll(), 'list_id', 'list_name')); ?>
-            <?php
-            $this->widget('booster.widgets.TbSelect2', array(
-                'asDropDownList' => true,
-                'model' => $model,
-                'attribute' => 'list_id',
-                'options' => array(
-                    'placeholder' => $model->getAttributeLabel('list_id'),
-                    'width' => '48.5%',
-                    'class' => 'col-sm-3',
-                    'allowClear' => true,
-                ),
-                'data' => CHtml::listData(ListContact::model()->findAll(), 'list_id', 'list_name'
-                ),
-            ));
-            ?>
-            <?php echo $form->error($model, 'list_id'); ?>
+        <?php  echo $form->labelEx($model, 'Contact List:'); ?></div>
+        <?php //echo $form->dropDownList($model, 'list_id', CHtml::listData(ListContact::model()->findAll(), 'list_id', 'list_name')); ?>
+        <?php
+        $this->widget('booster.widgets.TbSelect2', array(
+            'asDropDownList' => true,
+            'model' => $model,
+            'attribute' => 'list_id',
+            'options' => array(
+                'placeholder' => $model->getAttributeLabel('list_id'),
+                'width' => '48.5%',
+                'class' => 'col-sm-3',
+                'allowClear' => true,
+            ),
+            'data' => CHtml::listData(ListContact::model()->findAll(), 'list_id', 'list_name'
+            ),
+        ));
+        ?>
+        <?php echo $form->error($model, 'list_id'); ?>
     </div>
 
 
@@ -68,47 +67,46 @@
 
 
     <div class="row">
-        <?php //  echo $form->labelEx($model, 'Subject:');  ?> 
-        <?php echo $form->textFieldGroup($model, 'press_subject', array('size' => 60, 'maxlength' => 255, 'wrapperHtmlOptions' => array('class' => 'col-sm-6',),)); ?>
-
+        <?php  echo $form->labelEx($model, 'Subject:'); ?> 
+        <?php  echo $form->textFieldGroup($model, 'press_subject', array('size' => 60, 'maxlength' => 255)); ?>
         <?php echo $form->error($model, 'press_subject'); ?>
     </div>
 
     <div class="row">
-        <?php // echo $form->labelEx($model, 'press_content');  ?>
+        <?php // echo $form->labelEx($model, 'press_content'); ?>
 
-        <?php
-        echo $form->ckEditorGroup(
-                $model, 'press_content', array(
-            'wrapperHtmlOptions' => array(
-            /* 'class' => 'col-sm-5', */
-            ),
-            'widgetOptions' => array(
-                'editorOptions' => array(
-                    'fullpage' => 'js:true',
+		<?php echo $form->ckEditorGroup(
+			$model,
+			'press_content',
+			array(
+		   		'wrapperHtmlOptions' => array(
+					/* 'class' => 'col-sm-5', */
+				),
+				'widgetOptions' => array(
+					'editorOptions' => array(
+						'fullpage' => 'js:true',
                     'width' => '540',
-                /* 'resize_maxWidth' => '640', */
-                /* 'resize_minWidth' => '320' */
-                )
-            )
-                )
-        );
-        ?>
-
-        <?php // echo $form->textArea($model, 'press_content', array('rows' => 6, 'cols' => 50));   ?>
+						/* 'resize_maxWidth' => '640', */
+						/* 'resize_minWidth' => '320'*/
+					)
+				)
+			)
+		); ?>
+		
+        <?php // echo $form->textArea($model, 'press_content', array('rows' => 6, 'cols' => 50));  ?>
         <?php echo $form->error($model, 'press_content'); ?>
     </div>
 
     <h2>Sender & ReplyTo</h2>
     <div class="row">
-        <?php // echo $form->labelEx($model, 'sender_name');  ?>
-        <?php echo $form->textFieldGroup($model, 'press_sender_name', array('size' => 60, 'maxlength' => 255, 'wrapperHtmlOptions' => array('class' => 'col-sm-6 '),)); ?>
+        <?php // echo $form->labelEx($model, 'sender_name'); ?>
+        <?php echo $form->textFieldGroup($model, 'press_sender_name', array('size' => 60, 'maxlength' => 255,                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),                        ));                        ?>
         <?php echo $form->error($model, 'press_sender_name'); ?>
     </div>
 
     <div class="row">
-        <?php // echo $form->labelEx($model, 'sender_email');  ?>
-        <?php echo $form->textFieldGroup($model, 'press_sender_email', array('size' => 60, 'maxlength' => 255, 'wrapperHtmlOptions' => array('class' => 'col-sm-6',),)); ?>
+        <?php // echo $form->labelEx($model, 'sender_email'); ?>
+        <?php echo $form->textFieldGroup($model, 'press_sender_email', array('size' => 60, 'maxlength' => 255,                            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),                        ));                        ?>
         <?php echo $form->error($model, 'press_sender_email'); ?>
     </div>
 
@@ -116,17 +114,16 @@
         <?php // echo $form->labelEx($model, 'replyto_name');  ?>
         <?php
         echo $form->textFieldGroup($model, 'press_replyto_name', array('size' => 60, 'maxlength' => 255, 'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
-        ));
+            ));   
         ?>
         <?php echo $form->error($model, 'press_replyto_name'); ?>
     </div>
 
     <div class="row">
         <?php // echo $form->labelEx($model, 'replyto_email'); ?>
-        <?php
-        echo $form->textFieldGroup($model, 'press_replyto_email', array('size' => 60, 'maxlength' => 255,
-            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),
-        ));
+        <?php echo $form->textFieldGroup($model, 'press_replyto_email', array('size' => 60, 'maxlength' => 255,         
+            'wrapperHtmlOptions' => array('class' => 'col-sm-6',),               
+            ));                   
         ?>
         <?php echo $form->error($model, 'press_replyto_email'); ?>
     </div>
@@ -139,72 +136,72 @@
             </div>
     
     -->
-    <!--
-        <div class="row">
-    <?php // echo $form->labelEx($model, 'press_date_completed'); ?>
-    <?php
-    echo $form->datePickerGroup(
-            $model, 'press_date_completed', array(
-        'widgetOptions' => array(
-            'options' => array(
-                'language' => 'fr',
-                'format' => 'yyyy-mm-dd',
-            ),
-        ),
-        'wrapperHtmlOptions' => array(
-            'class' => 'col-sm-5',
-        ),
-        'hint' => 'Click inside! This is a super cool date field.',
-        'prepend' => '<i class="glyphicon glyphicon-calendar"></i>'
-            )
-    );
-    ?> 
-            
-    <?php //echo $form->textFieldGroup($model, 'press_date_completed'); ?>
-    <?php echo $form->error($model, 'press_date_completed'); ?>
-        </div>
-    -->
+<!--
+    <div class="row">
+        <?php // echo $form->labelEx($model, 'press_date_completed'); ?>
+        <?php echo $form->datePickerGroup(
+			$model,
+			'press_date_completed',
+			array(
+				'widgetOptions' => array(
+					'options' => array(
+						'language' => 'fr',
+                                            'format' => 'yyyy-mm-dd',
+					),
+				),
+				'wrapperHtmlOptions' => array(
+					'class' => 'col-sm-5',
+				),
+				'hint' => '',
+				'prepend' => '<i class="glyphicon glyphicon-calendar"></i>'
+			)
+		); ?> 
+        
+        <?php //echo $form->textFieldGroup($model, 'press_date_completed'); ?>
+        <?php echo $form->error($model, 'press_date_completed'); ?>
+    </div>
+-->
 
-    <!--    <div class="row">
-    <?php // echo $form->labelEx($model, 'press_contacts_mailed'); ?>
-    <?php echo $form->textFieldGroup($model, 'press_contacts_mailed'); ?>
-    <?php echo $form->error($model, 'press_contacts_mailed'); ?>
-        </div>-->
-    <!--
-        <div class="row">
-    <?php // echo $form->labelEx($model, 'press_contacts_failed'); ?>
-    <?php echo $form->textFieldGroup($model, 'press_contacts_failed'); ?>
-    <?php echo $form->error($model, 'press_contacts_failed'); ?>
-        </div>
-    -->
+<!--    <div class="row">
+        <?php // echo $form->labelEx($model, 'press_contacts_mailed'); ?>
+        <?php echo $form->textFieldGroup($model, 'press_contacts_mailed'); ?>
+        <?php echo $form->error($model, 'press_contacts_mailed'); ?>
+    </div>-->
+<!--
+    <div class="row">
+        <?php // echo $form->labelEx($model, 'press_contacts_failed'); ?>
+        <?php echo $form->textFieldGroup($model, 'press_contacts_failed'); ?>
+        <?php echo $form->error($model, 'press_contacts_failed'); ?>
+    </div>
+-->
 
 
 
     <!--das muss gemacht werden  seif bitte nicht vergessen !!!!!!!!!!!!-->
-
-    <div class="row">
-        <?php //echo $form->labelEx($model, 'press_file_1'); ?>
+   	
+            <div class="row">
+    <?php //echo $form->labelEx($model, 'press_file_1'); ?>
         <?php echo $form->fileFieldGroup($model, 'press_file_1', array('wrapperHtmlOptions' => array('class' => 'col-sm-4'))); ?>
-        <?php echo $form->error($model, 'press_file_1'); ?>     
-    </div>
+    <?php echo $form->error($model, 'press_file_1'); ?>     
+            </div>
+    
+            <div class="row">
+    <?php //echo $form->labelEx($model, 'press_file_2'); ?>
+    <?php echo $form->fileFieldGroup($model, 'press_file_2'); ?>
+    <?php echo $form->error($model, 'press_file_2'); ?>
+            </div>
+    
+            <div class="row">
+    <?php //echo $form->labelEx($model, 'press_file_3'); ?>
+    <?php echo $form->fileFieldGroup($model, 'press_file_3'); ?>
+    <?php echo $form->error($model, 'press_file_3'); ?>
+            </div>
 
-    <div class="row">
-        <?php //echo $form->labelEx($model, 'press_file_2'); ?>
-        <?php echo $form->fileFieldGroup($model, 'press_file_2', array('wrapperHtmlOptions' => array('class' => 'col-sm-4'))); ?>
-        <?php echo $form->error($model, 'press_file_2'); ?>
-    </div>
-
-    <div class="row">
-        <?php //echo $form->labelEx($model, 'press_file_3'); ?>
-        <?php echo $form->fileFieldGroup($model, 'press_file_3', array('wrapperHtmlOptions' => array('class' => 'col-sm-4'))); ?>
-        <?php echo $form->error($model, 'press_file_3'); ?>
-    </div>
-
-    <!--    <div class="row">
-    <?php // echo $form->labelEx($model, 'press_pub_abc'); ?>
-    <?php echo $form->textFieldGroup($model, 'press_pub_abc'); ?>
-    <?php echo $form->error($model, 'press_pub_abc'); ?>
-        </div>-->
+<!--    <div class="row">
+        <?php // echo $form->labelEx($model, 'press_pub_abc'); ?>
+        <?php echo $form->textFieldGroup($model, 'press_pub_abc'); ?>
+        <?php echo $form->error($model, 'press_pub_abc'); ?>
+    </div>-->
 
     <!--	<div class="row">
     <?php echo $form->labelEx($model, 'press_pub_linkedin'); ?>
@@ -233,89 +230,90 @@
     ?>
 
     <div class="row">
-
-        <?php
-        echo $form->radioButtonListGroup(
-        $model, 'press_status', array(
-        'wrapperHtmlOptions' => array(
-        'class' => 'col-sm-6',
-        ),
-        'widgetOptions' => array(
-        'data' => array(
-        'N' => 'Send directly to Mail Queue (Publish Now)',
-        'D' => 'Dont Send (Save as draft for later)',
-        'Q' => 'Choose Date',
-        ),
-        'htmlOptions' => array('onClick' => "return choosedate();",
-),
-        //'events' => array(
+<?php // echo $form->labelEx($model, 'choose Date'); ?>
+        <?php //echo $form->textFieldGroup($model, 'press_date_started'); ?>
+  
+    <?php //echo $form->radioButtonGroup($model, 'press_date_started'); ?>
+ <?php echo $form->datePickerGroup(
+			$model,
+			'press_date_started',
+			array(
+                                
+				'widgetOptions' => array(
+					'options' => array(
+						'language' => 'fr',
+                                                'format'=>'yyyy-mm-dd'
+					),
+				),
+				'wrapperHtmlOptions' => array(
+					'class' => 'col-sm-5',
+				),
+				'hint' => 'Click inside! This is a super cool date field.',
+				'prepend' => '<i class="glyphicon glyphicon-calendar"></i>'
+			)
+		); ?>
+       
+        <?php echo $form->error($model, 'press_date_started'); ?>
         
+        
+<?php 
+$this->widget(
+    'booster.widgets.TbTimePicker',
+    array(
+        'model' => $model,
+        'attribute' => 'hours',
+        'options' => array(
+            'showMeridian' => false
+        ),
+        'wrapperHtmlOptions' => array('class' => 'col-md-3'),
+    )
+);
 
-        )));
-        ?>
-
-    </div>
-
-    <div class="row ">
-        <div class="col-xs-5">
-            <?php // echo $form->labelEx($model, 'choose Date');  ?>
-            <?php //echo $form->textFieldGroup($model, 'press_date_started');  ?>
-
-            <?php //echo $form->radioButtonGroup($model, 'press_date_started');  ?>
-            <?php
-            echo $form->datePickerGroup(
-                    $model, 'press_date_started', array(
-                'widgetOptions' => array(
-                    // 'htmlOptions' => array('disabled' => true),
-
-
-
-                    'options' => array(
-                        'language' => 'fr',
-                        'format' => 'yyyy-mm-dd'
-                    ),
-                ),
-                'wrapperHtmlOptions' => array(
-                    'class' => 'col-sm-4',
-                ),
-                'prepend' => '<i class="glyphicon glyphicon-calendar"></i>'
-                    )
-            );
-            ?>
-
-            <?php echo $form->error($model, 'press_date_started'); ?>
-        </div>
-        <div class="col-xs-5">
-            <?php
-            $this->widget(
-                    'booster.widgets.TbTimePicker', array(
-//                         
-                // 'htmlOptions' => array('disabled' => true),
-
-                'model' => $model,
-                'attribute' => 'hours',
-                'options' => array(
-                    'showMeridian' => false
-                ),
-                'wrapperHtmlOptions' => array('class' => 'col-md-3'),
-                    )
-            );
-            ?>  
-        </div>   </div>
-
-    <!--    <div class="row buttons">
-            <?php // echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');  ?>
-        </div>-->
-    <div class="row pull-right">
-        <button type="button" type="submit" class="btn btn-success btn-lg "> <i class="fa fa-floppy-o"></i>  Save</button>
+?>  
+  </div>
+ 
+    <?php echo $form->radioButtonListGroup(
+			$model,
+			'press_status',
+			array(
+                             'wrapperHtmlOptions' => array(
+                                'class' => 'col-sm-6',
+                                 ),
+				'widgetOptions' => array(
+					'data' => array(
+						'N' =>'Send directly to Mail Queue (Publish Now)',
+                                                'Q' =>'Choose Date',
+                   
+						'D' =>'Dont Send (Save as draft for later)',
+					),
+                                     'htmlOptions' => array(),
+				)
+			)
+		); ?>
+	
 
 
-    </div>
 
-    <br>  <br>
-</div><!-- form --<?php
-            $this->endWidget();
 
-            unset($form);
-            ?>
-    
+   <div class="row">
+	<div class="buttons pull-right" >
+		<?php $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit',
+                    'size' => 'large',
+                    'context' => 'success', 
+                    'label' =>  'Create',
+              
+                        
+                      )) ;?>
+            
+          
+	</div>
+	
+	
+	</div>
+
+
+
+</div>
+
+<!-- form --<?php $this->endWidget(); unset($form); ?>
+>

@@ -245,11 +245,11 @@ abstract class Mandrill {
             error_log("MANDRILL: Sending request to: $parsed_url with data: $data_string");
         if (self::_is_cli())
             echo "MANDRILL: Sending request to: $parsed_url with data: $data_string" . PHP_EOL;
-
+      
         $ch = curl_init($parsed_url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+           curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -257,11 +257,15 @@ abstract class Mandrill {
             'Content-Length: ' . strlen($data_string))
         );
 
-
-
-        $result = curl_exec($ch);
-
-          print_r($result);
+    
+        try {
+              $result = curl_exec($ch);
+        } catch (Exception $ex) {
+            
+        }
+      
+        
+        
         if (curl_errno($ch)) {
             echo 'Curl error: ' . curl_error($ch);
         }

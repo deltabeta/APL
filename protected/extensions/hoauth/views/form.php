@@ -53,19 +53,7 @@ Yii::app()->session['obj'],-->
 <form role="form">
     <div class="form-group">-->
 
-<?php
-/**
- * @var HOAuthAction $this
- * @var HUserInfoForm $form
- */
-echo $form->form;
-// echo 'type';
-//  Yii::app()->session['obj'] = $obj;
-//  
-//        
-?>
-<!--</div>-->
-<!--   <div style="margin-top: -250px;">
+
 -->      <div class="form-group">
 
     <h4> Account Type</h4> 
@@ -76,7 +64,7 @@ echo $form->form;
         <?php $url = Yii::app()->createUrl('contact/session');    ?>
         <select class="form-control" id="type" name="type" onchange="sendData('type='+this.value,'<?php echo $url; ?>')">
             <option value="0" id="0"  selected="selected">Client</option>
-            <option value="1" id="1"> Journaliste</option>
+            <option value="1" id="1">Journalist</option>
 
         </select><!--
 
@@ -92,6 +80,21 @@ echo $form->form;
 
     </div>
 </div>
+<br />
+<?php
+/**
+ * @var HOAuthAction $this
+ * @var HUserInfoForm $form
+ */
+echo $form->form;
+// echo 'type';
+//  Yii::app()->session['obj'] = $obj;
+//  
+//        
+?>
+<!--</div>-->
+<!--   <div style="margin-top: -250px;">
+--> 
 <BR><BR><BR>
 
 

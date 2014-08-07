@@ -74,12 +74,6 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 
 <div id="monaccordeon">
     <div class="accordion-group">
-
-
-
-        <span  class="glyphicon glyphicon-chevron-down"></span>
-
-
         <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item1">Personal Information</div>
         <div id="item1" class="collapse accordion-group in ">
             <div class="accordion-inner">
@@ -91,7 +85,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
-                        <?php // echo $form->error($model, 'porfile_name_first');  ?>
+<?php // echo $form->error($model, 'porfile_name_first');  ?>
                     </div>
 
                     <div class="row">
@@ -101,7 +95,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
-                        <?php //echo $form->error($model, 'porfile_name_last');  ?>
+<?php //echo $form->error($model, 'porfile_name_last');  ?>
                     </div>
                 </fieldset>
             </div>
@@ -112,27 +106,25 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 
 <div id="monaccordeon">
     <div class="accordion-group">
-        
-        <span  class="glyphicon glyphicon-chevron-down"></span>
         <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item2">Address </div>
         <div id="item2" class="collapse accordion-group ">
             <div class="accordion-inner">
                 <fieldset>
-                    <div class="row col-sm-6">
+                    <div class="row">
                         <?php //echo $form->labelEx($model, 'porfile_address'); ?>
                         <?php
                         echo $form->textFieldGroup($model, 'porfile_address', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-10',),
+                            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
-                        <?php echo $form->error($model, 'porfile_address'); ?>
+<?php echo $form->error($model, 'porfile_address'); ?>
                     </div>
 
-                    <div class="col-sm-13 row">
+                    <div class="row">
                         <?php //echo $form->labelEx($model, 'porfile_address_nr');  ?>
                         <?php
                         echo $form->textFieldGroup($model, 'porfile_address_nr', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-2',),
+                            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
                         <?php echo $form->error($model, 'porfile_address_nr'); ?>
@@ -155,13 +147,13 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
-                        <?php echo $form->error($model, 'porfile_city'); ?>
+<?php echo $form->error($model, 'porfile_city'); ?>
                     </div>
 
 
                     <div class="row">
                         <div class="col-sm-3 control-label" >
-                            <?php echo $form->labelEx($model, 'porfile_country'); ?></div>
+                        <?php echo $form->labelEx($model, 'porfile_country'); ?></div>
 
 
                         <?php
@@ -195,9 +187,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 
 <div id="monaccordeon">
     <div class="accordion-group">
-        
-        <span  class="glyphicon glyphicon-chevron-down"></span>
-        <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item3">Others </div>
+        <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item3">Othres </div>
         <div id="item3" class="collapse accordion-group">
             <div class="accordion-inner">
                 <fieldset>
@@ -208,7 +198,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 
 
                     <div class="row">
-                        <?php //echo $form->labelEx($model, 'porfile_phone');   ?>
+<?php //echo $form->labelEx($model, 'porfile_phone');   ?>
                         <?php
                         echo $form->textFieldGroup($model, 'porfile_phone', array('size' => 60, 'maxlength' => 255,
                             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
@@ -218,7 +208,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                     </div>
 
                     <div class="row">
-                        <?php // echo $form->labelEx($model, 'porfile_mobile');   ?>
+<?php // echo $form->labelEx($model, 'porfile_mobile');   ?>
                         <?php
                         echo $form->textFieldGroup($model, 'porfile_mobile', array('size' => 60, 'maxlength' => 255,
                             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
@@ -228,7 +218,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                     </div>
 
                     <div class="row">
-                        <?php //echo $form->labelEx($model, 'porfile_camp_name');   ?>
+<?php //echo $form->labelEx($model, 'porfile_camp_name');   ?>
                         <?php
                         echo $form->textFieldGroup($model, 'porfile_camp_name', array('size' => 60, 'maxlength' => 255,
                             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
@@ -238,11 +228,11 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                     </div>
 
                     <div class="row">   
-                        <?php
-                        echo $form->textFieldGroup($model, 'porfile_camp_function', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
-                        ));
-                        ?>
+<?php
+echo $form->textFieldGroup($model, 'porfile_camp_function', array('size' => 60, 'maxlength' => 255,
+    'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
+));
+?>
                         <?php echo $form->error($model, 'porfile_camp_function'); ?>
                     </div>
 
@@ -251,24 +241,24 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 
                     <div class="row">
                         <div class="col-sm-3 control-label" >
-                            <?php echo $form->labelEx($model, 'porfile_camp_country'); ?></div>
+<?php echo $form->labelEx($model, 'porfile_camp_country'); ?></div>
 
 
-                        <?php
-                        $this->widget('booster.widgets.TbSelect2', array(
-                            'asDropDownList' => true,
-                            'model' => $model,
-                            'attribute' => 'porfile_camp_country',
-                            'options' => array(
-                                'placeholder' => $model->getAttributeLabel('porfile_camp_country'),
-                                'width' => '39.6%',
-                                'class' => 'col-sm-5',
-                                'allowClear' => true,
-                            ),
-                            'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'
-                            ),
-                        ));
-                        ?><br><br>
+<?php
+$this->widget('booster.widgets.TbSelect2', array(
+    'asDropDownList' => true,
+    'model' => $model,
+    'attribute' => 'porfile_camp_country',
+    'options' => array(
+        'placeholder' => $model->getAttributeLabel('porfile_camp_country'),
+        'width' => '39.6%',
+        'class' => 'col-sm-5',
+        'allowClear' => true,
+    ),
+    'data' => CHtml::listData(IsoCountry::model()->findAll(), 'country_iso', 'country_name'
+    ),
+));
+?><br><br>
                         <?php // echo $form->dropDownList($model, 'contact_iso_country', CHtml::listData(isocountry::model()->findAll(), 'country_iso', 'country_name')); ?>
                         <?php // echo $form->textField($model,'departmentId'); ?>
                         <?php // echo $form->textField($model,'contact_iso_country'); ?>
@@ -282,7 +272,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
-                        <?php echo $form->error($model, 'porfile_camp_account'); ?>
+<?php echo $form->error($model, 'porfile_camp_account'); ?>
                     </div>
 
                     <div class="row">
@@ -292,7 +282,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
-                        <?php echo $form->error($model, 'porfile_camp_email'); ?>
+<?php echo $form->error($model, 'porfile_camp_email'); ?>
                     </div>
 
                     <div class="row">
@@ -302,7 +292,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
-                        <?php echo $form->error($model, 'porfile_camp_website'); ?>
+<?php echo $form->error($model, 'porfile_camp_website'); ?>
                     </div>
 
                     <div class="row">
@@ -312,7 +302,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
                             'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
-                        <?php echo $form->error($model, 'porfile_coc'); ?>
+<?php echo $form->error($model, 'porfile_coc'); ?>
                     </div>
 
 
@@ -352,12 +342,12 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 
 
                     <div class="row">
-                        <?php //echo $form->labelEx($model, 'usetting_sender_name');  ?>
-                        <?php
-                        echo $form->textFieldGroup($model, 'usetting_sender_name', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
-                        ));
-                        ?>
+<?php //echo $form->labelEx($model, 'usetting_sender_name');  ?>
+<?php
+echo $form->textFieldGroup($model, 'usetting_sender_name', array('size' => 60, 'maxlength' => 255,
+    'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
+));
+?>
                         <?php echo $form->error($model, 'usetting_sender_name'); ?>
                     </div>
 
@@ -403,12 +393,12 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 
 
                     <!--    <div class="row buttons" class="col-sm-3 control-label">
-                    <?php
+                        <?php
 //        $this->widget(    'booster.widgets.TbButton',
 //                        array('buttonType' => 'submit', 'label' => 'Save')
 //                        
 //                ); 
-                    ?>
+                        ?>
                                
                         </div>	  -->    
                 </fieldset>
@@ -420,3 +410,4 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 <br>
 
 <?php $this->endWidget(); ?>
+<!-- form -->

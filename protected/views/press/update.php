@@ -12,4 +12,4 @@ $this->breadcrumbs=array(
 
 <h1>Modify  Press-Release </h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form_1', array('model'=>$model)); ?>
