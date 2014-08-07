@@ -4,10 +4,6 @@
         <meta charset="UTF-8">
         <title>AdminLTE | Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        
-        
-        
-        
         <!-- bootstrap 3.0.2 -->
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
@@ -26,8 +22,6 @@
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/admin/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/admin/css/AdminLTE.css" rel="stylesheet" type="text/css" />
-        
-        
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -244,9 +238,9 @@
                         </li>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="<?php echo Yii::app()->request->baseUrl.'/index.php/user/logout'; ?>" >
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>Jane Doe <i class="caret"></i></span>
+                                <span>Admin APL <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->

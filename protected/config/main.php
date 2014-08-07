@@ -108,7 +108,10 @@ return array(
 	// application components
 	'components'=>array(
             'mandrillwrap'=>array(
-                 'class'=>'ext.mandrillwrap.mandrillwrap',  
+                 'class'=>'ext.mandrillwrap.mandrillwrap', 
+                ),
+            'webhooks'=>array(
+                 'class'=>'ext.webhooks.webhooks',  
                     
                 ),
             
@@ -224,6 +227,6 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'radhouane.walid.m2@gmail.com',
+		'adminEmail'=>'contact@apl.com',
 	),
 );

@@ -13,13 +13,13 @@ $this->menu = array(
    // array('label' => UserModule::t('List User'), 'url' => array('/user')),
 //    
 //    array('label'=>UserModule::t('My Dashbord'), 'url' => array('/'.$varuser.'/dashbord/')), 
-    array('label'=>UserModule::t('Edit Login Information'), 'url'=>array('edit'),'icon'=>'edit'),
-    array('label'=>UserModule::t('Edit Personal Information '), 'url'=>array('/'.$varuser.'/update/'.Yii::app()->user->id),'icon'=>'pencil'),
+    array('label'=>UserModule::t('Edit Login Information'), 'url'=>array('edit')),
+    array('label'=>UserModule::t('Edit Personal Information '), 'url'=>array('/'.$varuser.'/update/'.Yii::app()->user->id)),
     
-    array('label' => UserModule::t('Change password'), 'url' => array('changepassword'),'icon'=>'lock'),
+    array('label' => UserModule::t('Change password'), 'url' => array('changepassword')),
    // array('label' => UserModule::t('Logout'), 'url' => array('/user/logout')),
 );
-?><h1 class="fa fa-user  fa-4x"><?php echo UserModule::t('Your profile'); ?></h1>
+?><h1><?php echo UserModule::t('Your profile'); ?></h1>
 
 <?php if (Yii::app()->user->hasFlash('profileMessage')): ?>
     <div class="success">
@@ -37,40 +37,21 @@ $this->widget(
             'create_at' => $model->create_at,
             'lastvisit_at' => $model->lastvisit_at,
             'status'=> User::itemAlias("UserStatus", $model->status),
-         
-           
-          'Notification'=> '',
         
-          
         ),
         'attributes' => array(
             array('name' => 'firstName', 'label' => 'Username : '),
-            array('name' => 'email', 'label' => 'email : ' ),
+            array('name' => 'email', 'label' => 'email : '),
             array('name' => 'create_at', 'label' => 'Create at : '),
             array('name' => 'lastvisit_at', 'label' => 'Last Visit : '),
             array('name' => 'status', 'label' => 'Status : '),
-           // array('name' => 'Notification', 'label' => 'Notification  : '),    
 
 
         ),
     )
 );
-
-if ($contact!=null)
-{
-     if (($contact->contact_name_first==null)||($contact->contact_name_last==null))
-         
-echo '<span class="label label-info ">'
- 
-         . '<b>Please check your personal information.<br> '
-         . 'Actually you will not be showen in the <br> search journalist</b></span>';
-     
-     
-
-}
  ?>
-        
-  <!--<table class="grid-view" > 
+<!--<table class="grid-view" >
    <tr>
         <th class="label  size-large label-info"><?php // echo CHtml::encode($model->getAttributeLabel('username')); ?></th>-->
         <td><?php // echo CHtml::encode($model->username); ?></td>

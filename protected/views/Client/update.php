@@ -111,8 +111,6 @@
 
     <div id="monaccordeon">
         <div class="accordion-group">
-            
-        <span  class="glyphicon glyphicon-chevron-down"></span>
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item1">Personal Information</div>
             <div id="item1" class="collapse accordion-group in ">
                 <div class="accordion-inner">
@@ -146,27 +144,25 @@
 
     <div id="monaccordeon">
         <div class="accordion-group">
-            
-        <span  class="glyphicon glyphicon-chevron-down"></span>
             <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item2">Address </div>
             <div id="item2" class="collapse accordion-group ">
                 <div class="accordion-inner">
     <fieldset>
-                    <div class="row col-sm-6">
+                    <div class="row">
                         <?php //echo $form->labelEx($model, 'porfile_address');  ?>
                         <?php
                         echo $form->textFieldGroup($model, 'porfile_address', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-10',),
+                            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
                         <?php echo $form->error($model, 'porfile_address'); ?>
                     </div>
 
-                    <div class="row col-sm-13 ">
+                    <div class="row">
                         <?php //echo $form->labelEx($model, 'porfile_address_nr');   ?>
                         <?php
                         echo $form->textFieldGroup($model, 'porfile_address_nr', array('size' => 60, 'maxlength' => 255,
-                            'wrapperHtmlOptions' => array('class' => 'col-sm-2',),
+                            'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
                         ));
                         ?>
                         <?php echo $form->error($model, 'porfile_address_nr'); ?>
@@ -229,8 +225,7 @@
 
     <div id="monaccordeon">
         <div class="accordion-group">
-        <span  class="glyphicon glyphicon-chevron-down"></span>
-            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item3">Others </div>
+            <div class="btn btn-primary accordion-heading" data-toggle="collapse" data-parent="#monaccordeon" data-target="#item3">Othres </div>
             <div id="item3" class="collapse accordion-group">
                 <div class="accordion-inner">
 

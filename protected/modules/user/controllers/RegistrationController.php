@@ -105,10 +105,10 @@ class RegistrationController extends Controller {
 
                             Yii::import('ext.yii-mail.YiiMailMessage');
                             $message = new YiiMailMessage;
-                            $message->setBody(
+                            $message->setBody(	
                                     UserModule::t("Please activate you account go to {activation_url}", array('{activation_url}' => $activation_url))
                                     , 'text/html');
-                            $message->subject = UserModule::t("You registered from {site_name}", array('{site_name}' => Yii::app()->name));
+                            $message->subject = UserModule::t("Your registration  from {site_name}", array('{site_name}' => Yii::app()->name));
                             $message->addTo($model->email);
                             $message->from = Yii::app()->params['adminEmail'];
                             Yii::app()->mail->send($message);

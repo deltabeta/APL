@@ -2,9 +2,6 @@
 /* @var $this ListContactController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Presses List',
-);
 //
 //$this->menu=array(
 //	array('label'=>'Create ListContact', 'url'=>array('create')),
@@ -24,9 +21,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h3>press releases sent</h3>
-
-
+<h3> Press-Releases sent</h3>
 <div id="list-contact-grid" class="grid-view">
 <table class="items">
     
@@ -36,22 +31,44 @@ $('.search-form form').submit(function(){
     <th id="list-contact-grid_c1">Sender</th>
     <th id="list-contact-grid_c2">Attachments</th>
     <th id="list-contact-grid_c3">Contact List</th>
-    <th id="list-contact-grid_c3">Date created</th>
-    <th id="list-contact-grid_c3">Sent on</th>
+    <th id="list-contact-grid_c3">Date Created</th>
+     <th id="list-contact-grid_c3">Delete Press</th>
+          <th id="list-contact-grid_c3">Sent on</th>
+
     <th></th>
     </tr>
     
      <?php   
  foreach($presses as  $value){    
- if($value->press_status=='C') { echo '<tr><td>'.'Completed'.'</td>';}else{ echo '<tr><td>'.'Faild'.'</td>';}
+   echo '<tr><td>'.'DRAFT'.'</td>';
    echo '<td>'.$value->press_subject.'</td>';   
-    echo '<td>'.$value->press_sender_name.'</td>';   
-    echo '<td>'.$value->press_file_1.$value->press_file_2.$value->press_file_3.'</td>'; 
+    echo '<td>'.$value->press_sender_name.'</td>';
+    $file1='';
+    if(!empty($value->press_file_1)){
+        $file1= CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/images.png" height="60" width="60">',array('../protected/uploads/'.$value->press_file_1),array('target'=>'_blank'));
+    }
+    $file2='';
+    if(!empty($value->press_file_2)){
+        $file2= CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/images.png" height="60" width="60">',array('../protected/uploads/'.$value->press_file_2),array('target'=>'_blank'));
+    }
+    $file3='';
+    if(!empty($value->press_file_3)){
+        $file3= CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/images.png" height="60" width="60">',array('../protected/uploads/'.$value->press_file_3),array('target'=>'_blank'));
+    }
+    
+    echo '<td>'.$file1.$file2.$file3.'</td>'; 
     echo '<td>'.$value->GetPressName().'</td>';   
-    echo '<td>'.$value->press_date.'</td>' ;
-     echo '<td>'.$value->press_date_completed.'</td>';  
+    echo '<td>'.$value->press_date.'</td>';  
+    echo '<td>'.CHtml::link('Delete Press',array('press/deletepress/'.$value->press_id),array('onClick'=>'return confirm("Sure to delete this row ?")')).'</td>';    
+    echo '<td>'.$value->press_date_completed.'</td>';
 
    
+//  
+//     echo' <td>'.date('d/m/Y',$value->list_added).'</td>';
+//    if($value->list_modified>0){   echo' <td>'.date('d/m/Y',$value->list_modified).'</td>';}else{echo' <td></td>';}   
+//    echo'
+//<td>'.CHtml::link('Detail List',array('listContact/view/'.$value->list_id)).'</td>
+//</tr>';    
 }    
    
  ?>

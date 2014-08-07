@@ -93,7 +93,15 @@ class CompanyController extends Controller
 			'model'=>$model,
 		));
 	}
-
+        public function actionCompanydelete(){
+            
+            $company = Company::model()->findAll();
+            $companyelemine = $_POST['id_company'];
+            
+            if(($key = array_search($del_val, $messages)) !== false) {
+                 unset($messages[$key]);
+            }
+        }
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
