@@ -24,11 +24,11 @@ function listcountry(param, page)
 {
     indice = param - 1;
     if (document.getElementById('Company_comp_id_' + indice).checked == true) {
-        if (document.all){
+        if (document.all) {
             //Internet Explorer
             var XhrObj = new ActiveXObject("Microsoft.XMLHTTP");
         }//fin if
-        else{
+        else {
             //Mozilla
             var XhrObj = new XMLHttpRequest();
         }//fin else
@@ -40,7 +40,7 @@ function listcountry(param, page)
         XhrObj.open("POST", page);
 
         //Ok pour la page cible
-        XhrObj.onreadystatechange = function(){
+        XhrObj.onreadystatechange = function() {
             if (XhrObj.readyState == 4 && XhrObj.status == 200)
                 content.innerHTML = XhrObj.responseText;
         }
@@ -50,7 +50,7 @@ function listcountry(param, page)
     else {
         var content = document.getElementById("country" + param);
         content.innerHTML = '';
-        
+
     }
 
 
@@ -60,30 +60,30 @@ function listcountry(param, page)
 
 function sendData(param, page)
 {
-    
-        if (document.all){
-            //Internet Explorer
-            var XhrObj = new ActiveXObject("Microsoft.XMLHTTP");
-        }//fin if
-        else{
-            //Mozilla
-            var XhrObj = new XMLHttpRequest();
-        }//fin else
 
-        //dÃ©finition de l'endroit d'affichage:
+    if (document.all) {
+        //Internet Explorer
+        var XhrObj = new ActiveXObject("Microsoft.XMLHTTP");
+    }//fin if
+    else {
+        //Mozilla
+        var XhrObj = new XMLHttpRequest();
+    }//fin else
 
-        var content = document.getElementById("user");
+    //dÃ©finition de l'endroit d'affichage:
 
-        XhrObj.open("POST", page);
+    var content = document.getElementById("user");
 
-        //Ok pour la page cible
-        XhrObj.onreadystatechange = function(){
-            if (XhrObj.readyState == 4 && XhrObj.status == 200)
-                content.innerHTML = XhrObj.responseText;
-        }
-        XhrObj.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        XhrObj.send(param);
-    
+    XhrObj.open("POST", page);
+
+    //Ok pour la page cible
+    XhrObj.onreadystatechange = function() {
+        if (XhrObj.readyState == 4 && XhrObj.status == 200)
+            content.innerHTML = XhrObj.responseText;
+    }
+    XhrObj.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    XhrObj.send(param);
+
 
 
 }//fin fonction SendData
@@ -107,3 +107,41 @@ function read() {
 }
 
 
+function  choosedate( )
+{
+
+    if ((document.getElementById('Press_press_status_0').checked) || (document.getElementById('Press_press_status_1').checked))
+    {
+        document.getElementById("Press_press_date_started").disabled = true;
+
+        document.getElementById("yw4").disabled = true;
+    }
+    else {
+        document.getElementById("Press_press_date_started").disabled = false;
+
+        document.getElementById("yw4").disabled = false;
+
+    }
+}
+
+
+function  check() {
+
+    var elements = document.getElementsByName("contact_id[]");
+    document.getElementById('Delete').disabled = true;
+    for (var i = 0; i < elements.length; i++) {
+        if (elements[i].checked) {
+//            alert("The " + (i + 1) + ". radio button is checked");
+            document.getElementById('Delete').disabled = false;
+        }
+    }
+
+}
+
+
+function  checkall() {
+    if (document.getElementById('selecctall').checked) 
+        document.getElementById('Delete').disabled = false;
+    else 
+        document.getElementById('Delete').disabled = true;
+}

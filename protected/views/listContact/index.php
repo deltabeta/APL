@@ -20,8 +20,9 @@ $this->breadcrumbs=array(
 
 <h1>List Contacts</h1>
 
-
+<div class="table-responsive">
 <div id="list-contact-grid" class="grid-view">
+    
 <table class="table table-hover">
     
     <tr>
@@ -51,8 +52,13 @@ foreach($list as  $value){
     if($value->list_added>0){ echo' <td> <i class="fa fa-clock-o fa-lg"> </i>'.date('d/m/Y h:i',$value->list_added).'</td>';}else{echo' <td></td>';}
     if($value->list_modified>0){ echo' <td> <i class="fa fa-clock-o fa-lg "> </i>'.date('d/m/Y h:i',$value->list_modified).'</td>';}else{echo' <td></td>';}   
     echo'
-<td> <i class="fa fa-file-text fa-lg"> </i> '.CHtml::link('Detail List',array('listContact/view/'.$value->list_id)).'</td>
-    <td> <i class="fa fa-trash-o fa-lg">  </i> '.CHtml::link('Delete List',array('listContact/deletelist/'.$value->list_id),array('onClick'=>'return confirm("Are you sure to delete this row ?")')).'</td>
+   
+ <td> <button type="button" class="btn btn-info">
+ <i class="fa fa-file-text fa-lg"> </i> '.CHtml::link('Detail List',array('listContact/view/'.$value->list_id),array('style'=>'color:#fff')).'</button></td>
+    
+
+    <td> <button type="button" class="btn btn-danger">
+    <i class="fa fa-trash-o fa-lg">  </i> '.CHtml::link('Delete List',array('listContact/deletelist/'.$value->list_id),array('onClick'=>'return confirm("Are you sure to delete this row ?")','style'=>'color:#fff')).'</button></td>
 </tr>';    
 }
      
@@ -60,6 +66,7 @@ foreach($list as  $value){
      
  ?>
 </table>
+        </div>
     </div>
    <?php
 
