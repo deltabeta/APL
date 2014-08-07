@@ -9,7 +9,7 @@ class CompanyController extends Controller
 	public $layout='//layouts/column2';
 
 	/**
-	 * @return array action filters
+	 * @return array action   filters
 	 */
 	public function filters()
 	{
