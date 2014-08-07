@@ -122,7 +122,7 @@
             <select class="form-control" 
             <?php
             echo CHtml::dropDownList('listexist', '0', CHtml::listData(ListContact::model()->findAll(), 'list_id', 'list_name'
-                    ), array('empty' => '(Select a list)', 'disabled' => 'true', 'options' => array('class' => 'col-sm-2')));
+                    ), array('empty' => '(Select a list)', 'disabled' => 'true', 'options' => array('class' => 'col-sm-2','onchange'=>'listcontact()')));
             ?> 
         </select>
     </div>   </div> 

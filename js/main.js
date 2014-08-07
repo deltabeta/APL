@@ -66,7 +66,7 @@ function listcountry(param, page)
 
 
 
-function sendData(param, page)
+function sendData(param, page, div)
 {
 
     if (document.all) {
