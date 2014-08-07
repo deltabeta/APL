@@ -95,11 +95,10 @@
                                     )
                                 ),
                                 
-                          // Connected USer 
+                       
                                 
-                                array('label' => 'My dashbord ', 'url' => array('/' . $varuser . '/dashbord/'), 'visible' => !Yii::app()->user->isGuest),
-                               
-                                //Navbar  For Journaliste                                   
+                                array('icon'=>'briefcase','label' => 'My dashbord ', 'url' => array('/' . $varuser . '/dashbord/'), 'visible' => !Yii::app()->user->isGuest),
+                               // Connected USer    
                                 
                                 array('label' => 'My Releases', 'url' => array('#'), 'visible' =>  ( (!Yii::app()->user->isGuest )&& ($contact != null)),),
                                 array('label' => 'Black List','url' => array('#'), 'visible' =>  ( (!Yii::app()->user->isGuest) && ($contact != null)),),
@@ -113,7 +112,7 @@
                                 
                                 array(
                                     'visible' =>  ( !Yii::app()->user->isGuest && $contact == null),
-                                    
+//                                    'icon'=>'book     ',
                                     'label' => 'My press Releases',
                                     'url' => '/press/scheduled',
                                     'items' => array(
@@ -140,7 +139,7 @@
                                     , 'visible' => Yii::app()->user->isGuest),
                                 array('label' => 'My Space', 'url' => array('/user/login'), 'visible' => Yii::app()->user->isGuest),
                                 array('label' => 'My Profile', 'icon'=>'wrench white','url' => array('/user/profile'), 'visible' => !Yii::app()->user->isGuest),
-                                array(
+                                array('icon'=>'off  ',
                                     'label' => Yii::app()->getModule('user')->t("Logout") . ' (' . Yii::app()->user->name . ')', 'url' => array('/user/logout'),
                                     'visible' => !Yii::app()->user->isGuest),
 //                                

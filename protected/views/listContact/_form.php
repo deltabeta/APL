@@ -144,7 +144,7 @@
 
 
     <div class=" col-xs-4">
-        <select size="10" multiple name="contact_id[]" class="form-control " id="tag">
+        <select size="15" multiple name="contact_id[]" onchange="add_addall()" class="form-control " id="tagCreate">
             <?php
             foreach ($contact as $value)
                 echo ' <option  value ="' . $value->contact_id . '" >' . $value->contact_email . '</option>';
@@ -155,7 +155,7 @@
     <div class="col-xs-4">
         <div class="btn btn-lg btn-block ">
 
-            <a class="btn btn-success" href="#">
+            <a class="btn btn-success" disabled href="#" id="add" name="add">
                 <i class="fa fa-plus-circle fa-lg"></i><b> ADD  </b></a>
             <?php
 //                $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'size' => 'large', 'context' => 'success', 'label' => 'Add')
@@ -166,7 +166,7 @@
 
         <div class="btn btn-lg btn-block">
             
-            <a class="btn btn-success" href="#">
+            <a class="btn btn-success" disabled href="#" id="addall" name="addall">
                 <i class="fa fa-plus-circle fa-lg"></i> <b> ADD ALL</b></a>
             <?php
 //            $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'size' => 'large', 'context' => 'success', 'label' => 'Add All')
@@ -176,7 +176,7 @@
 
         <div class="btn btn-lg btn-block">
             
-            <a class="btn btn-danger" href="#">
+            <a class="btn btn-danger" disabled href="#" name="Remove">
                 <i class="fa fa-times-circle fa-lg"></i> <b> Remove </b></a>
             
             <?php
@@ -188,7 +188,7 @@
         <div class="btn btn-lg btn-block">
             
             
-            <a class="btn btn-danger" href="#">
+            <a class="btn btn-danger" disabled href="#" name="Removeall" >
                 <i class="fa fa-times-circle fa-lg"></i> <b> Remove All</b></a>
             <?php
 //            $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'size' => 'large', 'context' => 'success', 'label' => 'Remove All')
@@ -201,10 +201,10 @@
 
 
     <div class=" col-xs-4 ">
-        <select size="15" multiple name="" class="form-control" id="tag">
+        <select size="15" multiple name="" class="form-control" onchange="Remove_Removeall()" id="tagUpdate">
             <?php
-            foreach ($contact as $value)
-                echo ' <option  value ="' . $value->contact_id . '" >' . $value->contact_email . '</option>';
+            //foreach ($contact as $value)
+              //  echo ' <option  value ="' . $value->contact_id . '" >' . $value->contact_email . '</option>';
             ?>
         </select>
     </div>
@@ -237,14 +237,24 @@
             </table>
         </div>
     ///////////////////////////-->
-
-
-<div class="row buttons pull-right ">
+<div class="row">
+<div class="buttons col-md-3 col-md-offset-3">
     <?php
-    $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'size' => 'large', 'context' => 'success', 'label' => 'Create')
+    $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit', 'id'=>"createButton",'size' => 'large', 'context' => 'success', 'label' => 'Create')
     );
     ?>
 </div>
+
+
+
+
+<div class=" buttons col-md-3 col-md-offset-3">
+    <?php
+    $this->widget('booster.widgets.TbButton', array('buttonType' => 'submit','id'=>"updateButton", 'size' => 'large', 'context' => 'success', 'label' => 'Update')
+    );
+    ?>
+</div>
+    </div>
 <div class="row"></div>
 <?php $this->endWidget(); ?>
 

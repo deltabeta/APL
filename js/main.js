@@ -14,9 +14,17 @@ $(document).ready(function() {
                 this.checked = false; //deselect all checkboxes with class "checkbox1"                       
             });
         }
+        
+        
     });
 
 
+document.getElementById("updateButton").disabled = true;
+document.getElementById("tagUpdate").disabled = true;
+
+        $("a[name='add']").attr('disabled','disabled');
+        
+        $("a[name='addall']").attr('disabled','disabled');
 
 
 });
@@ -97,12 +105,27 @@ function read() {
     if (document.getElementById('create').checked) {
         document.getElementById("listexist").disabled = true;
         document.getElementById("ListContact_list_name").disabled = false;
+        document.getElementById("updateButton").disabled = true;
+        document.getElementById("createButton").disabled = false;
+        document.getElementById("tagUpdate").disabled = true;
+        
+        $("a[name='add']").attr('disabled','disabled');
+        
+        $("a[name='addall']").attr('disabled','disabled');
+        
     }
     if (document.getElementById('update').checked) {
-        document.getElementById("ListContact_list_name").disabled = true;
         document.getElementById("listexist").disabled = false;
+        document.getElementById("ListContact_list_name").disabled = true;
+        document.getElementById("updateButton").disabled = false;
+        document.getElementById("createButton").disabled = true;
+        document.getElementById("tagUpdate").disabled = false;
+        
+        $("a[name='add']").removeAttr('disabled');
+        
+        $("a[name='addall']").removeAttr('disabled');
     }
-
+    
 
 }
 
@@ -145,3 +168,66 @@ function  checkall() {
     else 
         document.getElementById('Delete').disabled = true;
 }
+
+
+function  add_addall()
+{
+    var element = document.getElementById("tagCreate");
+    if(element.selectedIndex != -1){
+        
+        if(document.getElementById('update').checked){
+            $(document).ready(function() {
+        $("a[name='add']").removeAttr('disabled');
+        
+        $("a[name='addall']").removeAttr('disabled');
+        
+        $("a[name='remove']").removeAttr('disabled');
+        
+        $("a[name='removeall']").removeAttr('disabled');
+        });
+        }
+        
+        
+    }
+    else {
+        $("a[name='add']").attr('disabled','disabled');
+        
+        $("a[name='addall']").attr('disabled','disabled');
+    }
+    
+}
+function  Remove_Removeall()
+{
+    var element = document.getElementById("tagUpdate");
+    if(element.selectedIndex != -1){
+        $(document).ready(function() {
+        $("a[name='Remove']").removeAttr('disabled');
+        $("a[name='Removeall']").removeAttr('disabled');
+        });
+    }
+    else {
+        $("a[name='Remove']").attr('disabled','disabled');
+        $("a[name='Removeall']").attr('disabled','disabled');
+    }
+    
+
+}    
+    
+    
+//    var element = document.getElementById("tag");
+//    
+//   // document.getElementById('add').disabled = true;
+//    if(element.selectedIndex != -1)
+//    { //alert( document.getElementBy('add').value); 
+//       document.getElementById('add').enabled = true;
+//        }
+    
+
+//    var elements = document.getElementsByID("tag");
+//    for (var i = 0; i < elements.length; i++) {
+//        if (elements[i].checked) {
+//            alert("The " + (i + 1) + ". radio button is checked");
+//        }
+//    }
+
+
